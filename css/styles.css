@@ -1,0 +1,264 @@
+.wholePage {
+  width: 100%;
+  position: relative;
+}
+
+header {
+  background-color: #fbf7f4;
+  color: #0d7ed0;
+  width: 100%;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+body {
+  background-color: #fbf7f4;
+  font-family: 'Comfortaa', cursive;
+}
+
+.tabList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 3px #93a9f6 solid;
+  border-left: 1px #93a9f6 solid;
+  border-right: 1px #93a9f6 solid;
+  background-color: white;
+}
+
+#dashBoard {
+  padding-top: 0.5rem;
+}
+
+.appTitle {
+  font-weight: bolder;
+  font-size: 2rem;
+  display: inline-block;
+  margin-left: 0.25rem;
+  color: #0d7ed0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.subTag {
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: underline;
+  color: #05789c;
+  font-family: 'Poppins', sans-serif;
+}
+
+.appMain {
+  background-color: white;
+  height: 3000px;
+}
+
+.formTitle {
+  font-weight: 600;
+}
+
+.heroBlock {
+  padding: 1rem;
+  background-color: #eaf7ff;
+  border-radius: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.picHolder {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.colorButtonHolder {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.colorButton {
+  width: 10px;
+  height: 10px;
+  margin-right: 1rem;
+  padding: 0;
+  background-color: #05789c;
+}
+
+.picHolder > img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 5%;
+  transition-duration: 0.5s;
+}
+
+.picHolder > img:hover {
+  transform: scale(1.05);
+}
+
+.picSearch {
+  padding-top: 0.75rem;
+}
+
+.sectionTitle {
+  color: #05789c;
+  margin-left: 0.75rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.searchButtonHolder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.buttonLeft {
+  display: flex;
+  margin-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.breed,
+.random {
+  transition-duration: 0.5s;
+}
+
+.breed:hover,
+.random:hover {
+  transform: scale(1.1);
+}
+
+#searchEntry {
+  display: flex;
+  align-items: center;
+  margin: 0.75rem;
+  padding-right: 1.5rem;
+}
+
+#keyWord {
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 30px;
+  width: 100px;
+  border: 2px solid #05789c;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  transition-duration: 0.5s;
+}
+
+#keyWord:focus {
+  width: 100%;
+}
+
+.searchButton {
+  background-color: #05789c;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  color: white;
+  margin-left: 0.75rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+label,
+input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+}
+
+input,
+textarea,
+select {
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid #b6b6b6;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
+}
+
+.picButton {
+  width: 80px;
+  height: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px solid #05789c;
+  color: #05789c;
+  background-color: white;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-right: 1.5rem;
+  box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.75);
+}
+
+.clicked {
+  background-color: #eaf6f9;
+}
+
+.saveButtonHolder {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.onePic {
+  margin: 1.75rem auto;
+}
+
+.list-group {
+  padding-left: 0;
+}
+
+.pd-l-75 {
+  padding-left: 0.75rem;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-centent {
+  align-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.noShow {
+  visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .picHolder > img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 2%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #searchEntry {
+    display: flex;
+    align-items: center;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+}
