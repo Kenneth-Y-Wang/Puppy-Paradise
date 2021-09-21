@@ -17,7 +17,7 @@ $breed.addEventListener('click', function () {
     </div>
   </div> */
 
-function randerPic(data) {
+function renderPic(data) {
   var $allEntries = document.createElement('div');
   $allEntries.setAttribute('class', 'row allEntries');
 
@@ -58,7 +58,7 @@ function randomPicSearch() {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
 
-    var newPic = randerPic(xhr.response);
+    var newPic = renderPic(xhr.response);
     $pictureList.appendChild(newPic);
 
   });
@@ -82,7 +82,7 @@ function breedSearch(name) {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
 
-    var newPic = randerPic(xhr.response);
+    var newPic = renderPic(xhr.response);
     $pictureList.appendChild(newPic);
 
   });
