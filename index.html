@@ -29,15 +29,15 @@
   <div class="wholePage hidden">
     <header>
       <div class=" tabList container column-full">
-        <div class=" tabLeft row column-half align-center">
+        <div class=" tabLeft row column-full align-center">
           <a>
-            <h2 class="appTitle" data-view="appDashboard">Puppy Paradise</h2>
+            <h2 class="appTitle viewTag" data-view="appDashboard">Puppy Paradise</h2>
           </a>
           <a>
-            <h3 class="pictureSearch subTag hidden" data-view="picSearch">Fun Puppy Search</h3>
+            <h3 class=" viewTag subTag hidden" data-view="pic-search">Fun Puppy Search</h3>
           </a>
           <a>
-            <h3 class="pictureGallery subTag" data-view="picView">My Puppy</h3>
+            <h3 class=" viewTag subTag" data-view="pic-gallery">My Puppy</h3>
           </a>
         </div>
       </div>
@@ -54,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div class="picSearch container">
+      <div class="viewScreen container" data-view="pic-search">
         <h1 class="sectionTitle">Fun Puppy Search</h1>
         <div class="searchButtonHolder">
           <div class="buttonLeft column-one-third">
@@ -65,7 +65,7 @@
             <button class="opButton" type="button" data-number="3">3 PIC</button>
           </div>
           <form id="searchEntry" class="column-half hidden">
-            <button class="searchButton" data-view="entries" type="submit"><i class="fas fa-search"></i></button>
+            <button class="searchButton" data-view="entries" type="submit"><i class="fas fa-paw"></i></button>
             <input required name="keyWord" id="keyWord" type="text" placeholder="Search...">
           </form>
         </div>

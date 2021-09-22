@@ -7,6 +7,7 @@ var $wholePage = document.querySelector('.wholePage');
 var $startButton = document.querySelector('.startButton');
 var $appCover = document.querySelector('.appCover');
 var picViewNumber = 1;
+// var $tabView = document.querySelector('.tabLeft');
 // var $picView = document.querySelector('.picView');
 
 $startButton.addEventListener('click', function () {
@@ -70,12 +71,12 @@ function renderPic(data) {
   var $picView = document.createElement('img');
 
   if (picViewNumber === 1) {
-    $onePic.setAttribute('class', 'onePic column-two-third');
+    $onePic.setAttribute('class', 'onePic newPic column-two-third');
   } else if (picViewNumber === 2) {
-    $onePic.setAttribute('class', 'morePic column-half');
+    $onePic.setAttribute('class', 'morePic newPic column-half');
     $picView.setAttribute('id', 'two');
   } else if (picViewNumber === 3) {
-    $onePic.setAttribute('class', 'morePic column-one-fourth');
+    $onePic.setAttribute('class', 'morePic newPic column-one-fourth');
     $picView.setAttribute('id', 'three');
   }
 
@@ -178,3 +179,15 @@ $form.addEventListener('submit', function () {
   $form.reset();
 })
 ;
+
+$pictureList.addEventListener('click', function () {
+  if (event.target.matches('.picButton') === false) {
+    return;
+  }
+  var newSave = {};
+  newSave.url = event.target.getAttribute('data-pic');
+  newSave.entryId = data.nextEntryId;
+  data.entries.unshift(newSave);
+  data.nextEntryId++;
+
+});
