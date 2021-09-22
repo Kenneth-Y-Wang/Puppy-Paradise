@@ -2,6 +2,6 @@
 var data = {
   view: null,
   entries: [],
-  editing: null,
+  deleting: null,
   nextEntryId: 1
 };
