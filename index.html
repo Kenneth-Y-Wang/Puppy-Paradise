@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +18,18 @@
     href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comfortaa:wght@300;400;500;600;700&family=Poppins:wght@100;300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 </head>
+
 <body>
-  <div class="wholePage">
+  <div class="appCover">
+    <div class="coverText">
+      <h1 class="appName">Puppy Paradise</h1>
+      <button class="startButton" type="button">START FUN</button>
+    </div>
+  </div>
+  <div class="wholePage hidden">
     <header>
       <div class=" tabList container column-full">
-        <div class=" tabLeft row column-full align-center">
+        <div class=" tabLeft row column-half align-center">
           <a>
             <h2 class="appTitle" data-view="appDashboard">Puppy Paradise</h2>
           </a>
@@ -52,6 +60,9 @@
           <div class="buttonLeft column-one-third">
             <button class="breed picButton" type="button">BREED</button>
             <button class="random picButton" type="button">RANDOM</button>
+            <button class="opButton" type="button" data-number="1">1 PIC</button>
+            <button class="opButton" type="button" data-number="2">2 PIC</button>
+            <button class="opButton" type="button" data-number="3">3 PIC</button>
           </div>
           <form id="searchEntry" class="column-half hidden">
             <button class="searchButton" data-view="entries" type="submit"><i class="fas fa-search"></i></button>
@@ -65,4 +76,5 @@
     <script src="js/main.js"></script>
   </div>
 </body>
+
 </html>
