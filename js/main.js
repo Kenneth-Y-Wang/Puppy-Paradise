@@ -185,15 +185,9 @@ $pictureList.addEventListener('click', function () {
     return;
   }
   var newSave = {};
-  var $newPic = document.querySelectorAll('.newPic');
-  for (var i = 0; i < $newPic.length; i++) {
-    if (event.target.getAttribute('data-pic') === $newPic[i].getAttribute('data-pic')) {
-      newSave.url = event.target.getAttribute('data-pic');
-      newSave.entryId = data.nextEntryId;
-      data.entries.unshift(newSave);
-      data.nextEntryId++;
-
-    }
-  }
+  newSave.url = event.target.getAttribute('data-pic');
+  newSave.entryId = data.nextEntryId;
+  data.entries.unshift(newSave);
+  data.nextEntryId++;
 
 });
