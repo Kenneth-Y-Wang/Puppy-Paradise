@@ -253,7 +253,7 @@ $galleryList.addEventListener('click', function () {
   if (event.target.matches('.deleteButton') === false && event.target.matches('.far') === false) {
     return;
   }
-  data.delecting = event.target.getAttribute('data-pic');
+  data.deleting = event.target.getAttribute('data-pic');
   $modalHolder.className = 'modalHolder';
 });
 
@@ -263,13 +263,13 @@ $cancel.addEventListener('click', function () {
 
 $confirm.addEventListener('click', function () {
   for (var i = 0; i < data.entries.length; i++) {
-    if (data.entries[i].url === data.delecting) {
+    if (data.entries[i].url === data.deleting) {
       data.entries.splice(i, 1);
     }
   }
   var $savePic = document.querySelectorAll('.savePic');
   for (var j = 0; j < $savePic.length; j++) {
-    if ($savePic[j].getAttribute('data-pic') === data.delecting) {
+    if ($savePic[j].getAttribute('data-pic') === data.deleting) {
       $savePic[j].remove();
     }
   }
