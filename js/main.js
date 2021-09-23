@@ -186,7 +186,8 @@ $form.addEventListener('submit', function () {
       <div class="picHolder"><img class="picView" id="two"
         src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg">
       </div>
-      <div class="saveButtonHolder">
+      <div class="saveButtonHolder column-full">
+        <button class="picButton setBackground" data-view="pic-search" type="button" data-pic=""><button>
         <button class="deleteButton" type="button" data-pic=""><i class="far fa-trash-alt" data-pic=""></i></button>
       </div>
     </div> */
@@ -207,6 +208,13 @@ function renderSavePic(data) {
   var $buttonHolder = document.createElement('div');
   $buttonHolder.setAttribute('class', 'saveButtonHolder');
 
+  var $backgroundButton = document.createElement('button');
+  $backgroundButton.setAttribute('class', 'picButton setBackground');
+  $backgroundButton.setAttribute('data-view', 'pic-search');
+  $backgroundButton.setAttribute('data-pic', data);
+  $backgroundButton.setAttribute('type', 'button');
+  $backgroundButton.textContent = 'Set Background';
+
   var $deleteButton = document.createElement('button');
   $deleteButton.setAttribute('class', 'deleteButton');
   $deleteButton.setAttribute('type', 'button');
@@ -219,6 +227,7 @@ function renderSavePic(data) {
   $onePic.appendChild($picHolder);
   $onePic.appendChild($buttonHolder);
   $picHolder.appendChild($picView);
+  $buttonHolder.appendChild($backgroundButton);
   $buttonHolder.appendChild($deleteButton);
   $deleteButton.appendChild($trashCan);
 
@@ -250,6 +259,8 @@ var $confirm = document.querySelector('.confirm');
 
 $galleryList.addEventListener('click', function () {
 
+  setBackground(event);
+
   if (event.target.matches('.deleteButton') === false && event.target.matches('.far') === false) {
     return;
   }
@@ -276,6 +287,33 @@ $confirm.addEventListener('click', function () {
   $modalHolder.className = ' modalHolder hidden';
   data.deleting = null;
 });
+
+// here start the seting up background process
+
+var $heroImage = document.querySelector('#heroImage');
+
+function setBackground(event) {
+  if (event.target.matches('.setBackground') === false) {
+    return;
+  }
+  $heroImage.setAttribute('src', event.target.getAttribute('data-pic'));
+  data.heroBackground = event.target.getAttribute('data-pic');
+  viewChange(event.target.getAttribute('data-view'));
+  tagHide();
+}
+
+var $heroBlock = document.querySelector('.heroBlock');
+var $colorHolder = document.querySelector('.colorButtonHolder');
+
+function colorChange(event) {
+  if (event.target.matches('.colorButton') === false) {
+    return;
+  }
+  $heroBlock.style.backgroundColor = event.target.getAttribute('data-color');
+  data.backgroundColor = event.target.getAttribute('data-color');
+}
+$colorHolder.addEventListener('click', colorChange);
+
 // here start the reload process
 
 function entryDisplay(event) {
@@ -283,6 +321,8 @@ function entryDisplay(event) {
     var $newEntry = renderSavePic(data.entries[i].url);
     $galleryList.appendChild($newEntry);
   }
+  $heroImage.setAttribute('src', data.heroBackground);
+  $heroBlock.style.backgroundColor = data.backgroundColor;
   viewChange(data.view);
   tagHide();
 
@@ -294,14 +334,16 @@ document.addEventListener('DOMContentLoaded', entryDisplay);
 
 var $viewScreen = document.querySelectorAll('.viewScreen');
 var $subTag = document.querySelectorAll('.subTag');
+var $exitApp = document.querySelector('.exitApp');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
     if ($viewScreen[i].getAttribute('data-view') === string) {
-      $viewScreen[i].className = 'viewScreen container';
+      $viewScreen[i].className = 'viewScreen';
     } else {
-      $viewScreen[i].className = 'viewScreen container hidden';
+      $viewScreen[i].className = 'viewScreen  hidden';
     }
   }
+  data.view = string;
 }
 
 function tagHide() {
@@ -320,11 +362,16 @@ function clickViewChange(event) {
   }
 
   viewChange(event.target.getAttribute('data-view'));
-  data.view = event.target.getAttribute('data-view');
+
 }
 
 $tabView.addEventListener('click', function () {
   clickViewChange(event);
   tagHide();
 
+});
+
+$exitApp.addEventListener('click', function () {
+  $wholePage.className = 'wholePage hidden';
+  $appCover.className = 'appCover';
 });
