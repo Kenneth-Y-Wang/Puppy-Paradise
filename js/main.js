@@ -7,7 +7,7 @@ var $wholePage = document.querySelector('.wholePage');
 var $startButton = document.querySelector('.startButton');
 var $appCover = document.querySelector('.appCover');
 var picViewNumber = 1;
-// var $tabView = document.querySelector('.tabLeft');
+var $tabView = document.querySelector('.tabLeft');
 // var $picView = document.querySelector('.picView');
 
 $startButton.addEventListener('click', function () {
@@ -180,14 +180,151 @@ $form.addEventListener('submit', function () {
 })
 ;
 
+// here start the save pic process
+
+/* <div class=" morePic savePic column-half" data-pic="">
+      <div class="picHolder"><img class="picView" id="two"
+        src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg">
+      </div>
+      <div class="saveButtonHolder">
+        <button class="deleteButton" type="button" data-pic=""><i class="far fa-trash-alt" data-pic=""></i></button>
+      </div>
+    </div> */
+function renderSavePic(data) {
+
+  var $onePic = document.createElement('div');
+  $onePic.setAttribute('class', 'morePic savePic column-half');
+  $onePic.setAttribute('data-pic', data);
+
+  var $picHolder = document.createElement('div');
+  $picHolder.setAttribute('class', 'picHolder');
+
+  var $picView = document.createElement('img');
+  $picView.setAttribute('class', 'picView');
+  $picView.setAttribute('id', 'two');
+  $picView.setAttribute('src', data);
+
+  var $buttonHolder = document.createElement('div');
+  $buttonHolder.setAttribute('class', 'saveButtonHolder');
+
+  var $deleteButton = document.createElement('button');
+  $deleteButton.setAttribute('class', 'deleteButton');
+  $deleteButton.setAttribute('type', 'button');
+  $deleteButton.setAttribute('data-pic', data);
+
+  var $trashCan = document.createElement('i');
+  $trashCan.setAttribute('class', 'far fa-trash-alt');
+  $trashCan.setAttribute('data-pic', data);
+
+  $onePic.appendChild($picHolder);
+  $onePic.appendChild($buttonHolder);
+  $picHolder.appendChild($picView);
+  $buttonHolder.appendChild($deleteButton);
+  $deleteButton.appendChild($trashCan);
+
+  return $onePic;
+
+}
+
+var $galleryList = document.querySelector('#gallery-list');
+
 $pictureList.addEventListener('click', function () {
   if (event.target.matches('.picButton') === false) {
     return;
   }
   var newSave = {};
+
   newSave.url = event.target.getAttribute('data-pic');
   newSave.entryId = data.nextEntryId;
   data.entries.unshift(newSave);
   data.nextEntryId++;
+  var $newSavedPic = renderSavePic(newSave.url);
+  $galleryList.appendChild($newSavedPic);
+
+});
+// here start the delete process
+
+var $modalHolder = document.querySelector('.modalHolder');
+var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
+
+$galleryList.addEventListener('click', function () {
+
+  if (event.target.matches('.deleteButton') === false && event.target.matches('.far') === false) {
+    return;
+  }
+  data.delecting = event.target.getAttribute('data-pic');
+  $modalHolder.className = 'modalHolder';
+});
+
+$cancel.addEventListener('click', function () {
+  $modalHolder.className = 'modalHolder hidden';
+});
+
+$confirm.addEventListener('click', function () {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].url === data.delecting) {
+      data.entries.splice(i, 1);
+    }
+  }
+  var $savePic = document.querySelectorAll('.savePic');
+  for (var j = 0; j < $savePic.length; j++) {
+    if ($savePic[j].getAttribute('data-pic') === data.delecting) {
+      $savePic[j].remove();
+    }
+  }
+  $modalHolder.className = ' modalHolder hidden';
+  data.deleting = null;
+});
+// here start the reload process
+
+function entryDisplay(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var $newEntry = renderSavePic(data.entries[i].url);
+    $galleryList.appendChild($newEntry);
+  }
+  viewChange(data.view);
+  tagHide();
+
+}
+
+document.addEventListener('DOMContentLoaded', entryDisplay);
+
+// here start the view swapping process
+
+var $viewScreen = document.querySelectorAll('.viewScreen');
+var $subTag = document.querySelectorAll('.subTag');
+function viewChange(string) {
+  for (var i = 0; i < $viewScreen.length; i++) {
+    if ($viewScreen[i].getAttribute('data-view') === string) {
+      $viewScreen[i].className = 'viewScreen container';
+    } else {
+      $viewScreen[i].className = 'viewScreen container hidden';
+    }
+  }
+}
+
+function tagHide() {
+  for (var i = 0; i < $subTag.length; i++) {
+    if ($subTag[i].getAttribute('data-view') === data.view) {
+      $subTag[i].className = ' viewTag subTag hidden';
+    } else {
+      $subTag[i].className = ' viewTag subTag';
+    }
+  }
+}
+
+function clickViewChange(event) {
+  if (event.target.matches('.viewTag') === false) {
+    return;
+  }
+
+  viewChange(event.target.getAttribute('data-view'));
+  data.view = event.target.getAttribute('data-view');
+}
+
+$tabView.addEventListener('click', function () {
+  clickViewChange(event);
+  tagHide();
 
 });
