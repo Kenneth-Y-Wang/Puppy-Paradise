@@ -109,6 +109,7 @@ body {
   border-radius: 2%;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 2px 5px 16px 0 #0b325e, 5px -8px 2px -13px rgba(0, 0, 0, 0);
 }
 
 .picHolder {
@@ -120,14 +121,56 @@ body {
 .colorButtonHolder {
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
+  padding-right: 1.5rem;
 }
 
 .colorButton {
-  width: 10px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
   margin-right: 1rem;
   padding: 0;
   background-color: #05789c;
+  border: none;
+  border-radius: 8px;
+  transition-duration: 0.5s;
+}
+
+.exitApp {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #05789c;
+  background-color: white;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border: none;
+  transition-duration: 0.5s;
+}
+
+.colorButton:hover,
+.exitApp:hover {
+  transform: scale(1.2);
+}
+
+.colorOne {
+  background-color: #fae0e4;
+}
+
+.colorTwo {
+  background-color: #dbe7e4;
+}
+
+.colorThree {
+  background-color: #fff1e6;
+}
+
+.colorFour {
+  background-color: #eae4e9;
+}
+
+.colorFive {
+  background-color: #eaf7ff;
 }
 
 .picHolder > img {
@@ -148,10 +191,21 @@ body {
 
 .sectionTitle {
   color: #05789c;
-  margin-left: 0.75rem;
+  margin-left: 0;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   font-family: 'Poppins', sans-serif;
+}
+
+.sectionTitleHolder {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin-bottom: 2rem;
+  margin-left: 0;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .searchButtonHolder {
@@ -239,6 +293,10 @@ select {
   margin-right: 1rem;
   box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.75);
   transition-duration: 0.5s;
+}
+
+.setBackground {
+  width: 150px;
 }
 
 .deleteButton {

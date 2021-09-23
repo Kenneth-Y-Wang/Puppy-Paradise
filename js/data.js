@@ -3,7 +3,9 @@ var data = {
   view: null,
   entries: [],
   deleting: null,
-  nextEntryId: 1
+  nextEntryId: 1,
+  heroBackground: null,
+  backgroundColor: null
 };
 
 var previousDataJSON = localStorage.getItem('pic-local-storage');

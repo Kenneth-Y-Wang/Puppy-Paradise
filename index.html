@@ -20,14 +20,14 @@
 </head>
 
 <body>
-  <div class="appCover">
+  <div class=" appCover" data-view="app-cover">
     <div class="coverText">
       <h1 class="appName">Puppy Paradise</h1>
       <button class="startButton" type="button">START FUN</button>
     </div>
   </div>
   <div class="wholePage hidden">
-    <div class="modalHolder hidden" >
+    <div class="modalHolder hidden">
       <div class="deleteBlock">
         <h4 class="deleteMessage">Delete Picture?</h4>
         <div class="buttonHolder column-full">
@@ -41,7 +41,7 @@
       <div class=" tabList container column-full">
         <div class=" tabLeft row column-full align-center">
           <a>
-            <h2 class="appTitle viewTag" data-view="appDashboard">Puppy Paradise</h2>
+            <h2 class="appTitle viewTag" data-view="pic-search">Puppy Paradise</h2>
           </a>
           <a>
             <h3 class=" viewTag subTag hidden" data-view="pic-search">Fun Puppy Search</h3>
@@ -53,19 +53,23 @@
       </div>
     </header>
     <main class="container appMain">
-      <div class="view hidden" id="dashBoard" data-view="dashBoard">
+      <div class="viewScreen" id="dashBoard" data-view="pic-search">
         <div class="heroBlock column-two-third ">
-          <div class="picHolder"><img class="picView" src="images/placeholder-image-square.jpg"></div>
+          <div class="picHolder"><img id="heroImage" class="picView" src="images/placeholder-image-square.jpg"></div>
           <div class="colorButtonHolder">
-            <button class="colorButton" type="button"></button>
-            <button class="colorButton" type="button"></button>
-            <button class="colorButton" type="button"></button>
-            <button class="colorButton" type="button"></button>
+            <button class="colorButton colorOne" data-color="#fae0e4" type="button"></button>
+            <button class="colorButton colorTwo" data-color="#dbe7e4" type="button"></button>
+            <button class="colorButton colorThree" data-color="#fff1e6" type="button"></button>
+            <button class="colorButton colorFour" data-color="#eae4e9" type="button"></button>
+            <button class="colorButton colorFive" data-color="#eaf7ff" type="button"></button>
           </div>
         </div>
       </div>
-      <div class="viewScreen container" data-view="pic-search">
-        <h1 class="sectionTitle">Fun Puppy Search <i class="fas fa-dog"></i></h1>
+      <div class="viewScreen" data-view="pic-search">
+        <div class="sectionTitleHolder">
+          <h1 class="sectionTitle">Fun Puppy Search <i class="fas fa-dog"></i></h1>
+          <button class="exitApp" data-view="app-cover"><i class="fas fa-paw"></i>Exit</button>
+        </div>
         <div class="searchButtonHolder">
           <div class="buttonLeft column-one-third">
             <button class="breed picButton" type="button">BREED</button>
@@ -81,8 +85,10 @@
         </div>
         <div id="picture-list" class="list-group"></div>
       </div>
-      <div class="viewScreen container hidden" data-view="pic-gallery">
-        <h1 class="sectionTitle">My Puppy Gallery <i class="fas fa-paw"></i></h1>
+      <div class="viewScreen  hidden" data-view="pic-gallery">
+        <div class="sectionTitleHolder">
+          <h1 class="sectionTitle">My Puppy Gallery <i class="fas fa-paw"></i></h1>
+        </div>
         <div id="gallery-list" class="list-group"></div>
       </div>
     </main>
