@@ -27,6 +27,16 @@
     </div>
   </div>
   <div class="wholePage hidden">
+    <div class="modalHolder hidden" >
+      <div class="deleteBlock">
+        <h4 class="deleteMessage">Delete Picture?</h4>
+        <div class="buttonHolder column-full">
+          <button class="cancel picButton" type="button">CANCEL</button>
+          <button class="confirm picButton" data-view="pic-gallery" type="button">CONFIRM</button>
+        </div>
+      </div>
+    </div>
+
     <header>
       <div class=" tabList container column-full">
         <div class=" tabLeft row column-full align-center">
@@ -55,7 +65,7 @@
         </div>
       </div>
       <div class="viewScreen container" data-view="pic-search">
-        <h1 class="sectionTitle">Fun Puppy Search</h1>
+        <h1 class="sectionTitle">Fun Puppy Search <i class="fas fa-dog"></i></h1>
         <div class="searchButtonHolder">
           <div class="buttonLeft column-one-third">
             <button class="breed picButton" type="button">BREED</button>
@@ -70,6 +80,10 @@
           </form>
         </div>
         <div id="picture-list" class="list-group"></div>
+      </div>
+      <div class="viewScreen container hidden" data-view="pic-gallery">
+        <h1 class="sectionTitle">My Puppy Gallery <i class="fas fa-paw"></i></h1>
+        <div id="gallery-list" class="list-group"></div>
       </div>
     </main>
     <script src="js/data.js"></script>
