@@ -323,8 +323,8 @@ function entryDisplay(event) {
   }
   $heroImage.setAttribute('src', data.heroBackground);
   $heroBlock.style.backgroundColor = data.backgroundColor;
-  viewChange(data.view);
-  tagHide();
+  // viewChange(data.view);
+  // tagHide();
 
 }
 
@@ -335,6 +335,7 @@ document.addEventListener('DOMContentLoaded', entryDisplay);
 var $viewScreen = document.querySelectorAll('.viewScreen');
 var $subTag = document.querySelectorAll('.subTag');
 var $exitApp = document.querySelector('.exitApp');
+var $viewPage = document.querySelectorAll('.viewPage');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
     if ($viewScreen[i].getAttribute('data-view') === string) {
@@ -344,6 +345,21 @@ function viewChange(string) {
     }
   }
   data.view = string;
+}
+
+function pageChange(string) {
+  for (var i = 0; i < $viewPage.length; i++) {
+    if ($viewPage[i].getAttribute('data-page') === string) {
+      $viewPage[i].className = 'viewPage ';
+    } else {
+      $viewPage[i].className = 'viewPage hidden';
+    }
+  }
+  data.page = string;
+}
+
+function pageChangeClick(event) {
+  pageChange(event.target.getAttribute('data-page'));
 }
 
 function tagHide() {
@@ -375,3 +391,10 @@ $exitApp.addEventListener('click', function () {
   $wholePage.className = 'wholePage hidden';
   $appCover.className = 'appCover';
 });
+
+var $galleryButton = document.querySelector('#galleryButton');
+var $backToMain = document.querySelector('.backToMain');
+
+$galleryButton.addEventListener('click', pageChangeClick);
+
+$backToMain.addEventListener('click', pageChangeClick);

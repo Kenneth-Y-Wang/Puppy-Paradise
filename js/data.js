@@ -1,6 +1,7 @@
 /* exported data */
 var data = {
   view: null,
+  page: null,
   entries: [],
   deleting: null,
   nextEntryId: 1,
