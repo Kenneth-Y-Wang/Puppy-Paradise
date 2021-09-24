@@ -20,13 +20,13 @@
 </head>
 
 <body>
-  <div class=" appCover" data-view="app-cover">
+  <div class=" appCover hidden" data-view="app-cover">
     <div class="coverText">
       <h1 class="appName">Puppy Paradise</h1>
       <button class="startButton" type="button">START FUN</button>
     </div>
   </div>
-  <div class="wholePage hidden">
+  <div class="wholePage">
     <div class="modalHolder hidden">
       <div class="deleteBlock">
         <h4 class="deleteMessage">Delete Picture?</h4>
@@ -67,13 +67,16 @@
           </div>
           <div class="heroControl column-half">
             <div class="buttonRow">
-              <button class="picButton">1</button>
-              <button class="picButton">2</button>
+              <button class="picButton menuButton">FUN PUPPY</button>
+              <button class="picButton menuButton" data-view="pic-gallery">MY GALLERY</button>
             </div>
             <div class="buttonRow">
-              <button class="picButton">1</button>
-              <button class="picButton">2</button>
+              <button class="picButton menuButton">NOTES</button>
+              <button class="picButton menuButton">GAMES</button>
             </div>
+            <div><h2 class="sectionTitle">Reminder:</h2></div>
+            <div class="reminderDisplay"></div>
+            <div class="reminderDisplay"></div>
           </div>
         </div>
       </div>
@@ -102,6 +105,62 @@
           <h1 class="sectionTitle">My Puppy Gallery <i class="fas fa-paw"></i></h1>
         </div>
         <div id="gallery-list" class="list-group"></div>
+      </div>
+      <div class="" data-view="note-entry">
+        <div class="sectionTitleHolder">
+          <h1 class="sectionTitle">My Puppy <i class="fas fa-paw"></i></h1>
+        </div>
+        <form class="noteEntry">
+          <div class="column-half">
+            <div class="picHolder"><img class="picView" id="entry" src="images/placeholder-image-square.jpg"></div>
+          </div>
+          <div class="dataLog column-half">
+            <label for="url" class="sectionTitle">My Puppy Picture</label>
+            <input
+            required
+            id="url"
+            name="url"
+            type="url">
+            <label for="reminder" class="sectionTitle">Reminder</label>
+            <input
+            required
+            id="reminder"
+            name="reminder"
+            type="text">
+            <div class="selectRow">
+              <label for="priority" class=" selectLabel sectionTitle">Reminder Priority:</label>
+              <select id="priority" class=" selectLabel" name="priority">
+                <option value="Top Priority">Top priority</option>
+                <option value="High Priority">High Priority</option>
+                <option value="Priority">Priority</option>
+                <option value="Routine">Routine</option>
+                <option value="Deferral">Deferral</option>
+              </select>
+            </div>
+            <div class="selectRow">
+              <label for="category" class="sectionTitle selectLabel">Entry Category</label>
+              <select id="category" class=" selectLabel" name="category">
+                <option value="Munchies">Munchies</option>
+                <option value="Daily Walk">Daily Walk</option>
+                <option value="Happy Moments">Happy Moments</option>
+                <option value="Puppy Journal">Puppy Journal</option>
+                <option value="Training \& Tricks">Training and Tricks</option>
+              </select>
+            </div>
+          </div>
+          <div class=" noteSection column-full">
+            <label for="notes" class="sectionTitle">Event Notes</label>
+            <textarea
+            required
+            rows="6"
+            id="notes"
+            name="notes"
+            placeholder="Please enter your event note"></textarea>
+            <div class="submitAction">
+              <button class="picButton" type="submit">SAVE</button>
+            </div>
+          </div>
+        </form>
       </div>
     </main>
     <script src="js/data.js"></script>

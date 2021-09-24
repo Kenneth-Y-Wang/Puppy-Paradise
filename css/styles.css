@@ -110,9 +110,26 @@ body {
   justify-content: space-between;
 }
 
+.heroControl {
+  padding-top: 3rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  padding-bottom: 1rem;
+}
+
+.reminderDisplay {
+  border: solid 2px #05789c;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  margin-top: 1.75rem;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.75);
+}
+
 .buttonRow {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 2rem;
 }
 
 .heroBlock {
@@ -278,16 +295,28 @@ select {
   width: 100%;
 }
 
+label {
+  font-weight: bold;
+}
+
 input,
 textarea,
 select {
-  padding: 0.5rem;
   margin-bottom: 1.5rem;
-  border-radius: 0.25rem;
-  border: 2px solid #b6b6b6;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
   background-color: #fcfcfc;
+  border: solid 2px #05789c;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  margin-top: 0.75rem;
+}
+
+#priority,
+#category {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .picButton {
@@ -305,6 +334,15 @@ select {
   margin-right: 1rem;
   box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.75);
   transition-duration: 0.5s;
+}
+
+.menuButton {
+  width: 120px;
+}
+
+.menuButton:hover {
+  background-color: #00b4d8;
+  color: white;
 }
 
 .setBackground {
@@ -447,6 +485,35 @@ select {
   transform: scale(1.2);
 }
 
+.dataLog {
+  padding-top: 1rem;
+}
+
+.noteEntry {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selectRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.selectLabel {
+  display: inline-block;
+}
+
+.submitAction {
+  display: flex;
+  justify-content: flex-end;
+}
+
+textarea {
+  height: 200px;
+}
+
 .pd-l-75 {
   padding-left: 0.75rem;
 }
@@ -477,6 +544,13 @@ select {
 
   #two,
   #heroImage {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 2%;
+  }
+
+  #entry {
     width: 100%;
     height: 300px;
     object-fit: cover;
