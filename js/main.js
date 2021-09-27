@@ -548,7 +548,6 @@ $recordList.addEventListener('click', delectRecord);
 $recordList.addEventListener('click', sortRecord);
 $showAll.addEventListener('click', showAll);
 
-// $recordList.addEventListener;
 // here start the reload process
 
 function entryDisplay(event) {
