@@ -8,6 +8,7 @@ var $startButton = document.querySelector('.startButton');
 var $appCover = document.querySelector('.appCover');
 var picViewNumber = 1;
 var $tabView = document.querySelector('.tabLeft');
+
 // var $picView = document.querySelector('.picView');
 
 $startButton.addEventListener('click', function () {
@@ -210,7 +211,7 @@ function renderSavePic(data) {
 
   var $backgroundButton = document.createElement('button');
   $backgroundButton.setAttribute('class', 'picButton setBackground');
-  $backgroundButton.setAttribute('data-view', 'pic-search');
+  $backgroundButton.setAttribute('data-page', 'mainPage');
   $backgroundButton.setAttribute('data-pic', data);
   $backgroundButton.setAttribute('type', 'button');
   $backgroundButton.textContent = 'Set Background';
@@ -248,7 +249,7 @@ $pictureList.addEventListener('click', function () {
   data.entries.unshift(newSave);
   data.nextEntryId++;
   var $newSavedPic = renderSavePic(newSave.url);
-  $galleryList.appendChild($newSavedPic);
+  $galleryList.prepend($newSavedPic);
 
 });
 // here start the delete process
@@ -298,7 +299,7 @@ function setBackground(event) {
   }
   $heroImage.setAttribute('src', event.target.getAttribute('data-pic'));
   data.heroBackground = event.target.getAttribute('data-pic');
-  viewChange(event.target.getAttribute('data-view'));
+  pageChange(event.target.getAttribute('data-page'));
   tagHide();
 }
 
@@ -314,6 +315,240 @@ function colorChange(event) {
 }
 $colorHolder.addEventListener('click', colorChange);
 
+// here start the game part
+
+var $gameImage = document.querySelector('#gameImage');
+var $readyButton = document.querySelector('#readyButton');
+var $timerButton = document.querySelectorAll('.timerButton');
+var $gameSubmit = document.querySelector('#gameAnswer');
+var $playAgain = document.querySelector('.playAgain');
+var $gameMessage = document.querySelectorAll('.gameMessage');
+var $recordList = document.querySelector('#record-list');
+var $showAll = document.querySelector('.recordShowAll');
+
+var timeId = null;
+
+function showMessage(string) {
+  for (var i = 0; i < $gameMessage.length; i++) {
+    if ($gameMessage[i].getAttribute('data-message') === string) {
+      $gameMessage[i].className = 'gameTitle gameMessage';
+    } else {
+      $gameMessage[i].className = 'gameTitle gameMessage hidden';
+    }
+  }
+}
+function puppyGame() {
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://dog.ceo/api/breeds/image/random');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+
+    var string = '';
+    var array = [];
+
+    for (var i = 0; i < xhr.response.message.length; i++) {
+      if (xhr.response.message[i] === '/') {
+        array.push(string);
+        string = '';
+      } else {
+        string += xhr.response.message[i];
+      }
+
+    }
+
+    array.push(string);
+    var breed = array.slice(4, 5);
+    data.gameBreed = breed;
+    data.gameUrl = xhr.response.message;
+    $gameImage.setAttribute('src', xhr.response.message);
+    timerStart();
+    console.log(data);
+  });
+  xhr.send();
+
+}
+
+var count = 0;
+function timer() {
+  count++;
+  for (var i = 0; i < $timerButton.length; i++) {
+    if ($timerButton[i].getAttribute('data-time') === String(count)) {
+      $timerButton[i].style.color = '#ef6351';
+    }
+  }
+  if (count === 11) {
+    showMessage('time-out');
+    $playAgain.className = 'picButton playAgain';
+    clearInterval(timeId);
+  }
+
+}
+
+function timerStart() {
+  timeId = setInterval(timer, 1000);
+}
+
+function playAgain() {
+  clearInterval(timeId);
+  count = 0;
+  showMessage('hidden');
+  $playAgain.className = 'picButton playAgain hidden';
+  for (var i = 0; i < $timerButton.length; i++) {
+    $timerButton[i].style.color = '#274c77';
+  }
+  puppyGame();
+}
+
+function checkAnswer(string) {
+  var answer = '';
+  for (var i = 0; i < string.length; i++) {
+    answer += string.charAt(i).toLowerCase();
+  }
+  if (data.gameBreed[0].indexOf(answer) !== -1) {
+    clearInterval(timeId);
+    count = 0;
+    for (var j = 0; j < $timerButton.length; j++) {
+      $timerButton[j].style.color = '#274c77';
+    }
+    showMessage('correct');
+    $playAgain.className = 'picButton playAgain';
+    var newRecord = {};
+    var breedName = data.gameBreed[0][0].toUpperCase();
+    for (var a = 1; a < data.gameBreed[0].length; a++) {
+      breedName += data.gameBreed[0][a];
+    }
+    newRecord.url = data.gameUrl;
+    newRecord.breed = breedName;
+    console.log(newRecord);
+    console.log(data);
+    data.gameRecords.unshift(newRecord);
+    $recordList.prepend(renderGameRecord(newRecord));
+
+  }
+
+  if (data.gameBreed[0].indexOf(answer) === -1) {
+    showMessage('wrong');
+  }
+
+}
+
+// <div class=" morePic recordPic column-half" data-record="" data-breed="">
+//  <div class="picHolder"><img class="picView" id="recordPic"
+//    src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg">
+//  </div>
+//  <div class="recordHolder">
+//    <div class="row">
+//      <h3 class="recordText">I am :</h3>
+//      <button class="breedButton" type="button" data-breed="">Breed</button>
+//    </div>
+//    <button class="deleteButton deleteRecord" type="button" data-record=""><i class="far fa-trash-alt" data-record=""></i></button>
+//  </div>
+// </div>
+
+function renderGameRecord(data) {
+  var $morePic = document.createElement('div');
+  $morePic.setAttribute('class', 'morePic recordPic column-half');
+  $morePic.setAttribute('data-record', data.url);
+  $morePic.setAttribute('data-breed', data.breed);
+
+  var $picHolder = document.createElement('div');
+  $picHolder.setAttribute('class', 'picHolder');
+
+  var $picView = document.createElement('img');
+  $picView.setAttribute('class', 'picView');
+  $picView.setAttribute('id', 'recordPic');
+  $picView.setAttribute('src', data.url);
+
+  var $recordHolder = document.createElement('div');
+  $recordHolder.setAttribute('class', 'recordHolder');
+
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row');
+
+  var $recordText = document.createElement('h3');
+  $recordText.setAttribute('class', 'recordText');
+  $recordText.textContent = 'I am :';
+
+  var $breedButton = document.createElement('button');
+  $breedButton.setAttribute('class', ' breedButton');
+  $breedButton.setAttribute('type', 'button');
+  $breedButton.setAttribute('data-breed', data.breed);
+  $breedButton.textContent = data.breed;
+
+  var $deleteButton = document.createElement('button');
+  $deleteButton.setAttribute('class', 'deleteButton deleteRecord');
+  $deleteButton.setAttribute('type', 'button');
+  $deleteButton.setAttribute('data-record', data.url);
+
+  var $trashCan = document.createElement('i');
+  $trashCan.setAttribute('class', 'fas fa-trash-alt');
+  $trashCan.setAttribute('data-record', data.url);
+
+  $morePic.appendChild($picHolder);
+  $morePic.appendChild($recordHolder);
+  $picHolder.appendChild($picView);
+  $recordHolder.appendChild($row);
+  $recordHolder.appendChild($deleteButton);
+  $deleteButton.appendChild($trashCan);
+  $row.appendChild($recordText);
+  $row.appendChild($breedButton);
+
+  return $morePic;
+}
+
+function delectRecord(event) {
+  if (event.target.matches('.deleteRecord') === false && event.target.matches('.fas') === false) {
+    return;
+  }
+  for (var i = 0; i < data.gameRecords.length; i++) {
+    if (data.gameRecords[i].url === event.target.getAttribute('data-record')) {
+      data.gameRecords.splice(i, 1);
+    }
+  }
+
+  var $recordPic = document.querySelectorAll('.recordPic');
+  for (var j = 0; j < $recordPic.length; j++) {
+    if ($recordPic[j].getAttribute('data-record') === event.target.getAttribute('data-record')) {
+      $recordPic[j].remove();
+    }
+  }
+}
+
+function sortRecord(event) {
+  if (event.target.matches('.breedButton') === false) {
+    return;
+  }
+  var $recordPic = document.querySelectorAll('.recordPic');
+  for (var i = 0; i < $recordPic.length; i++) {
+    if ($recordPic[i].getAttribute('data-breed') === event.target.getAttribute('data-breed')) {
+      $recordPic[i].className = 'morePic recordPic column-half';
+    } else {
+      $recordPic[i].className = 'morePic recordPic column-half hidden';
+    }
+  }
+}
+$gameSubmit.addEventListener('submit', function () {
+  event.preventDefault();
+  checkAnswer($gameSubmit.elements.answer.value);
+
+});
+
+function showAll() {
+  var $recordPic = document.querySelectorAll('.recordPic');
+  for (var i = 0; i < $recordPic.length; i++) {
+
+    $recordPic[i].className = 'morePic recordPic column-half';
+  }
+}
+$readyButton.addEventListener('click', puppyGame);
+$playAgain.addEventListener('click', playAgain);
+
+$recordList.addEventListener('click', delectRecord);
+$recordList.addEventListener('click', sortRecord);
+$showAll.addEventListener('click', showAll);
+
+// $recordList.addEventListener;
 // here start the reload process
 
 function entryDisplay(event) {
@@ -321,10 +556,14 @@ function entryDisplay(event) {
     var $newEntry = renderSavePic(data.entries[i].url);
     $galleryList.appendChild($newEntry);
   }
+  for (var j = 0; j < data.gameRecords.length; j++) {
+    $recordList.appendChild(renderGameRecord(data.gameRecords[j]));
+  }
   $heroImage.setAttribute('src', data.heroBackground);
   $heroBlock.style.backgroundColor = data.backgroundColor;
-  // viewChange(data.view);
-  // tagHide();
+  viewChange(data.view);
+  pageChange(data.page);
+  tagHide();
 
 }
 
@@ -394,7 +633,10 @@ $exitApp.addEventListener('click', function () {
 
 var $galleryButton = document.querySelector('#galleryButton');
 var $backToMain = document.querySelector('.backToMain');
+var $backToMainGame = document.querySelector('.backToMainGame');
+var $games = document.querySelector('#gameButton');
 
 $galleryButton.addEventListener('click', pageChangeClick);
-
 $backToMain.addEventListener('click', pageChangeClick);
+$games.addEventListener('click', pageChangeClick);
+$backToMainGame.addEventListener('click', pageChangeClick);

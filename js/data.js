@@ -3,10 +3,13 @@ var data = {
   view: null,
   page: null,
   entries: [],
+  gameRecords: [],
   deleting: null,
   nextEntryId: 1,
   heroBackground: null,
-  backgroundColor: null
+  backgroundColor: null,
+  gameBreed: null,
+  gameUrl: null
 };
 
 var previousDataJSON = localStorage.getItem('pic-local-storage');
