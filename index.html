@@ -20,13 +20,13 @@
 </head>
 
 <body>
-  <div class=" appCover" data-view="app-cover">
+  <div id="appEntrance" class= "viewCover" data-cover="app-cover">
     <div class="coverText">
       <h1 class="appName">Puppy Paradise</h1>
-      <button class="startButton" type="button">START FUN</button>
+      <button class="startButton" type="button" data-cover="whole-page">START FUN</button>
     </div>
   </div>
-  <div class="wholePage hidden">
+  <div id="wholePage" class=" viewCover hidden" data-cover="whole-page">
     <div class="modalHolder hidden">
       <div class="deleteBlock">
         <h4 class="deleteMessage">Delete Picture?</h4>
@@ -84,7 +84,7 @@
         <div class="viewScreen" data-view="pic-search">
           <div class="sectionTitleHolder">
             <h1 class="sectionTitle">Fun Puppy Search <i class="fas fa-dog"></i></h1>
-            <button class="exitApp exitButton" data-view="app-cover"><i class="fas fa-paw"></i>Exit</button>
+            <button class="exitApp exitButton" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button>
           </div>
           <div class="searchButtonHolder">
             <div class="buttonLeft column-one-third">

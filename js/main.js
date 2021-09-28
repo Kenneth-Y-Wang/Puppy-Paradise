@@ -3,19 +3,10 @@ var $random = document.querySelector('.random');
 var $form = document.querySelector('form');
 var $opButton = document.querySelectorAll('.opButton');
 var $buttonLeft = document.querySelector('.buttonLeft');
-var $wholePage = document.querySelector('.wholePage');
-var $startButton = document.querySelector('.startButton');
-var $appCover = document.querySelector('.appCover');
 var picViewNumber = 1;
 var $tabView = document.querySelector('.tabLeft');
 
 // var $picView = document.querySelector('.picView');
-
-$startButton.addEventListener('click', function () {
-  $wholePage.className = 'wholePage';
-  $appCover.className = 'appCover hidden';
-
-});
 
 $buttonLeft.addEventListener('click', function () {
   if (event.target.matches('.opButton') === false) {
@@ -363,7 +354,7 @@ function puppyGame() {
     data.gameUrl = xhr.response.message;
     $gameImage.setAttribute('src', xhr.response.message);
     timerStart();
-    console.log(data);
+    // console.log(breed);
   });
   xhr.send();
 
@@ -420,8 +411,6 @@ function checkAnswer(string) {
     }
     newRecord.url = data.gameUrl;
     newRecord.breed = breedName;
-    console.log(newRecord);
-    console.log(data);
     data.gameRecords.unshift(newRecord);
     $recordList.prepend(renderGameRecord(newRecord));
 
@@ -562,6 +551,7 @@ function entryDisplay(event) {
   $heroBlock.style.backgroundColor = data.backgroundColor;
   viewChange(data.view);
   pageChange(data.page);
+  coverChange(data.cover);
   tagHide();
 
 }
@@ -573,7 +563,9 @@ document.addEventListener('DOMContentLoaded', entryDisplay);
 var $viewScreen = document.querySelectorAll('.viewScreen');
 var $subTag = document.querySelectorAll('.subTag');
 var $exitApp = document.querySelector('.exitApp');
+var $startButton = document.querySelector('.startButton');
 var $viewPage = document.querySelectorAll('.viewPage');
+var $viewCover = document.querySelectorAll('.viewCover');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
     if ($viewScreen[i].getAttribute('data-view') === string) {
@@ -596,6 +588,16 @@ function pageChange(string) {
   data.page = string;
 }
 
+function coverChange(string) {
+  for (var i = 0; i < $viewCover.length; i++) {
+    if ($viewCover[i].getAttribute('data-cover') === string) {
+      $viewCover[i].className = 'viewCover';
+    } else {
+      $viewCover[i].className = 'viewCover hidden';
+    }
+  }
+  data.cover = string;
+}
 function pageChangeClick(event) {
   pageChange(event.target.getAttribute('data-page'));
 }
@@ -625,9 +627,12 @@ $tabView.addEventListener('click', function () {
 
 });
 
+$startButton.addEventListener('click', function () {
+  coverChange(event.target.getAttribute('data-cover'));
+
+});
 $exitApp.addEventListener('click', function () {
-  $wholePage.className = 'wholePage hidden';
-  $appCover.className = 'appCover';
+  coverChange(event.target.getAttribute('data-cover'));
 });
 
 var $galleryButton = document.querySelector('#galleryButton');

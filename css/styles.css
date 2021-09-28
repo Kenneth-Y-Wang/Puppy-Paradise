@@ -1,9 +1,9 @@
-.wholePage {
+#wholePage {
   width: 100%;
   position: relative;
 }
 
-.appCover {
+#appEntrance {
   background-image: url('../images/cute-wallpaper-200921142328121024x768.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -426,7 +426,7 @@ select {
 
 .modalHolder {
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;

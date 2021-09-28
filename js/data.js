@@ -2,6 +2,7 @@
 var data = {
   view: null,
   page: null,
+  cover: null,
   entries: [],
   gameRecords: [],
   deleting: null,
