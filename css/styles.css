@@ -1,9 +1,9 @@
-#wholePage {
+.wholePage {
   width: 100%;
   position: relative;
 }
 
-#appEntrance {
+.appCover {
   background-image: url('../images/cute-wallpaper-200921142328121024x768.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -55,10 +55,6 @@ body {
   font-family: 'Comfortaa', cursive;
 }
 
-.viewPage {
-  padding-top: 0.75rem;
-}
-
 .tabList {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +94,7 @@ body {
 
 .appMain {
   background-color: white;
-  height: 3000px;
+  height: 100vh;
 
   /* min-height: -webkit-fill-available; */
 }
@@ -114,30 +110,12 @@ body {
   justify-content: space-between;
 }
 
-.heroControl {
-  padding-top: 3rem;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-  padding-bottom: 1rem;
-}
-
-.reminderDisplay {
-  border: solid 2px #05789c;
-  border-radius: 5px;
-  width: 100%;
-  height: 30px;
-  margin-top: 1.75rem;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.75);
-}
-
 .buttonRow {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 2rem;
 }
 
-.heroBlock,
-.profileBlock {
+.heroBlock {
   padding: 1rem;
   background-color: #eaf7ff;
   border-radius: 2%;
@@ -150,12 +128,7 @@ body {
   margin-right: auto;
 }
 
-.notePicHolder {
-  width: 100%;
-}
-
-.colorButtonHolder,
-.colorButtonHolderNote {
+.colorButtonHolder {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
@@ -173,7 +146,7 @@ body {
   transition-duration: 0.5s;
 }
 
-.exitButton {
+.exitApp {
   font-size: 1rem;
   font-weight: 500;
   color: #05789c;
@@ -210,8 +183,7 @@ body {
   background-color: #eaf7ff;
 }
 
-.picHolder > img,
-.notePicHolder > img {
+.picHolder > img {
   width: 100%;
   height: 350px;
   object-fit: cover;
@@ -219,13 +191,11 @@ body {
   transition-duration: 0.5s;
 }
 
-.picHolder > img:hover,
-.notePicHolder > img:hover {
+.picHolder > img:hover {
   transform: scale(1.05);
 }
 
 .viewScreen {
-  margin-top: 0.5rem;
   padding-top: 0.75rem;
 }
 
@@ -242,6 +212,7 @@ body {
   padding-right: 1.25rem;
   margin-bottom: 2rem;
   margin-left: 0;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -307,28 +278,16 @@ select {
   width: 100%;
 }
 
-label {
-  font-weight: bold;
-}
-
 input,
 textarea,
 select {
+  padding: 0.5rem;
   margin-bottom: 1.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid #b6b6b6;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
   background-color: #fcfcfc;
-  border: solid 2px #05789c;
-  border-radius: 5px;
-  width: 100%;
-  height: 30px;
-  margin-top: 0.75rem;
-}
-
-#priority,
-#category {
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 .picButton {
@@ -346,15 +305,6 @@ select {
   margin-right: 1rem;
   box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.75);
   transition-duration: 0.5s;
-}
-
-.menuButton {
-  width: 120px;
-}
-
-.menuButton:hover {
-  background-color: #00b4d8;
-  color: white;
 }
 
 .setBackground {
@@ -434,7 +384,7 @@ select {
 
 .modalHolder {
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -497,288 +447,8 @@ select {
   transform: scale(1.2);
 }
 
-.dataLog {
-  padding-top: 1rem;
-}
-
-.noteEntry {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.selectRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1rem 0;
-}
-
-.selectLabel {
-  display: inline-block;
-}
-
-.submitAction {
-  display: flex;
-  justify-content: flex-end;
-}
-
-textarea {
-  height: 200px;
-}
-
-.gameRow {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 1.75rem;
-}
-
-.timerRow {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 0.75rem;
-}
-
-.timerButton {
-  width: 15px;
-  height: 15px;
-  border: none;
-  color: #274c77;
-  background-color: white;
-  cursor: pointer;
-}
-
-.gameTitle {
-  font-family: 'Architects Daughter', cursive;
-  margin: 0.75rem auto;
-  color: #274c77;
-  font-weight: bolder;
-  text-align: center;
-  font-size: 2.5rem;
-}
-
-.answerText {
-  font-family: 'Architects Daughter', cursive;
-  color: #274c77;
-  font-weight: bolder;
-  font-size: 1.75rem;
-}
-
-#readyButton {
-  font-family: 'Architects Daughter', cursive;
-  border: 2px solid #6096ba;
-  color: #6096ba;
-  width: 200px;
-  height: 45px;
-  font-size: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.75rem;
-}
-
-#readyButton:hover {
-  color: white;
-  background-color: #6096ba;
-}
-
-.answerRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.75rem;
-}
-
-.answerBox {
-  width: 150px;
-  border: none;
-  border-bottom: 2px solid #274c77;
-  margin: 0.75rem 0.5rem;
-}
-
-.gameSubmit {
-  font-family: 'Architects Daughter', cursive;
-  border: 2px solid #6096ba;
-  color: #6096ba;
-  width: 80px;
-  height: 40px;
-  font-size: 1.5rem;
-}
-
-.playAgain {
-  font-family: 'Architects Daughter', cursive;
-  border: 2px solid #ffa69e;
-  color: #ffa69e;
-  width: 150px;
-  height: 40px;
-  font-size: 1.5rem;
-}
-
-.gameMessage {
-  color: #ee4266;
-  transform: rotate(-10deg);
-}
-
-.recordHolder {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.recordText {
-  font-family: 'Architects Daughter', cursive;
-  color: #274c77;
-  margin: 0 0.5rem;
-  line-height: 30px;
-}
-
-.recordSection {
-  margin-left: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.breedButton {
-  padding: 0.25rem 0.25rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border-radius: 5px;
-  border: 2px solid #05789c;
-  color: #05789c;
-  background-color: white;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  margin-right: 1rem;
-  box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.75);
-  transition-duration: 0.5s;
-}
-
-.showAllRow {
-  display: flex;
-  align-items: center;
-  margin-top: 1.75rem;
-}
-
-.recordShowAll,
-.noteShowAll {
-  font-size: 1rem;
-  color: #d66853;
-  margin: 0 0.75rem;
-  text-decoration: underline;
-  transition-duration: 0.5s;
-}
-
-.breedButton:hover,
-.recordShowAll:hover,
-.noteShowAll:hover {
-  transform: scale(1.2);
-}
-
-.reminderRow {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.75rem;
-}
-
-.noteDashboard {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.75rem 0;
-}
-
-.reminderCategory {
-  display: inline;
-  font-size: 0.8rem;
-  width: 110px;
-  margin-left: 0.5rem;
-}
-
-.reminderHolder {
-  display: flex;
-  align-items: center;
-}
-
-.reminderContent {
-  margin: auto 0;
-  width: 400px;
-}
-
-.editButton {
-  border: none;
-  background-color: white;
-  color: #05789c;
-  margin-right: 0.5rem;
-}
-
-.topPriority {
-  color: #db3a34;
-}
-
-.highPriority {
-  color: #d1495b;
-}
-
-.priority {
-  color: #f0a6ca;
-}
-
-.routine {
-  color: #007ea7;
-}
-
-.deferral {
-  color: #7c98b3;
-}
-
-.noteRow {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1rem 0;
-}
-
-.categoryRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.75rem 0;
-}
-
-.categoryGroup {
-  width: 130px;
-  padding: 0.25rem 0.5rem;
-  background-color: #007ea7;
-  color: white;
-  margin: 0;
-  font-size: 0.7rem;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.categoryButton {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.setProfilePic {
-  width: 100px;
-}
-
-.noteContent {
-  border: solid 2px #007ea7;
-  height: 220px;
-  margin: 1.25rem 0;
-  border-radius: 10px;
-}
-
 .pd-l-75 {
   padding-left: 0.75rem;
-}
-
-.pd-t-75 {
-  padding-top: 0.75rem;
-}
-
-.mg-l-75 {
-  margin-left: 0.75rem;
 }
 
 .align-center {
@@ -787,10 +457,6 @@ textarea {
 
 .align-centent {
   align-content: center;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .space-between {
@@ -810,20 +476,9 @@ textarea {
   }
 
   #two,
-  #heroImage,
-  #entry,
-  #recordPic,
-  #notePic,
-  #profileImage {
+  #heroImage {
     width: 100%;
     height: 300px;
-    object-fit: cover;
-    border-radius: 2%;
-  }
-
-  #gameImage {
-    width: 100%;
-    height: 350px;
     object-fit: cover;
     border-radius: 2%;
   }

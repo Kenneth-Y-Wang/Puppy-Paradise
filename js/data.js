@@ -1,17 +1,11 @@
 /* exported data */
 var data = {
   view: null,
-  page: null,
-  cover: null,
   entries: [],
-  gameRecords: [],
   deleting: null,
   nextEntryId: 1,
   heroBackground: null,
-  backgroundColor: null,
-  backgroundColorProfile: null,
-  gameBreed: null,
-  gameUrl: null
+  backgroundColor: null
 };
 
 var previousDataJSON = localStorage.getItem('pic-local-storage');
