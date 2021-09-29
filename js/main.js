@@ -306,6 +306,21 @@ function colorChange(event) {
 }
 $colorHolder.addEventListener('click', colorChange);
 
+// here start the profile and note section
+
+// var $profileImage = document.querySelector('#profileImage');
+var $profileBlock = document.querySelector('.profileBlock');
+var $colorHolderNote = document.querySelector('.colorButtonHolderNote');
+
+function profileColorChange(event) {
+  if (event.target.matches('.colorButton') === false) {
+    return;
+  }
+  $profileBlock.style.backgroundColor = event.target.getAttribute('data-color');
+  data.backgroundColorNote = event.target.getAttribute('data-color');
+}
+$colorHolderNote.addEventListener('click', profileColorChange);
+
 // here start the game part
 
 var $gameImage = document.querySelector('#gameImage');
@@ -354,7 +369,7 @@ function puppyGame() {
     data.gameUrl = xhr.response.message;
     $gameImage.setAttribute('src', xhr.response.message);
     timerStart();
-    // console.log(data);
+    // console.log(breed);
   });
   xhr.send();
 
@@ -486,7 +501,7 @@ function renderGameRecord(data) {
   return $morePic;
 }
 
-function deleteRecord(event) {
+function delectRecord(event) {
   if (event.target.matches('.deleteRecord') === false && event.target.matches('.fas') === false) {
     return;
   }
@@ -533,7 +548,7 @@ function showAll() {
 $readyButton.addEventListener('click', puppyGame);
 $playAgain.addEventListener('click', playAgain);
 
-$recordList.addEventListener('click', deleteRecord);
+$recordList.addEventListener('click', delectRecord);
 $recordList.addEventListener('click', sortRecord);
 $showAll.addEventListener('click', showAll);
 
@@ -639,8 +654,12 @@ var $galleryButton = document.querySelector('#galleryButton');
 var $backToMain = document.querySelector('.backToMain');
 var $backToMainGame = document.querySelector('.backToMainGame');
 var $games = document.querySelector('#gameButton');
+var $note = document.querySelector('#noteButton');
+var $backtoMainNote = document.querySelector('.backToMainNotes');
 
 $galleryButton.addEventListener('click', pageChangeClick);
 $backToMain.addEventListener('click', pageChangeClick);
 $games.addEventListener('click', pageChangeClick);
 $backToMainGame.addEventListener('click', pageChangeClick);
+$note.addEventListener('click', pageChangeClick);
+$backtoMainNote.addEventListener('click', pageChangeClick);

@@ -73,7 +73,7 @@
                 <button class="picButton menuButton" id="galleryButton" data-page="pic-gallery">MY GALLERY</button>
               </div>
               <div class="buttonRow">
-                <button class="picButton menuButton">NOTES</button>
+                <button class="picButton menuButton" id="noteButton" data-page="puppyNote">NOTES</button>
                 <button class="picButton menuButton" id="gameButton" data-page="games">GAMES</button>
               </div>
               <div>
@@ -156,6 +156,89 @@
         </div>
         <div id="gallery-list" class="list-group"></div>
       </div>
+      <div class="viewPage hidden" data-page="puppyNote">
+        <div class="sectionTitleHolder">
+          <h1 class="sectionTitle">My Puppy Notes <i class="fas fa-paw"></i></h1>
+          <button class=" exitButton backToMainNotes" data-page="mainPage"><i class="fas fa-paw"
+              data-page="mainPage"></i>Back</button>
+        </div>
+        <div class="noteDashboard">
+          <div class="profileBlock column-one-third ">
+            <div class="picHolder"><img id="profileImage" class="picView" src="images/placeholder-image-square.jpg">
+            </div>
+            <div class="colorButtonHolderNote">
+              <button class="colorButton colorOne" data-color="#fae0e4" type="button"></button>
+              <button class="colorButton colorTwo" data-color="#dbe7e4" type="button"></button>
+              <button class="colorButton colorThree" data-color="#fff1e6" type="button"></button>
+              <button class="colorButton colorFour" data-color="#eae4e9" type="button"></button>
+              <button class="colorButton colorFive" data-color="#eaf7ff" type="button"></button>
+            </div>
+          </div>
+          <div class="reminderBlock pd-t-75 column-three-fifth">
+            <div>
+              <h2 class="sectionTitle mg-l-75">Reminder:</h2>
+            </div>
+            <div class="reminderRow">
+              <div class="reminderHolder column-four-fifth">
+                <div class="reminderDisplay reminderContent"></div>
+                <h4 class="reminderCategory topPriority">Top Priority</h4>
+              </div>
+              <button class="editButton" type="button"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="reminderRow">
+              <div class="reminderHolder column-four-fifth">
+                <div class="reminderDisplay reminderContent"></div>
+                <h4 class="reminderCategory highPriority">High Priority</h4>
+              </div>
+              <button class="editButton" type="button"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="reminderRow">
+              <div class="reminderHolder column-four-fifth">
+                <div class="reminderDisplay reminderContent"></div>
+                <h4 class="reminderCategory priority">Priority</h4>
+              </div>
+              <button class="editButton" type="button"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="reminderRow">
+              <div class="reminderHolder column-four-fifth">
+                <div class="reminderDisplay reminderContent"></div>
+                <h4 class="reminderCategory routine">Routine</h4>
+              </div>
+              <button class="editButton" type="button"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="reminderRow">
+              <div class="reminderHolder column-four-fifth">
+                <div class="reminderDisplay reminderContent"></div>
+                <h4 class="reminderCategory deferral">Deferral</h4>
+              </div>
+              <button class="editButton" type="button"><i class="fas fa-edit"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="showAllRow">
+          <h1 class="sectionTitle recordSection">Notes:</h1>
+          <h4 class="noteShowAll">Show All</h4>
+        </div>
+        <ul id="note-list" class="list-group">
+          <li class="noteRow column-full">
+            <div class="column-half">
+              <div class="notePicHolder"><img class="picView" id="notePic" src="images/placeholder-image-square.jpg">
+              </div>
+            </div>
+            <div class="noteBlock column-half">
+              <div class="categoryRow">
+                <div class="categoryGroup column-one-fourth">Happy Moments</div>
+                <div class="categoryButton column-half">
+                  <button class="picButton setProfilePic">Set Profile</button>
+                  <button class="editButton"><i class="fas fa-trash-alt"></i></button>
+                  <button class="editButton"><i class="fas fa-edit"></i></button>
+                </div>
+              </div>
+              <div class="noteContent column-full"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
       <div class="viewPage hidden" data-page="games">
         <div class="sectionTitleHolder">
           <h1 class="sectionTitle">Puppy Games <i class="fas fa-paw"></i></h1>
@@ -183,7 +266,7 @@
             </div>
             <form class="answerRow" id="gameAnswer">
               <h3 class="answerText">I am :</h3>
-              <input class="answerBox" name="answer" type="text">
+              <input minlength="3" class="answerBox" name="answer" type="text">
               <button class="picButton gameSubmit" type="submit">OK</button>
             </form>
             <div class="answerRow answerCorrect">

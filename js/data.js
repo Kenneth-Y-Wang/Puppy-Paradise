@@ -9,6 +9,7 @@ var data = {
   nextEntryId: 1,
   heroBackground: null,
   backgroundColor: null,
+  backgroundColorProfile: null,
   gameBreed: null,
   gameUrl: null
 };
