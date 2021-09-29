@@ -321,6 +321,24 @@ function profileColorChange(event) {
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
+/* <li class="noteRow column-full">
+    <div class="column-half">
+      <div class="notePicHolder"><img class="picView" id="notePic" src="images/placeholder-image-square.jpg">
+      </div>
+    </div>
+    <div class="noteBlock column-half">
+      <div class="categoryRow">
+        <div class="categoryGroup column-one-fourth">Happy Moments</div>
+        <div class="categoryButton column-half">
+          <button class="picButton setProfilePic">Set Profile</button>
+          <button class="editButton"><i class="fas fa-trash-alt"></i></button>
+          <button class="editButton"><i class="fas fa-edit"></i></button>
+        </div>
+      </div>
+      <div class="noteContent column-full"></div>
+    </div>
+  </li> */
+
 // here start the game part
 
 var $gameImage = document.querySelector('#gameImage');
@@ -501,7 +519,7 @@ function renderGameRecord(data) {
   return $morePic;
 }
 
-function delectRecord(event) {
+function deleteRecord(event) {
   if (event.target.matches('.deleteRecord') === false && event.target.matches('.fas') === false) {
     return;
   }
@@ -548,7 +566,7 @@ function showAll() {
 $readyButton.addEventListener('click', puppyGame);
 $playAgain.addEventListener('click', playAgain);
 
-$recordList.addEventListener('click', delectRecord);
+$recordList.addEventListener('click', deleteRecord);
 $recordList.addEventListener('click', sortRecord);
 $showAll.addEventListener('click', showAll);
 
