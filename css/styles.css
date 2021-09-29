@@ -732,7 +732,7 @@ textarea {
 .noteRow {
   display: flex;
   flex-wrap: wrap;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
 .categoryRow {

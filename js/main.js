@@ -321,6 +321,24 @@ function profileColorChange(event) {
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
+/* <li class="noteRow column-full">
+    <div class="column-half">
+      <div class="notePicHolder"><img class="picView" id="notePic" src="images/placeholder-image-square.jpg">
+      </div>
+    </div>
+    <div class="noteBlock column-half">
+      <div class="categoryRow">
+        <div class="categoryGroup column-one-fourth">Happy Moments</div>
+        <div class="categoryButton column-half">
+          <button class="picButton setProfilePic">Set Profile</button>
+          <button class="editButton"><i class="fas fa-trash-alt"></i></button>
+          <button class="editButton"><i class="fas fa-edit"></i></button>
+        </div>
+      </div>
+      <div class="noteContent column-full"></div>
+    </div>
+  </li> */
+
 // here start the game part
 
 var $gameImage = document.querySelector('#gameImage');
