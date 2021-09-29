@@ -446,7 +446,7 @@ function checkAnswer(string) {
 //      <h3 class="recordText">I am :</h3>
 //      <button class="breedButton" type="button" data-breed="">Breed</button>
 //    </div>
-//    <button class="deleteButton deleteRecord" type="button" data-record=""><i class="far fa-trash-alt" data-record=""></i></button>
+//    <button class=" deleteButton deleteRecord" type="button" data-record=""><i class="far fa-trash-alt" data-record=""></i></button>
 //  </div>
 // </div>
 
