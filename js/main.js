@@ -501,7 +501,7 @@ function renderGameRecord(data) {
   return $morePic;
 }
 
-function delectRecord(event) {
+function deleteRecord(event) {
   if (event.target.matches('.deleteRecord') === false && event.target.matches('.fas') === false) {
     return;
   }
@@ -548,7 +548,7 @@ function showAll() {
 $readyButton.addEventListener('click', puppyGame);
 $playAgain.addEventListener('click', playAgain);
 
-$recordList.addEventListener('click', delectRecord);
+$recordList.addEventListener('click', deleteRecord);
 $recordList.addEventListener('click', sortRecord);
 $showAll.addEventListener('click', showAll);
 
