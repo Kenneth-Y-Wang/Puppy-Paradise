@@ -30,7 +30,9 @@
   .column-full,
   .column-half,
   .column-one-third,
-  .column-one-fourth {
+  .column-one-fourth,
+  .column-three-fifth,
+  .column-four-fifth {
     padding: 0 0.75rem;
   }
 
@@ -45,9 +47,5 @@
   .column-one-fourth {
     width: 30%;
     margin: 0 auto;
-  }
-
-  .column-two-third {
-    width: 80%;
   }
 }

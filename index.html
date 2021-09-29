@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <div id="appEntrance" class= "viewCover" data-cover="app-cover">
+  <div id="appEntrance" class="viewCover" data-cover="app-cover">
     <div class="coverText">
       <h1 class="appName">Puppy Paradise</h1>
       <button class="startButton" type="button" data-cover="whole-page">START FUN</button>
@@ -57,7 +57,8 @@
         <div class="dashBoard" id="dashBoard" data-view="">
           <div class="mainDashboard">
             <div class="heroBlock column-half ">
-              <div class="picHolder"><img id="heroImage" class="picView" src="images/placeholder-image-square.jpg"></div>
+              <div class="picHolder"><img id="heroImage" class="picView" src="images/placeholder-image-square.jpg">
+              </div>
               <div class="colorButtonHolder">
                 <button class="colorButton colorOne" data-color="#fae0e4" type="button"></button>
                 <button class="colorButton colorTwo" data-color="#dbe7e4" type="button"></button>
@@ -75,7 +76,9 @@
                 <button class="picButton menuButton">NOTES</button>
                 <button class="picButton menuButton" id="gameButton" data-page="games">GAMES</button>
               </div>
-              <div><h2 class="sectionTitle">Reminder:</h2></div>
+              <div>
+                <h2 class="sectionTitle">Reminder:</h2>
+              </div>
               <div class="reminderDisplay"></div>
               <div class="reminderDisplay"></div>
             </div>
@@ -111,17 +114,9 @@
             </div>
             <div class="dataLog column-half">
               <label for="url" class="sectionTitle">My Puppy Picture</label>
-              <input
-              required
-              id="url"
-              name="url"
-              type="url">
+              <input required id="url" name="url" type="url">
               <label for="reminder" class="sectionTitle">Reminder</label>
-              <input
-              required
-              id="reminder"
-              name="reminder"
-              type="text">
+              <input required id="reminder" name="reminder" type="text">
               <div class="selectRow">
                 <label for="priority" class=" selectLabel sectionTitle">Reminder Priority:</label>
                 <select id="priority" class=" selectLabel" name="priority">
@@ -145,12 +140,7 @@
             </div>
             <div class=" noteSection column-full">
               <label for="notes" class="sectionTitle">Event Notes</label>
-              <textarea
-              required
-              rows="6"
-              id="notes"
-              name="notes"
-              placeholder="Please enter your event note"></textarea>
+              <textarea required rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
               <div class="submitAction">
                 <button class="picButton" type="submit">SAVE</button>
               </div>
@@ -161,14 +151,16 @@
       <div class="viewPage hidden" data-page="pic-gallery">
         <div class="sectionTitleHolder">
           <h1 class="sectionTitle">My Puppy Gallery <i class="fas fa-paw"></i></h1>
-          <button class=" exitButton backToMain" data-page="mainPage"><i class="fas fa-paw" data-page="mainPage"></i>Back</button>
+          <button class=" exitButton backToMain" data-page="mainPage"><i class="fas fa-paw"
+              data-page="mainPage"></i>Back</button>
         </div>
         <div id="gallery-list" class="list-group"></div>
       </div>
       <div class="viewPage hidden" data-page="games">
         <div class="sectionTitleHolder">
           <h1 class="sectionTitle">Puppy Games <i class="fas fa-paw"></i></h1>
-          <button class=" exitButton backToMainGame" data-page="mainPage"><i class="fas fa-paw" data-page="mainPage"></i>Back</button>
+          <button class=" exitButton backToMainGame" data-page="mainPage"><i class="fas fa-paw"
+              data-page="mainPage"></i>Back</button>
         </div>
         <div class="gameRow">
           <div class="column-half">
@@ -190,12 +182,14 @@
               <button class="timerButton" data-time="10"><i class="fas fa-paw"></i></button>
             </div>
             <form class="answerRow" id="gameAnswer">
-              <h3 class="answerText" >I am :</h3>
+              <h3 class="answerText">I am :</h3>
               <input class="answerBox" name="answer" type="text">
               <button class="picButton gameSubmit" type="submit">OK</button>
             </form>
             <div class="answerRow answerCorrect">
-              <h1 class="gameTitle gameMessage  hidden" data-message="correct">Correct!</h1><h1 class="gameTitle gameMessage  hidden" data-message="time-out">Times Up!</h1><h1 class="gameTitle gameMessage  hidden" data-message="wrong">Wrong!</h1>
+              <h1 class="gameTitle gameMessage  hidden" data-message="correct">Correct!</h1>
+              <h1 class="gameTitle gameMessage  hidden" data-message="time-out">Times Up!</h1>
+              <h1 class="gameTitle gameMessage  hidden" data-message="wrong">Wrong!</h1>
               <button class="picButton playAgain hidden" type="button">Play Again</button>
             </div>
           </div>
