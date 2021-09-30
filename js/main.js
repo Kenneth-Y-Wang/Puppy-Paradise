@@ -326,19 +326,92 @@ $colorHolderNote.addEventListener('click', profileColorChange);
       <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/placeholder-image-square.jpg">
       </div>
     </div>
-    <div class="noteBlock column-half">
+    <div class="note-block column-half">
       <div class="category-row">
         <div class="category-group column-one-fourth">Happy Moments</div>
         <div class="category-button column-half">
-          <button class="pic-button set-profile-pic">Set Profile</button>
-          <button class="edit-button"><i class="fas fa-trash-alt"></i></button>
-          <button class="edit-button"><i class="fas fa-edit"></i></button>
+          <button class="pic-button set-profile-pic" type="button">Set Profile</button>
+          <button class="edit-button" type="button"><i class="fas fa-trash-alt"></i></button>
+          <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
         </div>
       </div>
       <div class="note-content column-full"></div>
     </div>
-  </li> */
+   </li> */
 
+// function renderNote(data) {
+//   var $noteRow = document.createElement('li');
+//   $noteRow.setAttribute('class', 'note-row column-full');
+
+//   var $picDiv = document.createElement('div');
+//   $picDiv.setAttribute('class', 'column-half');
+
+//   var $notePicHolder = document.createElement('div');
+//   $notePicHolder.setAttribute('class', 'note-pic-holder');
+
+//   var $notePic = document.createElement('img');
+//   $notePic.setAttribute('class', 'picView');
+//   $notePic.setAttribute('id', 'note-pic');
+//   $notePic.setAttribute('src', data.url);
+
+//   var $noteBlock = document.createElement('div');
+//   $noteBlock.setAttribute('class', 'note-block column-half');
+
+//   var $categoryRow = document.createElement('div');
+//   $categoryRow.setAttribute('class', 'category-row');
+
+//   var $categoryGroup = document.createElement('div');
+//   $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
+//   $categoryGroup.textContent = data.category;
+
+//   var $categoryButton = document.createElement('div');
+//   $categoryButton.setAttribute('class', 'category-button column-half');
+
+//   var $setProfile = document.createElement('button');
+//   $setProfile.setAttribute('class', 'pic-button set-profile-pic');
+//   $setProfile.setAttribute('type', 'button');
+//   $setProfile.textContent = 'Set Profile';
+
+//   var $deleteButton = document.createElement('button');
+//   $deleteButton.setAttribute('class', 'edit-button');
+//   $deleteButton.setAttribute('type', 'button');
+
+//   var $trashSign = document.createElement('i');
+//   $trashSign.setAttribute('class', 'fas fa-trash-alt');
+
+//   var $editButton = document.createElement('button');
+//   $editButton.setAttribute('class', 'edit-button');
+//   $editButton.setAttribute('type', 'button');
+
+//   var $penSign = document.createElement('i');
+//   $penSign.setAttribute('class', 'fas fa-edit');
+
+//   var $noteContent = document.createElement('div');
+//   $noteContent.setAttribute('class', 'note-content column-full');
+//   $noteContent.textContent = data.note;
+
+//   $noteRow.appendChild($picDiv);
+//   $noteRow.appendChild($noteBlock);
+
+//   $picDiv.appendChild($notePicHolder);
+//   $notePicHolder.appendChild($notePic);
+
+//   $noteBlock.appendChild($categoryRow);
+//   $noteBlock.appendChild($noteContent);
+
+//   $categoryRow.appendChild($categoryGroup);
+//   $categoryRow.appendChild($categoryButton);
+
+//   $categoryButton.appendChild($setProfile);
+//   $categoryButton.appendChild($deleteButton);
+//   $categoryButton.appendChild($editButton);
+
+//   $deleteButton.appendChild($trashSign);
+//   $editButton.appendChild($penSign);
+
+//   return $noteRow;
+
+// }
 // here start the game part
 
 var $gameImage = document.querySelector('#game-image');
