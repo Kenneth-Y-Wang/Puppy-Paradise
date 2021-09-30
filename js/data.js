@@ -1,15 +1,15 @@
 /* exported data */
 var data = {
-  view: null,
-  page: null,
-  cover: null,
+  view: 'pic-gallery',
+  page: 'mainPage',
+  cover: 'app-cover',
   entries: [],
   gameRecords: [],
   deleting: null,
   nextEntryId: 1,
-  heroBackground: null,
-  backgroundColor: null,
-  backgroundColorProfile: null,
+  heroBackground: 'images/placeholder-image-square.jpg',
+  backgroundColor: '#eaf7ff',
+  backgroundColorProfile: 'images/placeholder-image-square.jpg',
   gameBreed: null,
   gameUrl: null
 };
