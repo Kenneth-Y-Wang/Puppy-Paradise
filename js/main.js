@@ -282,7 +282,7 @@ $confirm.addEventListener('click', function () {
 
 // here start the seting up background process
 
-var $heroImage = document.querySelector('#heroImage');
+var $heroImage = document.querySelector('#hero-image');
 
 function setBackground(event) {
   if (event.target.matches('.set-background') === false) {
@@ -308,7 +308,7 @@ $colorHolder.addEventListener('click', colorChange);
 
 // here start the profile and note section
 
-// var $profileImage = document.querySelector('#profileImage');
+// var $profileImage = document.querySelector('#profile-image');
 var $profileBlock = document.querySelector('.profile-block');
 var $colorHolderNote = document.querySelector('.color-button-holder-note');
 
@@ -321,43 +321,43 @@ function profileColorChange(event) {
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
-/* <li class="noteRow column-full">
+/* <li class="note-row column-full">
     <div class="column-half">
-      <div class="notePic-holder"><img class="picView" id="notePic" src="images/placeholder-image-square.jpg">
+      <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/placeholder-image-square.jpg">
       </div>
     </div>
     <div class="noteBlock column-half">
-      <div class="categoryRow">
-        <div class="categoryGroup column-one-fourth">Happy Moments</div>
-        <div class="categoryButton column-half">
-          <button class="pic-button setProfilePic">Set Profile</button>
-          <button class="editButton"><i class="fas fa-trash-alt"></i></button>
-          <button class="editButton"><i class="fas fa-edit"></i></button>
+      <div class="category-row">
+        <div class="category-group column-one-fourth">Happy Moments</div>
+        <div class="category-button column-half">
+          <button class="pic-button set-profile-pic">Set Profile</button>
+          <button class="edit-button"><i class="fas fa-trash-alt"></i></button>
+          <button class="edit-button"><i class="fas fa-edit"></i></button>
         </div>
       </div>
-      <div class="noteContent column-full"></div>
+      <div class="note-content column-full"></div>
     </div>
   </li> */
 
 // here start the game part
 
-var $gameImage = document.querySelector('#gameImage');
-var $readyButton = document.querySelector('#readyButton');
-var $timerButton = document.querySelectorAll('.timerButton');
+var $gameImage = document.querySelector('#game-image');
+var $readyButton = document.querySelector('#ready-button');
+var $timerButton = document.querySelectorAll('.timer-button');
 var $gameSubmit = document.querySelector('#gameAnswer');
-var $playAgain = document.querySelector('.playAgain');
-var $gameMessage = document.querySelectorAll('.gameMessage');
+var $playAgain = document.querySelector('.play-again');
+var $gameMessage = document.querySelectorAll('.game-message');
 var $recordList = document.querySelector('#record-list');
-var $showAll = document.querySelector('.recordShowAll');
+var $showAll = document.querySelector('.record-show-all');
 
 var timeId = null;
 
 function showMessage(string) {
   for (var i = 0; i < $gameMessage.length; i++) {
     if ($gameMessage[i].getAttribute('data-message') === string) {
-      $gameMessage[i].className = 'gameTitle gameMessage';
+      $gameMessage[i].className = 'game-title game-message';
     } else {
-      $gameMessage[i].className = 'gameTitle gameMessage hidden';
+      $gameMessage[i].className = 'game-title game-message hidden';
     }
   }
 }
@@ -387,7 +387,7 @@ function puppyGame() {
     data.gameUrl = xhr.response.message;
     $gameImage.setAttribute('src', xhr.response.message);
     timerStart();
-    console.log(breed);
+    // console.log(breed);
   });
   xhr.send();
 
@@ -403,7 +403,7 @@ function timer() {
   }
   if (count === 11) {
     showMessage('time-out');
-    $playAgain.className = 'pic-button playAgain';
+    $playAgain.className = 'pic-button play-again';
     clearInterval(timeId);
   }
 
@@ -417,7 +417,7 @@ function playAgain() {
   clearInterval(timeId);
   count = 0;
   showMessage('hidden');
-  $playAgain.className = 'pic-button playAgain hidden';
+  $playAgain.className = 'pic-button play-again hidden';
   for (var i = 0; i < $timerButton.length; i++) {
     $timerButton[i].style.color = '#274c77';
   }
@@ -436,7 +436,7 @@ function checkAnswer(string) {
       $timerButton[j].style.color = '#274c77';
     }
     showMessage('correct');
-    $playAgain.className = 'pic-button playAgain';
+    $playAgain.className = 'pic-button play-again';
     var newRecord = {};
     var breedName = data.gameBreed[0][0].toUpperCase();
     for (var a = 1; a < data.gameBreed[0].length; a++) {
@@ -455,14 +455,14 @@ function checkAnswer(string) {
 
 }
 
-// <div class=" more-pic recordPic column-half" data-record="" data-breed="">
-//  <div class="pic-holder"><img class="picView" id="recordPic"
+// <div class=" more-pic record-pic column-half" data-record="" data-breed="">
+//  <div class="pic-holder"><img class="picView" id="record-pic"
 //    src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg">
 //  </div>
-//  <div class="recordHolder">
+//  <div class="record-holder">
 //    <div class="row">
-//      <h3 class="recordText">I am :</h3>
-//      <button class="breedButton" type="button" data-breed="">Breed</button>
+//      <h3 class="record-text">I am :</h3>
+//      <button class="breed-button" type="button" data-breed="">Breed</button>
 //    </div>
 //    <button class="delete-button deleteRecord" type="button" data-record=""><i class="far fa-trash-alt" data-record=""></i></button>
 //  </div>
@@ -470,7 +470,7 @@ function checkAnswer(string) {
 
 function renderGameRecord(data) {
   var $morePic = document.createElement('div');
-  $morePic.setAttribute('class', 'more-pic recordPic column-half');
+  $morePic.setAttribute('class', 'more-pic record-pic column-half');
   $morePic.setAttribute('data-record', data.url);
   $morePic.setAttribute('data-breed', data.breed);
 
@@ -479,21 +479,21 @@ function renderGameRecord(data) {
 
   var $picView = document.createElement('img');
   $picView.setAttribute('class', 'picView');
-  $picView.setAttribute('id', 'recordPic');
+  $picView.setAttribute('id', 'record-pic');
   $picView.setAttribute('src', data.url);
 
   var $recordHolder = document.createElement('div');
-  $recordHolder.setAttribute('class', 'recordHolder');
+  $recordHolder.setAttribute('class', 'record-holder');
 
   var $row = document.createElement('div');
   $row.setAttribute('class', 'row');
 
   var $recordText = document.createElement('h3');
-  $recordText.setAttribute('class', 'recordText');
+  $recordText.setAttribute('class', 'record-text');
   $recordText.textContent = 'I am :';
 
   var $breedButton = document.createElement('button');
-  $breedButton.setAttribute('class', ' breedButton');
+  $breedButton.setAttribute('class', ' breed-button');
   $breedButton.setAttribute('type', 'button');
   $breedButton.setAttribute('data-breed', data.breed);
   $breedButton.textContent = data.breed;
@@ -529,7 +529,7 @@ function deleteRecord(event) {
     }
   }
 
-  var $recordPic = document.querySelectorAll('.recordPic');
+  var $recordPic = document.querySelectorAll('.record-pic');
   for (var j = 0; j < $recordPic.length; j++) {
     if ($recordPic[j].getAttribute('data-record') === event.target.getAttribute('data-record')) {
       $recordPic[j].remove();
@@ -538,15 +538,15 @@ function deleteRecord(event) {
 }
 
 function sortRecord(event) {
-  if (event.target.matches('.breedButton') === false) {
+  if (event.target.matches('.breed-button') === false) {
     return;
   }
-  var $recordPic = document.querySelectorAll('.recordPic');
+  var $recordPic = document.querySelectorAll('.record-pic');
   for (var i = 0; i < $recordPic.length; i++) {
     if ($recordPic[i].getAttribute('data-breed') === event.target.getAttribute('data-breed')) {
-      $recordPic[i].className = 'more-pic recordPic column-half';
+      $recordPic[i].className = 'more-pic record-pic column-half';
     } else {
-      $recordPic[i].className = 'more-pic recordPic column-half hidden';
+      $recordPic[i].className = 'more-pic record-pic column-half hidden';
     }
   }
 }
@@ -557,10 +557,10 @@ $gameSubmit.addEventListener('submit', function () {
 });
 
 function showAll() {
-  var $recordPic = document.querySelectorAll('.recordPic');
+  var $recordPic = document.querySelectorAll('.record-pic');
   for (var i = 0; i < $recordPic.length; i++) {
 
-    $recordPic[i].className = 'more-pic recordPic column-half';
+    $recordPic[i].className = 'more-pic record-pic column-half';
   }
 }
 $readyButton.addEventListener('click', puppyGame);

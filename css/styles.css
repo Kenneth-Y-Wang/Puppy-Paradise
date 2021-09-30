@@ -1,9 +1,9 @@
-#wholePage {
+#whole-page {
   width: 100%;
   position: relative;
 }
 
-#appEntrance {
+#app-entrance {
   background-image: url('../images/cute-wallpaper-200921142328121024x768.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -441,7 +441,7 @@ select {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.deleteBlock {
+.delete-block {
   background-image: url('../images/z1pqW-1560822158-139274-blog-puppy.jpeg');
   filter: grayscale(30%);
   background-size: cover;
@@ -451,7 +451,7 @@ select {
   text-align: center;
 }
 
-.deleteMessage {
+.delete-message {
   margin-top: 0.25rem;
   font-weight: 500;
   color: #f28482;
@@ -460,12 +460,12 @@ select {
   transition-duration: 0.5s;
 }
 
-.deleteMessage:hover {
+.delete-message:hover {
   color: #ff0a54;
   transform: scale(1.2);
 }
 
-.buttonHolder {
+.button-holder {
   display: flex;
   justify-content: space-between;
 }
@@ -493,27 +493,27 @@ select {
   transform: scale(1.2);
 }
 
-.dataLog {
+.data-log {
   padding-top: 1rem;
 }
 
-.noteEntry {
+.note-entry {
   display: flex;
   flex-wrap: wrap;
 }
 
-.selectRow {
+.select-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
 }
 
-.selectLabel {
+.select-label {
   display: inline-block;
 }
 
-.submitAction {
+.submit-action {
   display: flex;
   justify-content: flex-end;
 }
@@ -522,19 +522,19 @@ textarea {
   height: 200px;
 }
 
-.gameRow {
+.game-row {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1.75rem;
 }
 
-.timerRow {
+.timer-row {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 0.75rem;
 }
 
-.timerButton {
+.timer-button {
   width: 25px;
   height: 25px;
   border: none;
@@ -544,7 +544,7 @@ textarea {
   align-items: center;
 }
 
-.gameTitle {
+.game-title {
   font-family: 'Architects Daughter', cursive;
   margin: 0.75rem auto;
   color: #274c77;
@@ -553,14 +553,14 @@ textarea {
   font-size: 2.5rem;
 }
 
-.answerText {
+.answer-text {
   font-family: 'Architects Daughter', cursive;
   color: #274c77;
   font-weight: bolder;
   font-size: 1.75rem;
 }
 
-#readyButton {
+#ready-button {
   font-family: 'Architects Daughter', cursive;
   border: 2px solid #6096ba;
   color: #6096ba;
@@ -572,19 +572,19 @@ textarea {
   margin-bottom: 1.75rem;
 }
 
-#readyButton:hover {
+#ready-button:hover {
   color: white;
   background-color: #6096ba;
 }
 
-.answerRow {
+.answer-row {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0.75rem;
 }
 
-.answerBox {
+.answer-box {
   width: 150px;
   border: none;
   border-bottom: 2px solid #274c77;
@@ -592,7 +592,7 @@ textarea {
   background-color: white;
 }
 
-.gameSubmit {
+.game-submit {
   font-family: 'Architects Daughter', cursive;
   border: 2px solid #6096ba;
   color: #6096ba;
@@ -601,7 +601,7 @@ textarea {
   font-size: 1.5rem;
 }
 
-.playAgain {
+.play-again {
   font-family: 'Architects Daughter', cursive;
   border: 2px solid #ffa69e;
   color: #ffa69e;
@@ -610,31 +610,31 @@ textarea {
   font-size: 1.5rem;
 }
 
-.gameMessage {
+.game-message {
   color: #ee4266;
   transform: rotate(-10deg);
 }
 
-.recordHolder {
+.record-holder {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
 
-.recordText {
+.record-text {
   font-family: 'Architects Daughter', cursive;
   color: #274c77;
   margin: 0 0.5rem;
   line-height: 30px;
 }
 
-.recordSection {
+.record-section {
   margin-left: 0.75rem;
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.breedButton {
+.breed-button {
   padding: 0.25rem 0.25rem;
   font-size: 0.8rem;
   font-weight: 600;
@@ -650,14 +650,14 @@ textarea {
   transition-duration: 0.5s;
 }
 
-.showAllRow {
+.show-all-row {
   display: flex;
   align-items: center;
   margin-top: 1.75rem;
 }
 
-.recordShowAll,
-.noteShowAll {
+.record-show-all,
+.note-show-all {
   font-size: 1rem;
   color: #d66853;
   margin: 0 0.75rem;
@@ -665,53 +665,53 @@ textarea {
   transition-duration: 0.5s;
 }
 
-.breedButton:hover,
-.recordShowAll:hover,
-.noteShowAll:hover {
+.breed-button:hover,
+.record-show-all:hover,
+.note-show-all:hover {
   transform: scale(1.2);
 }
 
-.reminderRow {
+.reminder-row {
   display: flex;
   justify-content: space-between;
   margin-top: 0.75rem;
 }
 
-.noteDashboard {
+.note-dashboard {
   display: flex;
   flex-wrap: wrap;
   padding: 0.75rem 0;
 }
 
-.reminderCategory {
+.reminder-category {
   display: inline;
   font-size: 0.8rem;
   width: 110px;
   margin-left: 0.5rem;
 }
 
-.reminderHolder {
+.reminder-holder {
   display: flex;
   align-items: center;
 }
 
-.reminderContent {
+.reminder-content {
   margin: auto 0;
   width: 400px;
 }
 
-.editButton {
+.edit-button {
   border: none;
   background-color: white;
   color: #05789c;
   margin-right: 0.5rem;
 }
 
-.topPriority {
+.top-priority {
   color: #db3a34;
 }
 
-.highPriority {
+.high-priority {
   color: #d1495b;
 }
 
@@ -727,20 +727,20 @@ textarea {
   color: #7c98b3;
 }
 
-.noteRow {
+.note-row {
   display: flex;
   flex-wrap: wrap;
   margin: 1.5rem 0;
 }
 
-.categoryRow {
+.category-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0.75rem 0;
 }
 
-.categoryGroup {
+.category-group {
   width: 130px;
   padding: 0.25rem 0.5rem;
   background-color: #007ea7;
@@ -751,16 +751,16 @@ textarea {
   text-align: center;
 }
 
-.categoryButton {
+.category-button {
   display: flex;
   justify-content: flex-end;
 }
 
-.setProfilePic {
+.set-profile-pic {
   width: 100px;
 }
 
-.noteContent {
+.note-content {
   border: solid 2px #007ea7;
   height: 220px;
   margin: 1.25rem 0;
@@ -795,7 +795,7 @@ textarea {
   justify-content: space-between;
 }
 
-.noShow {
+.no-show {
   visibility: hidden;
 }
 
@@ -808,18 +808,18 @@ textarea {
   }
 
   #two,
-  #heroImage,
+  #hero-image,
   #entry,
-  #recordPic,
-  #notePic,
-  #profileImage {
+  #record-pic,
+  #note-pic,
+  #profile-image {
     width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: 2%;
   }
 
-  #gameImage {
+  #game-image {
     width: 100%;
     height: 350px;
     object-fit: cover;
