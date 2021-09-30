@@ -13,18 +13,18 @@
   align-items: center;
 }
 
-.coverText {
+.cover-text {
   top: 50%;
   left: 50%;
   text-align: center;
   color: white;
 }
 
-.appName {
+.app-name {
   font-size: 4rem;
 }
 
-.startButton {
+.start-button {
   font-size: 2rem;
   padding: 0.5rem 1rem;
   font-family: 'Architects Daughter', cursive;
@@ -36,7 +36,7 @@
   transition-duration: 0.5s;
 }
 
-.startButton:hover {
+.start-button:hover {
   transform: scale(1.2);
   background-color: #f5fbfc;
   color: #05789c;
@@ -55,11 +55,11 @@ body {
   font-family: 'Comfortaa', cursive;
 }
 
-.viewPage {
+.view-page {
   padding-top: 0.75rem;
 }
 
-.tabList {
+.tab-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -69,15 +69,15 @@ body {
   background-color: white;
 }
 
-.viewTag {
+.view-tag {
   cursor: pointer;
 }
 
-#dashBoard {
+#dash-board {
   padding-top: 0.5rem;
 }
 
-.appTitle {
+.app-title {
   font-weight: bolder;
   font-size: 2rem;
   display: inline-block;
@@ -87,7 +87,7 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.subTag {
+.sub-tag {
   margin-left: 1.5rem;
   font-size: 1rem;
   font-weight: 600;
@@ -96,32 +96,28 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.appMain {
+.app-main {
   background-color: white;
   height: 3000px;
 
   /* min-height: -webkit-fill-available; */
 }
 
-.formTitle {
-  font-weight: 600;
-}
-
-.mainDashboard {
+.main-dashboard {
   display: flex;
   flex-wrap: wrap;
   padding: 0.75rem 0;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.heroControl {
+.hero-control {
   padding-top: 3rem;
   padding-left: 1.75rem;
   padding-right: 1.75rem;
   padding-bottom: 1rem;
 }
 
-.reminderDisplay {
+.reminder-display {
   border: solid 2px #05789c;
   border-radius: 5px;
   width: 100%;
@@ -130,39 +126,39 @@ body {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.75);
 }
 
-.buttonRow {
+.button-row {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 2rem;
 }
 
-.heroBlock,
-.profileBlock {
+.hero-block,
+.profile-block {
   padding: 1rem;
   background-color: #eaf7ff;
   border-radius: 2%;
   box-shadow: 2px 5px 16px 0 #0b325e, 5px -8px 2px -13px rgba(0, 0, 0, 0);
 }
 
-.picHolder {
+.pic-holder {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.notePicHolder {
+.note-pic-holder {
   width: 100%;
 }
 
-.colorButtonHolder,
-.colorButtonHolderNote {
+.color-button-holder,
+.color-button-holder-note {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
   padding-right: 1.5rem;
 }
 
-.colorButton {
+.color-button {
   width: 16px;
   height: 16px;
   margin-right: 1rem;
@@ -173,7 +169,7 @@ body {
   transition-duration: 0.5s;
 }
 
-.exitButton {
+.exit-button {
   font-size: 1rem;
   font-weight: 500;
   color: #05789c;
@@ -185,33 +181,33 @@ body {
   transition-duration: 0.5s;
 }
 
-.colorButton:hover,
-.exitApp:hover {
+.color-button:hover,
+.exit-app:hover {
   transform: scale(1.2);
 }
 
-.colorOne {
+.color-one {
   background-color: #fae0e4;
 }
 
-.colorTwo {
+.color-two {
   background-color: #dbe7e4;
 }
 
-.colorThree {
+.color-three {
   background-color: #fff1e6;
 }
 
-.colorFour {
+.color-four {
   background-color: #eae4e9;
 }
 
-.colorFive {
+.color-five {
   background-color: #eaf7ff;
 }
 
-.picHolder > img,
-.notePicHolder > img {
+.pic-holder > img,
+.note-pic-holder > img {
   width: 100%;
   height: 350px;
   object-fit: cover;
@@ -219,17 +215,17 @@ body {
   transition-duration: 0.5s;
 }
 
-.picHolder > img:hover,
-.notePicHolder > img:hover {
+.pic-holder > img:hover,
+.note-pic-holder > img:hover {
   transform: scale(1.05);
 }
 
-.viewScreen {
+.view-screen {
   margin-top: 0.5rem;
   padding-top: 0.75rem;
 }
 
-.sectionTitle {
+.section-title {
   color: #05789c;
   margin-left: 0;
   margin-top: 0;
@@ -237,7 +233,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.sectionTitleHolder {
+.section-title-holder {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   margin-bottom: 2rem;
@@ -249,27 +245,27 @@ body {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.75);
 }
 
-.searchButtonHolder {
+.search-button-holder {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.buttonLeft {
+.button-left {
   display: flex;
   margin-left: 1.5rem;
   margin-bottom: 0.75rem;
   margin-top: 0.75rem;
 }
 
-#searchEntry {
+#search-entry {
   display: flex;
   align-items: center;
   margin: 0.75rem;
   padding-right: 1.5rem;
 }
 
-#keyWord {
+#key-word {
   display: inline-block;
   margin-top: auto;
   margin-bottom: auto;
@@ -281,11 +277,11 @@ body {
   transition-duration: 0.5s;
 }
 
-#keyWord:focus {
+#key-word:focus {
   width: 100%;
 }
 
-.searchButton {
+.search-button {
   background-color: #05789c;
   width: 30px;
   height: 30px;
@@ -331,7 +327,7 @@ select {
   margin-bottom: auto;
 }
 
-.picButton {
+.pic-button {
   width: 80px;
   height: 30px;
   font-size: 0.8rem;
@@ -348,20 +344,20 @@ select {
   transition-duration: 0.5s;
 }
 
-.menuButton {
+.menu-button {
   width: 120px;
 }
 
-.menuButton:hover {
+.menu-button:hover {
   background-color: #00b4d8;
   color: white;
 }
 
-.setBackground {
+.set-background {
   width: 150px;
 }
 
-.deleteButton {
+.delete-button {
   width: 30px;
   height: 30px;
   font-size: 0.8rem;
@@ -393,16 +389,16 @@ select {
   box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.75);
 }
 
-.picButton:hover {
+.pic-button:hover {
   transform: scale(1.1);
 }
 
-.deleteButton:hover {
+.delete-button:hover {
   background-color: #05789c;
   color: white;
 }
 
-.opClicked {
+.op-clicked {
   background-color: #05789c;
 }
 
@@ -410,18 +406,18 @@ select {
   background-color: #eaf6f9;
 }
 
-.saveButtonHolder {
+.save-button-holder {
   display: flex;
   justify-content: flex-end;
   padding-right: 0.75rem;
   margin-top: 0.75rem;
 }
 
-.onePic {
+.one-pic {
   margin: 1.75rem auto;
 }
 
-.morePic {
+.more-pic {
   margin-top: 1.75rem;
   margin-bottom: 1.75rem;
 }
@@ -432,7 +428,7 @@ select {
   flex-wrap: wrap;
 }
 
-.modalHolder {
+.modal-holder {
   width: 100%;
   position: fixed;
   top: 0;
@@ -804,7 +800,7 @@ textarea {
 }
 
 @media screen and (min-width: 768px) {
-  .picHolder > img {
+  .pic-holder > img {
     width: 100%;
     height: 500px;
     object-fit: cover;
@@ -839,7 +835,7 @@ textarea {
 }
 
 @media screen and (max-width: 768px) {
-  #searchEntry {
+  #search-entry {
     display: flex;
     align-items: center;
     margin-left: 0.75rem;

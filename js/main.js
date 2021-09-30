@@ -2,7 +2,7 @@ var $breed = document.querySelector('.breed');
 var $random = document.querySelector('.random');
 var $form = document.querySelector('form');
 var $opButton = document.querySelectorAll('.opButton');
-var $buttonLeft = document.querySelector('.buttonLeft');
+var $buttonLeft = document.querySelector('.button-left');
 var picViewNumber = 1;
 var $tabView = document.querySelector('.tabLeft');
 
@@ -14,7 +14,7 @@ $buttonLeft.addEventListener('click', function () {
   }
   for (var i = 0; i < $opButton.length; i++) {
     if ($opButton[i] === event.target) {
-      $opButton[i].className = 'opButton opClicked';
+      $opButton[i].className = 'opButton op-clicked';
       picViewNumber = parseInt($opButton[i].getAttribute('data-number'));
 
     } else {
@@ -25,34 +25,34 @@ $buttonLeft.addEventListener('click', function () {
 
 $breed.addEventListener('click', function () {
   $form.className = 'column-half';
-  $breed.className = 'breed picButton clicked';
+  $breed.className = 'breed pic-button clicked';
 });
 
 /*
-    <div class=" onePic column-two-third" data-pic="">
-      <div class="picHolder"><img class="picView" src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg"></div>
-      <div class="saveButtonHolder">
-       <button class="picButton" type="button" data-pic="">SAVE</button>
+    <div class=" one-pic column-two-third" data-pic="">
+      <div class="pic-holder"><img class="picView" src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg"></div>
+      <div class="save-button-holder">
+       <button class="pic-button" type="button" data-pic="">SAVE</button>
       </div>
     </div>
    */
 
 // for  2 pic showing
 /*
-    <div class=" morePic column-half" data-pic="">
-      <div class="picHolder"><img class="picView-two" src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg"></div>
-      <div class="saveButtonHolder">
-       <button class="picButton" type="button" data-pic="">SAVE</button>
+    <div class=" more-pic column-half" data-pic="">
+      <div class="pic-holder"><img class="picView-two" src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg"></div>
+      <div class="save-button-holder">
+       <button class="pic-button" type="button" data-pic="">SAVE</button>
       </div>
     </div>
    */
 
 // for  3 pic showing
 /*
-    <div class=" morePic column-one-fourth" data-pic="">
-      <div class="picHolder"><img class="picView-three" src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg"></div>
-      <div class="saveButtonHolder">
-       <button class="picButton" type="button" data-pic="">SAVE</button>
+    <div class=" more-pic column-one-fourth" data-pic="">
+      <div class="pic-holder"><img class="picView-three" src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg"></div>
+      <div class="save-button-holder">
+       <button class="pic-button" type="button" data-pic="">SAVE</button>
       </div>
     </div>
    */
@@ -63,28 +63,28 @@ function renderPic(data) {
   var $picView = document.createElement('img');
 
   if (picViewNumber === 1) {
-    $onePic.setAttribute('class', 'onePic newPic column-two-third');
+    $onePic.setAttribute('class', 'one-pic newPic column-two-third');
   } else if (picViewNumber === 2) {
-    $onePic.setAttribute('class', 'morePic newPic column-half');
+    $onePic.setAttribute('class', 'more-pic newPic column-half');
     $picView.setAttribute('id', 'two');
   } else if (picViewNumber === 3) {
-    $onePic.setAttribute('class', 'morePic newPic column-one-fourth');
+    $onePic.setAttribute('class', 'more-pic newPic column-one-fourth');
     $picView.setAttribute('id', 'three');
   }
 
   $onePic.setAttribute('data-pic', data);
 
   var $picHolder = document.createElement('div');
-  $picHolder.setAttribute('class', 'picHolder');
+  $picHolder.setAttribute('class', 'pic-holder');
 
   $picView.setAttribute('class', 'picView');
   $picView.setAttribute('src', data);
 
   var $buttonHolder = document.createElement('div');
-  $buttonHolder.setAttribute('class', 'saveButtonHolder');
+  $buttonHolder.setAttribute('class', 'save-button-holder');
 
   var $saveButton = document.createElement('button');
-  $saveButton.setAttribute('class', 'picButton');
+  $saveButton.setAttribute('class', 'pic-button');
   $saveButton.setAttribute('type', 'button');
   $saveButton.textContent = 'SAVE';
   $saveButton.setAttribute('data-pic', data);
@@ -130,7 +130,7 @@ function randomPicSearch() {
 
 $random.addEventListener('click', function () {
   randomPicSearch();
-  $breed.className = 'breed picButton';
+  $breed.className = 'breed pic-button';
 })
 ;
 
@@ -174,23 +174,23 @@ $form.addEventListener('submit', function () {
 
 // here start the save pic process
 
-/* <div class=" morePic savePic column-half" data-pic="">
-      <div class="picHolder"><img class="picView" id="two"
+/* <div class=" more-pic savePic column-half" data-pic="">
+      <div class="pic-holder"><img class="picView" id="two"
         src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg">
       </div>
-      <div class="saveButtonHolder column-full">
-        <button class="picButton setBackground" data-view="pic-search" type="button" data-pic=""><button>
-        <button class="deleteButton" type="button" data-pic=""><i class="far fa-trash-alt" data-pic=""></i></button>
+      <div class="save-button-holder column-full">
+        <button class="pic-button set-background" data-view="pic-search" type="button" data-pic=""><button>
+        <button class="delete-button" type="button" data-pic=""><i class="far fa-trash-alt" data-pic=""></i></button>
       </div>
     </div> */
 function renderSavePic(data) {
 
   var $onePic = document.createElement('div');
-  $onePic.setAttribute('class', 'morePic savePic column-half');
+  $onePic.setAttribute('class', 'more-pic savePic column-half');
   $onePic.setAttribute('data-pic', data);
 
   var $picHolder = document.createElement('div');
-  $picHolder.setAttribute('class', 'picHolder');
+  $picHolder.setAttribute('class', 'pic-holder');
 
   var $picView = document.createElement('img');
   $picView.setAttribute('class', 'picView');
@@ -198,17 +198,17 @@ function renderSavePic(data) {
   $picView.setAttribute('src', data);
 
   var $buttonHolder = document.createElement('div');
-  $buttonHolder.setAttribute('class', 'saveButtonHolder');
+  $buttonHolder.setAttribute('class', 'save-button-holder');
 
   var $backgroundButton = document.createElement('button');
-  $backgroundButton.setAttribute('class', 'picButton setBackground');
+  $backgroundButton.setAttribute('class', 'pic-button set-background');
   $backgroundButton.setAttribute('data-page', 'mainPage');
   $backgroundButton.setAttribute('data-pic', data);
   $backgroundButton.setAttribute('type', 'button');
   $backgroundButton.textContent = 'Set Background';
 
   var $deleteButton = document.createElement('button');
-  $deleteButton.setAttribute('class', 'deleteButton');
+  $deleteButton.setAttribute('class', 'delete-button');
   $deleteButton.setAttribute('type', 'button');
   $deleteButton.setAttribute('data-pic', data);
 
@@ -230,7 +230,7 @@ function renderSavePic(data) {
 var $galleryList = document.querySelector('#gallery-list');
 
 $pictureList.addEventListener('click', function () {
-  if (event.target.matches('.picButton') === false) {
+  if (event.target.matches('.pic-button') === false) {
     return;
   }
   var newSave = {};
@@ -245,7 +245,7 @@ $pictureList.addEventListener('click', function () {
 });
 // here start the delete process
 
-var $modalHolder = document.querySelector('.modalHolder');
+var $modalHolder = document.querySelector('.modal-holder');
 var $cancel = document.querySelector('.cancel');
 var $confirm = document.querySelector('.confirm');
 
@@ -253,15 +253,15 @@ $galleryList.addEventListener('click', function () {
 
   setBackground(event);
 
-  if (event.target.matches('.deleteButton') === false && event.target.matches('.far') === false) {
+  if (event.target.matches('.delete-button') === false && event.target.matches('.far') === false) {
     return;
   }
   data.deleting = event.target.getAttribute('data-pic');
-  $modalHolder.className = 'modalHolder';
+  $modalHolder.className = 'modal-holder';
 });
 
 $cancel.addEventListener('click', function () {
-  $modalHolder.className = 'modalHolder hidden';
+  $modalHolder.className = 'modal-holder hidden';
 });
 
 $confirm.addEventListener('click', function () {
@@ -276,7 +276,7 @@ $confirm.addEventListener('click', function () {
       $savePic[j].remove();
     }
   }
-  $modalHolder.className = ' modalHolder hidden';
+  $modalHolder.className = ' modal-holder hidden';
   data.deleting = null;
 });
 
@@ -285,7 +285,7 @@ $confirm.addEventListener('click', function () {
 var $heroImage = document.querySelector('#heroImage');
 
 function setBackground(event) {
-  if (event.target.matches('.setBackground') === false) {
+  if (event.target.matches('.set-background') === false) {
     return;
   }
   $heroImage.setAttribute('src', event.target.getAttribute('data-pic'));
@@ -294,11 +294,11 @@ function setBackground(event) {
   tagHide();
 }
 
-var $heroBlock = document.querySelector('.heroBlock');
-var $colorHolder = document.querySelector('.colorButtonHolder');
+var $heroBlock = document.querySelector('.hero-block');
+var $colorHolder = document.querySelector('.color-button-holder');
 
 function colorChange(event) {
-  if (event.target.matches('.colorButton') === false) {
+  if (event.target.matches('.color-button') === false) {
     return;
   }
   $heroBlock.style.backgroundColor = event.target.getAttribute('data-color');
@@ -309,11 +309,11 @@ $colorHolder.addEventListener('click', colorChange);
 // here start the profile and note section
 
 // var $profileImage = document.querySelector('#profileImage');
-var $profileBlock = document.querySelector('.profileBlock');
-var $colorHolderNote = document.querySelector('.colorButtonHolderNote');
+var $profileBlock = document.querySelector('.profile-block');
+var $colorHolderNote = document.querySelector('.color-button-holder-note');
 
 function profileColorChange(event) {
-  if (event.target.matches('.colorButton') === false) {
+  if (event.target.matches('.color-button') === false) {
     return;
   }
   $profileBlock.style.backgroundColor = event.target.getAttribute('data-color');
@@ -323,14 +323,14 @@ $colorHolderNote.addEventListener('click', profileColorChange);
 
 /* <li class="noteRow column-full">
     <div class="column-half">
-      <div class="notePicHolder"><img class="picView" id="notePic" src="images/placeholder-image-square.jpg">
+      <div class="notePic-holder"><img class="picView" id="notePic" src="images/placeholder-image-square.jpg">
       </div>
     </div>
     <div class="noteBlock column-half">
       <div class="categoryRow">
         <div class="categoryGroup column-one-fourth">Happy Moments</div>
         <div class="categoryButton column-half">
-          <button class="picButton setProfilePic">Set Profile</button>
+          <button class="pic-button setProfilePic">Set Profile</button>
           <button class="editButton"><i class="fas fa-trash-alt"></i></button>
           <button class="editButton"><i class="fas fa-edit"></i></button>
         </div>
@@ -387,7 +387,7 @@ function puppyGame() {
     data.gameUrl = xhr.response.message;
     $gameImage.setAttribute('src', xhr.response.message);
     timerStart();
-    // console.log(breed);
+    console.log(breed);
   });
   xhr.send();
 
@@ -403,7 +403,7 @@ function timer() {
   }
   if (count === 11) {
     showMessage('time-out');
-    $playAgain.className = 'picButton playAgain';
+    $playAgain.className = 'pic-button playAgain';
     clearInterval(timeId);
   }
 
@@ -417,7 +417,7 @@ function playAgain() {
   clearInterval(timeId);
   count = 0;
   showMessage('hidden');
-  $playAgain.className = 'picButton playAgain hidden';
+  $playAgain.className = 'pic-button playAgain hidden';
   for (var i = 0; i < $timerButton.length; i++) {
     $timerButton[i].style.color = '#274c77';
   }
@@ -436,7 +436,7 @@ function checkAnswer(string) {
       $timerButton[j].style.color = '#274c77';
     }
     showMessage('correct');
-    $playAgain.className = 'picButton playAgain';
+    $playAgain.className = 'pic-button playAgain';
     var newRecord = {};
     var breedName = data.gameBreed[0][0].toUpperCase();
     for (var a = 1; a < data.gameBreed[0].length; a++) {
@@ -455,8 +455,8 @@ function checkAnswer(string) {
 
 }
 
-// <div class=" morePic recordPic column-half" data-record="" data-breed="">
-//  <div class="picHolder"><img class="picView" id="recordPic"
+// <div class=" more-pic recordPic column-half" data-record="" data-breed="">
+//  <div class="pic-holder"><img class="picView" id="recordPic"
 //    src="https://images.dog.ceo/breeds/hound-walker/n02089867_3103.jpg">
 //  </div>
 //  <div class="recordHolder">
@@ -464,18 +464,18 @@ function checkAnswer(string) {
 //      <h3 class="recordText">I am :</h3>
 //      <button class="breedButton" type="button" data-breed="">Breed</button>
 //    </div>
-//    <button class="deleteButton deleteRecord" type="button" data-record=""><i class="far fa-trash-alt" data-record=""></i></button>
+//    <button class="delete-button deleteRecord" type="button" data-record=""><i class="far fa-trash-alt" data-record=""></i></button>
 //  </div>
 // </div>
 
 function renderGameRecord(data) {
   var $morePic = document.createElement('div');
-  $morePic.setAttribute('class', 'morePic recordPic column-half');
+  $morePic.setAttribute('class', 'more-pic recordPic column-half');
   $morePic.setAttribute('data-record', data.url);
   $morePic.setAttribute('data-breed', data.breed);
 
   var $picHolder = document.createElement('div');
-  $picHolder.setAttribute('class', 'picHolder');
+  $picHolder.setAttribute('class', 'pic-holder');
 
   var $picView = document.createElement('img');
   $picView.setAttribute('class', 'picView');
@@ -499,7 +499,7 @@ function renderGameRecord(data) {
   $breedButton.textContent = data.breed;
 
   var $deleteButton = document.createElement('button');
-  $deleteButton.setAttribute('class', 'deleteButton deleteRecord');
+  $deleteButton.setAttribute('class', 'delete-button deleteRecord');
   $deleteButton.setAttribute('type', 'button');
   $deleteButton.setAttribute('data-record', data.url);
 
@@ -544,9 +544,9 @@ function sortRecord(event) {
   var $recordPic = document.querySelectorAll('.recordPic');
   for (var i = 0; i < $recordPic.length; i++) {
     if ($recordPic[i].getAttribute('data-breed') === event.target.getAttribute('data-breed')) {
-      $recordPic[i].className = 'morePic recordPic column-half';
+      $recordPic[i].className = 'more-pic recordPic column-half';
     } else {
-      $recordPic[i].className = 'morePic recordPic column-half hidden';
+      $recordPic[i].className = 'more-pic recordPic column-half hidden';
     }
   }
 }
@@ -560,7 +560,7 @@ function showAll() {
   var $recordPic = document.querySelectorAll('.recordPic');
   for (var i = 0; i < $recordPic.length; i++) {
 
-    $recordPic[i].className = 'morePic recordPic column-half';
+    $recordPic[i].className = 'more-pic recordPic column-half';
   }
 }
 $readyButton.addEventListener('click', puppyGame);
@@ -593,18 +593,18 @@ document.addEventListener('DOMContentLoaded', entryDisplay);
 
 // here start the view swapping process
 
-var $viewScreen = document.querySelectorAll('.viewScreen');
-var $subTag = document.querySelectorAll('.subTag');
-var $exitApp = document.querySelector('.exitApp');
-var $startButton = document.querySelector('.startButton');
-var $viewPage = document.querySelectorAll('.viewPage');
+var $viewScreen = document.querySelectorAll('.view-screen');
+var $subTag = document.querySelectorAll('.sub-tag');
+var $exitApp = document.querySelector('.exit-app');
+var $startButton = document.querySelector('.start-button');
+var $viewPage = document.querySelectorAll('.view-page');
 var $viewCover = document.querySelectorAll('.viewCover');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
     if ($viewScreen[i].getAttribute('data-view') === string) {
-      $viewScreen[i].className = 'viewScreen';
+      $viewScreen[i].className = 'view-screen';
     } else {
-      $viewScreen[i].className = 'viewScreen  hidden';
+      $viewScreen[i].className = 'view-screen  hidden';
     }
   }
   data.view = string;
@@ -613,9 +613,9 @@ function viewChange(string) {
 function pageChange(string) {
   for (var i = 0; i < $viewPage.length; i++) {
     if ($viewPage[i].getAttribute('data-page') === string) {
-      $viewPage[i].className = 'viewPage ';
+      $viewPage[i].className = 'view-page ';
     } else {
-      $viewPage[i].className = 'viewPage hidden';
+      $viewPage[i].className = 'view-page hidden';
     }
   }
   data.page = string;
@@ -638,15 +638,15 @@ function pageChangeClick(event) {
 function tagHide() {
   for (var i = 0; i < $subTag.length; i++) {
     if ($subTag[i].getAttribute('data-view') === data.view) {
-      $subTag[i].className = ' viewTag subTag hidden';
+      $subTag[i].className = ' view-tag sub-tag hidden';
     } else {
-      $subTag[i].className = ' viewTag subTag';
+      $subTag[i].className = ' view-tag sub-tag';
     }
   }
 }
 
 function clickViewChange(event) {
-  if (event.target.matches('.viewTag') === false) {
+  if (event.target.matches('.view-tag') === false) {
     return;
   }
 
