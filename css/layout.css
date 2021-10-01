@@ -63,3 +63,18 @@
     width: 90%;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .column-full,
+  .column-half,
+  .column-one-third,
+  .column-one-fourth,
+  .column-three-fifth,
+  .column-four-fifth {
+    padding: 0 1.25rem;
+  }
+}

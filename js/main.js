@@ -63,12 +63,12 @@ function renderPic(data) {
   var $picView = document.createElement('img');
 
   if (picViewNumber === 1) {
-    $onePic.setAttribute('class', 'one-pic newPic column-two-third');
+    $onePic.setAttribute('class', 'one-pic new-pic column-two-third');
   } else if (picViewNumber === 2) {
-    $onePic.setAttribute('class', 'more-pic newPic column-half');
+    $onePic.setAttribute('class', 'more-pic new-pic column-half');
     $picView.setAttribute('id', 'two');
   } else if (picViewNumber === 3) {
-    $onePic.setAttribute('class', 'more-pic newPic column-one-fourth');
+    $onePic.setAttribute('class', 'more-pic new-pic column-one-fourth');
     $picView.setAttribute('id', 'three');
   }
 
@@ -99,11 +99,12 @@ function renderPic(data) {
 }
 
 var $pictureList = document.querySelector('#picture-list');
+var $spinnerSearch = document.querySelector('.search-spinner');
 
 // here starting the searching code
 
 function randomPicSearch() {
-
+  $spinnerSearch.className = 'lds-dual-ring search-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://dog.ceo/api/breeds/image/random/' + picViewNumber);
   xhr.responseType = 'json';
@@ -121,8 +122,9 @@ function randomPicSearch() {
     for (var a = 0; a < data.length; a++) {
       var newPic = renderPic(data[a]);
       $pictureList.appendChild(newPic);
-    }
 
+    }
+    $spinnerSearch.className = 'lds-dual-ring search-spinner hidden';
   });
   xhr.send();
 
@@ -135,6 +137,7 @@ $random.addEventListener('click', function () {
 ;
 
 function breedSearch(name) {
+  $spinnerSearch.className = 'lds-dual-ring search-spinner';
   var breed = '';
   for (var i = 0; i < name.length; i++) {
     breed += name.charAt(i).toLowerCase();
@@ -159,6 +162,7 @@ function breedSearch(name) {
       var newPic = renderPic(data[a]);
       $pictureList.appendChild(newPic);
     }
+    $spinnerSearch.className = 'lds-dual-ring search-spinner hidden';
   });
   xhr.send();
 
@@ -422,6 +426,7 @@ var $playAgain = document.querySelector('.play-again');
 var $gameMessage = document.querySelectorAll('.game-message');
 var $recordList = document.querySelector('#record-list');
 var $showAll = document.querySelector('.record-show-all');
+var $spinner = document.querySelector('.game-spinner');
 
 var timeId = null;
 
@@ -435,7 +440,7 @@ function showMessage(string) {
   }
 }
 function puppyGame() {
-
+  $spinner.className = 'lds-dual-ring game-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://dog.ceo/api/breeds/image/random');
   xhr.responseType = 'json';
@@ -460,6 +465,7 @@ function puppyGame() {
     data.gameUrl = xhr.response.message;
     $gameImage.setAttribute('src', xhr.response.message);
     timerStart();
+    $spinner.className = 'lds-dual-ring game-spinner hidden';
     // console.log(breed);
   });
   xhr.send();
