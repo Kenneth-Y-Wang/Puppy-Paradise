@@ -65,7 +65,7 @@
         <div class="dashBoard" id="dash-board" data-view="">
           <div class="main-dashboard">
             <div class="hero-block column-half ">
-              <div class="pic-holder"><img id="hero-image" class="picView" src="images/placeholder-image-square.jpg">
+              <div class="pic-holder"><img id="hero-image" class="picView" src="images/dog-place-holder.png">
               </div>
               <div class="color-button-holder">
                 <button class="color-button color-one" data-color="#fae0e4" type="button"></button>
@@ -93,6 +93,7 @@
           </div>
         </div>
         <div class="view-screen" data-view="pic-search">
+          <div class="lds-dual-ring search-spinner hidden"></div>
           <div class="section-title-holder">
             <h1 class="section-title">Fun Puppy Search <i class="fas fa-dog"></i></h1>
             <button class="exit-app exit-button" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button>
@@ -118,7 +119,7 @@
           </div>
           <form class="note-entry">
             <div class="column-half">
-              <div class="pic-holder"><img class="picView" id="entry" src="images/placeholder-image-square.jpg"></div>
+              <div class="pic-holder"><img class="picView" id="entry" src="images/dog-place-holder.png"></div>
             </div>
             <div class="data-log column-half">
               <label for="url" class="section-title">My Puppy Picture</label>
@@ -172,7 +173,7 @@
         </div>
         <div class="note-dashboard">
           <div class="profile-block column-one-third ">
-            <div class="pic-holder"><img id="profile-image" class="picView" src="images/placeholder-image-square.jpg">
+            <div class="pic-holder"><img id="profile-image" class="picView" src="images/dog-place-holder.png">
             </div>
             <div class="color-button-holder-note">
               <button class="color-button color-one" data-color="#fae0e4" type="button"></button>
@@ -230,7 +231,7 @@
         <ul id="note-list" class="list-group">
           <li class="note-row column-full">
             <div class="column-half">
-              <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/placeholder-image-square.jpg">
+              <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/dog-place-holder.png">
               </div>
             </div>
             <div class="note-block column-half">
@@ -255,7 +256,9 @@
         </div>
         <div class="game-row">
           <div class="column-half">
-            <div class="pic-holder"><img class="picView" id="game-image" src="images/placeholder-image-square.jpg"></div>
+            <div class="pic-holder">
+              <div class="lds-dual-ring game-spinner hidden"></div>
+              <img class="picView" id="game-image" src="images/dog-place-holder.png"></div>
           </div>
           <div class="column-half text-center">
             <h1 class="game-title">Who am I?</h1>

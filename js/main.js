@@ -63,12 +63,12 @@ function renderPic(data) {
   var $picView = document.createElement('img');
 
   if (picViewNumber === 1) {
-    $onePic.setAttribute('class', 'one-pic newPic column-two-third');
+    $onePic.setAttribute('class', 'one-pic new-pic column-two-third');
   } else if (picViewNumber === 2) {
-    $onePic.setAttribute('class', 'more-pic newPic column-half');
+    $onePic.setAttribute('class', 'more-pic new-pic column-half');
     $picView.setAttribute('id', 'two');
   } else if (picViewNumber === 3) {
-    $onePic.setAttribute('class', 'more-pic newPic column-one-fourth');
+    $onePic.setAttribute('class', 'more-pic new-pic column-one-fourth');
     $picView.setAttribute('id', 'three');
   }
 
@@ -99,11 +99,12 @@ function renderPic(data) {
 }
 
 var $pictureList = document.querySelector('#picture-list');
+var $spinnerSearch = document.querySelector('.search-spinner');
 
 // here starting the searching code
 
 function randomPicSearch() {
-
+  $spinnerSearch.className = 'lds-dual-ring search-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://dog.ceo/api/breeds/image/random/' + picViewNumber);
   xhr.responseType = 'json';
@@ -121,8 +122,9 @@ function randomPicSearch() {
     for (var a = 0; a < data.length; a++) {
       var newPic = renderPic(data[a]);
       $pictureList.appendChild(newPic);
-    }
 
+    }
+    $spinnerSearch.className = 'lds-dual-ring search-spinner hidden';
   });
   xhr.send();
 
@@ -135,6 +137,7 @@ $random.addEventListener('click', function () {
 ;
 
 function breedSearch(name) {
+  $spinnerSearch.className = 'lds-dual-ring search-spinner';
   var breed = '';
   for (var i = 0; i < name.length; i++) {
     breed += name.charAt(i).toLowerCase();
@@ -159,6 +162,7 @@ function breedSearch(name) {
       var newPic = renderPic(data[a]);
       $pictureList.appendChild(newPic);
     }
+    $spinnerSearch.className = 'lds-dual-ring search-spinner hidden';
   });
   xhr.send();
 
@@ -339,79 +343,79 @@ $colorHolderNote.addEventListener('click', profileColorChange);
     </div>
    </li> */
 
-function renderNote(data) {
-  var $noteRow = document.createElement('li');
-  $noteRow.setAttribute('class', 'note-row column-full');
+// function renderNote(data) {
+//   var $noteRow = document.createElement('li');
+//   $noteRow.setAttribute('class', 'note-row column-full');
 
-  var $picDiv = document.createElement('div');
-  $picDiv.setAttribute('class', 'column-half');
+//   var $picDiv = document.createElement('div');
+//   $picDiv.setAttribute('class', 'column-half');
 
-  var $notePicHolder = document.createElement('div');
-  $notePicHolder.setAttribute('class', 'note-pic-holder');
+//   var $notePicHolder = document.createElement('div');
+//   $notePicHolder.setAttribute('class', 'note-pic-holder');
 
-  var $notePic = document.createElement('img');
-  $notePic.setAttribute('class', 'picView');
-  $notePic.setAttribute('id', 'note-pic');
-  $notePic.setAttribute('src', data.url);
+//   var $notePic = document.createElement('img');
+//   $notePic.setAttribute('class', 'picView');
+//   $notePic.setAttribute('id', 'note-pic');
+//   $notePic.setAttribute('src', data.url);
 
-  var $noteBlock = document.createElement('div');
-  $noteBlock.setAttribute('class', 'note-block column-half');
+//   var $noteBlock = document.createElement('div');
+//   $noteBlock.setAttribute('class', 'note-block column-half');
 
-  var $categoryRow = document.createElement('div');
-  $categoryRow.setAttribute('class', 'category-row');
+//   var $categoryRow = document.createElement('div');
+//   $categoryRow.setAttribute('class', 'category-row');
 
-  var $categoryGroup = document.createElement('div');
-  $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
-  $categoryGroup.textContent = data.category;
+//   var $categoryGroup = document.createElement('div');
+//   $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
+//   $categoryGroup.textContent = data.category;
 
-  var $categoryButton = document.createElement('div');
-  $categoryButton.setAttribute('class', 'category-button column-half');
+//   var $categoryButton = document.createElement('div');
+//   $categoryButton.setAttribute('class', 'category-button column-half');
 
-  var $setProfile = document.createElement('button');
-  $setProfile.setAttribute('class', 'pic-button set-profile-pic');
-  $setProfile.setAttribute('type', 'button');
-  $setProfile.textContent = 'Set Profile';
+//   var $setProfile = document.createElement('button');
+//   $setProfile.setAttribute('class', 'pic-button set-profile-pic');
+//   $setProfile.setAttribute('type', 'button');
+//   $setProfile.textContent = 'Set Profile';
 
-  var $deleteButton = document.createElement('button');
-  $deleteButton.setAttribute('class', 'edit-button');
-  $deleteButton.setAttribute('type', 'button');
+//   var $deleteButton = document.createElement('button');
+//   $deleteButton.setAttribute('class', 'edit-button');
+//   $deleteButton.setAttribute('type', 'button');
 
-  var $trashSign = document.createElement('i');
-  $trashSign.setAttribute('class', 'fas fa-trash-alt');
+//   var $trashSign = document.createElement('i');
+//   $trashSign.setAttribute('class', 'fas fa-trash-alt');
 
-  var $editButton = document.createElement('button');
-  $editButton.setAttribute('class', 'edit-button');
-  $editButton.setAttribute('type', 'button');
+//   var $editButton = document.createElement('button');
+//   $editButton.setAttribute('class', 'edit-button');
+//   $editButton.setAttribute('type', 'button');
 
-  var $penSign = document.createElement('i');
-  $penSign.setAttribute('class', 'fas fa-edit');
+//   var $penSign = document.createElement('i');
+//   $penSign.setAttribute('class', 'fas fa-edit');
 
-  var $noteContent = document.createElement('div');
-  $noteContent.setAttribute('class', 'note-content column-full');
-  $noteContent.textContent = data.note;
+//   var $noteContent = document.createElement('div');
+//   $noteContent.setAttribute('class', 'note-content column-full');
+//   $noteContent.textContent = data.note;
 
-  $noteRow.appendChild($picDiv);
-  $noteRow.appendChild($noteBlock);
+//   $noteRow.appendChild($picDiv);
+//   $noteRow.appendChild($noteBlock);
 
-  $picDiv.appendChild($notePicHolder);
-  $notePicHolder.appendChild($notePic);
+//   $picDiv.appendChild($notePicHolder);
+//   $notePicHolder.appendChild($notePic);
 
-  $noteBlock.appendChild($categoryRow);
-  $noteBlock.appendChild($noteContent);
+//   $noteBlock.appendChild($categoryRow);
+//   $noteBlock.appendChild($noteContent);
 
-  $categoryRow.appendChild($categoryGroup);
-  $categoryRow.appendChild($categoryButton);
+//   $categoryRow.appendChild($categoryGroup);
+//   $categoryRow.appendChild($categoryButton);
 
-  $categoryButton.appendChild($setProfile);
-  $categoryButton.appendChild($deleteButton);
-  $categoryButton.appendChild($editButton);
+//   $categoryButton.appendChild($setProfile);
+//   $categoryButton.appendChild($deleteButton);
+//   $categoryButton.appendChild($editButton);
 
-  $deleteButton.appendChild($trashSign);
-  $editButton.appendChild($penSign);
+//   $deleteButton.appendChild($trashSign);
+//   $editButton.appendChild($penSign);
 
-  return $noteRow;
+//   return $noteRow;
 
-}
+// }
 // here start the game part
 
 var $gameImage = document.querySelector('#game-image');
@@ -422,6 +426,7 @@ var $playAgain = document.querySelector('.play-again');
 var $gameMessage = document.querySelectorAll('.game-message');
 var $recordList = document.querySelector('#record-list');
 var $showAll = document.querySelector('.record-show-all');
+var $spinner = document.querySelector('.game-spinner');
 
 var timeId = null;
 
@@ -435,7 +440,7 @@ function showMessage(string) {
   }
 }
 function puppyGame() {
-
+  $spinner.className = 'lds-dual-ring game-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://dog.ceo/api/breeds/image/random');
   xhr.responseType = 'json';
@@ -460,6 +465,7 @@ function puppyGame() {
     data.gameUrl = xhr.response.message;
     $gameImage.setAttribute('src', xhr.response.message);
     timerStart();
+    $spinner.className = 'lds-dual-ring game-spinner hidden';
     // console.log(breed);
   });
   xhr.send();
