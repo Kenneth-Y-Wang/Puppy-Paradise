@@ -182,7 +182,7 @@ body {
 }
 
 .color-button:hover,
-.exit-app:hover {
+.exit-button:hover {
   transform: scale(1.2);
 }
 
@@ -319,6 +319,7 @@ select {
   width: 100%;
   height: 30px;
   margin-top: 0.75rem;
+  padding-left: 0.75rem;
 }
 
 #priority,
@@ -619,6 +620,8 @@ textarea {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .record-text {
@@ -680,7 +683,7 @@ textarea {
 .note-dashboard {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.75rem 0;
+  padding-top: 0.75rem 0;
 }
 
 .reminder-category {
@@ -697,7 +700,7 @@ textarea {
 
 .reminder-content {
   margin: auto 0;
-  width: 400px;
+  width: 300px;
 }
 
 .edit-button {
@@ -705,6 +708,11 @@ textarea {
   background-color: white;
   color: #05789c;
   margin-right: 0.5rem;
+  transition-duration: 0.5s;
+}
+
+.edit-button:hover {
+  transform: scale(1.2);
 }
 
 .top-priority {
@@ -767,6 +775,10 @@ textarea {
   border-radius: 10px;
 }
 
+.note-section {
+  padding: 0.75rem 0.75rem;
+}
+
 .pd-l-75 {
   padding-left: 0.75rem;
 }
@@ -804,7 +816,7 @@ textarea {
     width: 100%;
     height: 500px;
     object-fit: cover;
-    border-radius: 2%;
+    border-radius: 10px;
   }
 
   #two,
@@ -816,21 +828,30 @@ textarea {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: 2%;
+    border-radius: 5px;
+  }
+
+  .note-dashboard,
+  .main-dashboard {
+    padding-left: 0.75rem;
+  }
+
+  .reminder-content {
+    width: 350px;
   }
 
   #game-image {
     width: 100%;
     height: 350px;
     object-fit: cover;
-    border-radius: 2%;
+    border-radius: 5px;
   }
 
   #three {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 2%;
+    border-radius: 3px;
   }
 }
 
@@ -841,5 +862,53 @@ textarea {
     margin-left: 0.75rem;
     margin-right: 0.75rem;
     margin-bottom: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #two,
+  #hero-image,
+  #entry,
+  #record-pic,
+  #note-pic,
+  #profile-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .hero-control {
+    padding-top: 6rem;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+
+  .note-dashboard,
+  .main-dashboard {
+    padding-left: 1.5rem;
+  }
+
+  .note-section {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .reminder-content {
+    width: 500px;
+  }
+
+  .note-content {
+    height: 300px;
+  }
+
+  .reminder-row {
+    margin-top: 1.75rem;
+  }
+
+  #three {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
   }
 }
