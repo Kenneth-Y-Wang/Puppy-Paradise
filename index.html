@@ -123,9 +123,9 @@
             </div>
             <div class="data-log column-half">
               <label for="url" class="section-title">My Puppy Picture</label>
-              <input required id="url" name="url" type="url">
+              <input  id="url" name="url" type="url">
               <label for="reminder" class="section-title">Reminder</label>
-              <input required id="reminder" name="reminder" type="text">
+              <input  id="reminder" name="reminder" type="text">
               <div class="select-row">
                 <label for="priority" class=" select-label section-title">Reminder Priority:</label>
                 <select id="priority" class=" select-label" name="priority">
@@ -149,7 +149,7 @@
             </div>
             <div class=" note-section column-full">
               <label for="notes" class="section-title">Event Notes</label>
-              <textarea required rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
+              <textarea  rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
               <div class="submit-action">
                 <button class="pic-button" type="submit">SAVE</button>
               </div>
@@ -189,36 +189,36 @@
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content"></div>
-                <h4 class="reminder-category top-priority">Top Priority</h4>
+                <div class="reminder-display reminder-content" data-urgency="Top Priority"></div>
+                <h4 class="reminder-category top-priority" >Top Priority</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content"></div>
-                <h4 class="reminder-category high-priority">High Priority</h4>
+                <div class="reminder-display reminder-content" data-urgency="High Priority"></div>
+                <h4 class="reminder-category high-priority" >High Priority</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content"></div>
-                <h4 class="reminder-category priority">Priority</h4>
+                <div class="reminder-display reminder-content" data-urgency="Priority"></div>
+                <h4 class="reminder-category priority" >Priority</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content"></div>
-                <h4 class="reminder-category routine">Routine</h4>
+                <div class="reminder-display reminder-content" data-urgency="Routine"></div>
+                <h4 class="reminder-category routine" >Routine</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content"></div>
-                <h4 class="reminder-category deferral">Deferral</h4>
+                <div class="reminder-display reminder-content" data-urgency="Deferral"></div>
+                <h4 class="reminder-category deferral" >Deferral</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
@@ -229,23 +229,6 @@
           <a><h4 class="note-show-all">Show All</h4></a>
         </div>
         <ul id="note-list" class="list-group">
-          <li class="note-row column-full">
-            <div class="column-half">
-              <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/dog-place-holder.png">
-              </div>
-            </div>
-            <div class="note-block column-half">
-              <div class="category-row">
-                <div class="category-group column-one-fourth">Happy Moments</div>
-                <div class="category-button column-half">
-                  <button class="pic-button set-profile-pic" type="button">Set Profile</button>
-                  <button class="edit-button" type="button"><i class="fas fa-trash-alt"></i></button>
-                  <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
-                </div>
-              </div>
-              <div class="note-content column-full"></div>
-            </div>
-          </li>
         </ul>
       </div>
       <div class="view-page hidden" data-page="games">

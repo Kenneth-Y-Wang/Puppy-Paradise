@@ -1,6 +1,6 @@
 var $breed = document.querySelector('.breed');
 var $random = document.querySelector('.random');
-var $form = document.querySelector('form');
+var $form = document.querySelector('#search-entry');
 var $opButton = document.querySelectorAll('.opButton');
 var $buttonLeft = document.querySelector('.button-left');
 var picViewNumber = 1;
@@ -343,79 +343,124 @@ $colorHolderNote.addEventListener('click', profileColorChange);
     </div>
    </li> */
 
-// function renderNote(data) {
-//   var $noteRow = document.createElement('li');
-//   $noteRow.setAttribute('class', 'note-row column-full');
+function renderNote(data) {
+  var $noteRow = document.createElement('li');
+  $noteRow.setAttribute('class', 'note-row column-full');
 
-//   var $picDiv = document.createElement('div');
-//   $picDiv.setAttribute('class', 'column-half');
+  var $picDiv = document.createElement('div');
+  $picDiv.setAttribute('class', 'column-half');
 
-//   var $notePicHolder = document.createElement('div');
-//   $notePicHolder.setAttribute('class', 'note-pic-holder');
+  var $notePicHolder = document.createElement('div');
+  $notePicHolder.setAttribute('class', 'note-pic-holder');
 
-//   var $notePic = document.createElement('img');
-//   $notePic.setAttribute('class', 'picView');
-//   $notePic.setAttribute('id', 'note-pic');
-//   $notePic.setAttribute('src', data.url);
+  var $notePic = document.createElement('img');
+  $notePic.setAttribute('class', 'picView');
+  $notePic.setAttribute('id', 'note-pic');
+  $notePic.setAttribute('src', data.url);
 
-//   var $noteBlock = document.createElement('div');
-//   $noteBlock.setAttribute('class', 'note-block column-half');
+  var $noteBlock = document.createElement('div');
+  $noteBlock.setAttribute('class', 'note-block column-half');
 
-//   var $categoryRow = document.createElement('div');
-//   $categoryRow.setAttribute('class', 'category-row');
+  var $categoryRow = document.createElement('div');
+  $categoryRow.setAttribute('class', 'category-row');
 
-//   var $categoryGroup = document.createElement('div');
-//   $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
-//   $categoryGroup.textContent = data.category;
+  var $categoryGroup = document.createElement('div');
+  $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
+  $categoryGroup.textContent = data.category;
 
-//   var $categoryButton = document.createElement('div');
-//   $categoryButton.setAttribute('class', 'category-button column-half');
+  var $categoryButton = document.createElement('div');
+  $categoryButton.setAttribute('class', 'category-button column-half');
 
-//   var $setProfile = document.createElement('button');
-//   $setProfile.setAttribute('class', 'pic-button set-profile-pic');
-//   $setProfile.setAttribute('type', 'button');
-//   $setProfile.textContent = 'Set Profile';
+  var $setProfile = document.createElement('button');
+  $setProfile.setAttribute('class', 'pic-button set-profile-pic');
+  $setProfile.setAttribute('type', 'button');
+  $setProfile.textContent = 'Set Profile';
 
-//   var $deleteButton = document.createElement('button');
-//   $deleteButton.setAttribute('class', 'edit-button');
-//   $deleteButton.setAttribute('type', 'button');
+  var $deleteButton = document.createElement('button');
+  $deleteButton.setAttribute('class', 'edit-button');
+  $deleteButton.setAttribute('type', 'button');
 
-//   var $trashSign = document.createElement('i');
-//   $trashSign.setAttribute('class', 'fas fa-trash-alt');
+  var $trashSign = document.createElement('i');
+  $trashSign.setAttribute('class', 'fas fa-trash-alt');
 
-//   var $editButton = document.createElement('button');
-//   $editButton.setAttribute('class', 'edit-button');
-//   $editButton.setAttribute('type', 'button');
+  var $editButton = document.createElement('button');
+  $editButton.setAttribute('class', 'edit-button');
+  $editButton.setAttribute('type', 'button');
 
-//   var $penSign = document.createElement('i');
-//   $penSign.setAttribute('class', 'fas fa-edit');
+  var $penSign = document.createElement('i');
+  $penSign.setAttribute('class', 'fas fa-edit');
 
-//   var $noteContent = document.createElement('div');
-//   $noteContent.setAttribute('class', 'note-content column-full');
-//   $noteContent.textContent = data.note;
+  var $noteContent = document.createElement('div');
+  $noteContent.setAttribute('class', 'note-content column-full');
+  $noteContent.textContent = data.note;
 
-//   $noteRow.appendChild($picDiv);
-//   $noteRow.appendChild($noteBlock);
+  $noteRow.appendChild($picDiv);
+  $noteRow.appendChild($noteBlock);
 
-//   $picDiv.appendChild($notePicHolder);
-//   $notePicHolder.appendChild($notePic);
+  $picDiv.appendChild($notePicHolder);
+  $notePicHolder.appendChild($notePic);
 
-//   $noteBlock.appendChild($categoryRow);
-//   $noteBlock.appendChild($noteContent);
+  $noteBlock.appendChild($categoryRow);
+  $noteBlock.appendChild($noteContent);
 
-//   $categoryRow.appendChild($categoryGroup);
-//   $categoryRow.appendChild($categoryButton);
+  $categoryRow.appendChild($categoryGroup);
+  $categoryRow.appendChild($categoryButton);
 
-//   $categoryButton.appendChild($setProfile);
-//   $categoryButton.appendChild($deleteButton);
-//   $categoryButton.appendChild($editButton);
+  $categoryButton.appendChild($setProfile);
+  $categoryButton.appendChild($deleteButton);
+  $categoryButton.appendChild($editButton);
 
-//   $deleteButton.appendChild($trashSign);
-//   $editButton.appendChild($penSign);
+  $deleteButton.appendChild($trashSign);
+  $editButton.appendChild($penSign);
 
-//   return $noteRow;
+  return $noteRow;
 
-// }
+}
+
+var $noteSubmit = document.querySelector('.note-entry');
+var $notePic = document.querySelector('#entry');
+var $noteUrl = document.querySelector('#url');
+var $noteList = document.querySelector('#note-list');
+var $reminderList = document.querySelectorAll('.reminder-content');
+
+$noteUrl.addEventListener('input', function () {
+  if (event.target.value !== '') {
+    $notePic.setAttribute('src', event.target.value);
+  }
+});
+
+$noteSubmit.addEventListener('submit', function () {
+  event.preventDefault();
+  var newLog = {};
+  newLog.url = $noteSubmit.elements.url.value;
+  newLog.category = $noteSubmit.elements.category.value;
+  newLog.note = $noteSubmit.elements.notes.value;
+  newLog.logId = data.nextLogId;
+
+  var newReminder = {};
+  newReminder.reminder = $noteSubmit.elements.reminder.value;
+  newReminder.urgency = $noteSubmit.elements.priority.value;
+
+  for (var a = 0; a < data.reminder.length; a++) {
+    if (data.reminder[a].urgency === newReminder.urgency) {
+      data.reminder[a].reminder = newReminder.reminder;
+    }
+  }
+  data.reminder.unshift(newReminder);
+  data.logs.unshift(newLog);
+  data.nextLogId++;
+  $noteList.prepend(renderNote(newLog));
+
+  for (var i = 0; i < $reminderList.length; i++) {
+    if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
+      $reminderList[i].textContent = newReminder.reminder;
+    }
+  }
+
+  $notePic.setAttribute('src', 'images/dog-place-holder.png');
+  $noteSubmit.reset();
+
+});
 // here start the game part
 
 var $gameImage = document.querySelector('#game-image');
@@ -658,6 +703,20 @@ function entryDisplay(event) {
   }
   for (var j = 0; j < data.gameRecords.length; j++) {
     $recordList.appendChild(renderGameRecord(data.gameRecords[j]));
+  }
+
+  for (var a = 0; a < data.logs.length; a++) {
+
+    $noteList.prepend(renderNote(data.logs[i]));
+
+  }
+
+  for (var b = 0; b < data.reminder.length; b++) {
+    for (var c = 0; c < $reminderList.length; c++) {
+      if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
+        $reminderList[c].textContent = data.reminder[b].reminder;
+      }
+    }
   }
   $heroImage.setAttribute('src', data.heroBackground);
   $heroBlock.style.backgroundColor = data.backgroundColor;
