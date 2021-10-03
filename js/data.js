@@ -2,7 +2,7 @@
 
 var data = {
   view: 'pic-gallery',
-  page: 'mainPage',
+  // page: 'mainPage',
   cover: 'app-cover',
   entries: [],
   logs: [],
@@ -11,9 +11,9 @@ var data = {
   gameRecords: [],
   deleting: null,
   nextEntryId: 1,
-  heroBackground: 'images/placeholder-image-square.jpg',
+  heroBackground: 'images/dog-place-holder.png',
   backgroundColor: '#eaf7ff',
-  backgroundColorProfile: 'images/placeholder-image-square.jpg',
+  backgroundColorProfile: 'images/dog-place-holder.png',
   gameBreed: null,
   gameUrl: null
 };

@@ -47,117 +47,182 @@
 
     <header>
       <div class=" tab-list container column-full">
-        <div class=" tabLeft row column-full align-center">
+        <div class=" tabLeft row column-two-third align-center">
           <a>
             <h2 class="app-title view-tag" data-view="pic-search">Puppy Paradise</h2>
+          </a>
+          <a>
+            <h3 class=" view-tag sub-tag " data-view="dashboard">Main</h3>
           </a>
           <a>
             <h3 class=" view-tag sub-tag hidden" data-view="pic-search">Fun Puppy Search</h3>
           </a>
           <a>
-            <h3 class=" view-tag sub-tag" data-view="note-entry">My Puppy</h3>
+            <h3 class=" view-tag sub-tag" data-view="note-entry">New Log</h3>
+          </a>
+          <a>
+            <h3 class=" view-tag sub-tag" data-view="puppyNote">Puppy Notes</h3>
+          </a>
+          <a>
+            <h3 class=" view-tag sub-tag" data-view="pic-gallery">My Gallery</h3>
+          </a>
+          <a>
+            <h3 class=" view-tag sub-tag" data-view="games">Games</h3>
           </a>
         </div>
+        <button class="exit-app exit-button" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button>
       </div>
     </header>
     <main class="container app-main">
-      <div class="view-page" data-page="mainPage">
-        <div class="dashBoard" id="dash-board" data-view="">
-          <div class="main-dashboard">
-            <div class="hero-block column-half ">
-              <div class="pic-holder"><img id="hero-image" class="picView" src="images/dog-place-holder.png">
-              </div>
-              <div class="color-button-holder">
-                <button class="color-button color-one" data-color="#fae0e4" type="button"></button>
-                <button class="color-button color-two" data-color="#dbe7e4" type="button"></button>
-                <button class="color-button color-three" data-color="#fff1e6" type="button"></button>
-                <button class="color-button color-four" data-color="#eae4e9" type="button"></button>
-                <button class="color-button color-five" data-color="#eaf7ff" type="button"></button>
-              </div>
+      <!-- <div class="view-page" data-page="mainPage"> -->
+      <div class="view-screen dashBoard" id="dash-board" data-view="dashboard">
+        <div class="main-dashboard">
+          <div class="hero-block column-half ">
+            <div class="pic-holder"><img id="hero-image" class="picView" src="images/dog-place-holder.png">
             </div>
-            <div class="hero-control column-half">
-              <div class="button-row">
-                <button class="pic-button menu-button">FUN PUPPY</button>
-                <button class="pic-button menu-button" id="galleryButton" data-page="pic-gallery">MY GALLERY</button>
-              </div>
-              <div class="button-row">
-                <button class="pic-button menu-button" id="noteButton" data-page="puppyNote">NOTES</button>
-                <button class="pic-button menu-button" id="gameButton" data-page="games">GAMES</button>
-              </div>
-              <div>
-                <h2 class="section-title">Reminder:</h2>
-              </div>
-              <div class="reminder-display"></div>
-              <div class="reminder-display"></div>
+            <div class="color-button-holder">
+              <button class="color-button color-one" data-color="#fae0e4" type="button"></button>
+              <button class="color-button color-two" data-color="#dbe7e4" type="button"></button>
+              <button class="color-button color-three" data-color="#fff1e6" type="button"></button>
+              <button class="color-button color-four" data-color="#eae4e9" type="button"></button>
+              <button class="color-button color-five" data-color="#eaf7ff" type="button"></button>
+            </div>
+          </div>
+          <div class="hero-control column-half">
+            <!-- <div class="button-row">
+              <button class="pic-button menu-button">FUN PUPPY</button>
+              <button class="pic-button menu-button" id="galleryButton" data-page="pic-gallery">MY GALLERY</button>
+            </div>
+            <div class="button-row">
+              <button class="pic-button menu-button" id="noteButton" data-page="puppyNote">NOTES</button>
+              <button class="pic-button menu-button" id="gameButton" data-page="games">GAMES</button>
+            </div> -->
+            <div>
+              <h2 class="section-title">Reminder:</h2>
+            </div>
+            <div class="reminder-brief-row">
+              <div class="reminder-display column-two-third"></div>
+              <button type="button" class="detail">Detail</button>
+            </div>
+            <div class="reminder-brief-row">
+              <div class="reminder-display column-two-third"></div>
+              <button type="button" class="detail">Detail</button>
+            </div>
+            <div class="reminder-brief-row">
+              <div class="reminder-display column-two-third"></div>
+              <button type="button" class="detail">Detail</button>
+            </div>
+            <div class="reminder-brief-row">
+              <div class="reminder-display column-two-third"></div>
+              <button type="button" class="detail">Detail</button>
+            </div>
+            <div class="reminder-brief-row">
+              <div class="reminder-display column-two-third"></div>
+              <button type="button" class="detail">Detail</button>
             </div>
           </div>
         </div>
-        <div class="view-screen" data-view="pic-search">
-          <div class="lds-dual-ring search-spinner hidden"></div>
-          <div class="section-title-holder">
-            <h1 class="section-title">Fun Puppy Search <i class="fas fa-dog"></i></h1>
-            <button class="exit-app exit-button" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button>
+        <div class="app-intro column-full">
+          <div class="column-full">
+            <h1 class="app-slogan">Home for Puppy Lovers!</h1>
           </div>
-          <div class="search-button-holder">
-            <div class="button-left column-one-third">
-              <button class="breed pic-button" type="button">BREED</button>
-              <button class="random pic-button" type="button">RANDOM</button>
-              <button class="opButton" type="button" data-number="1">1 PIC</button>
-              <button class="opButton" type="button" data-number="2">2 PIC</button>
-              <button class="opButton" type="button" data-number="3">3 PIC</button>
+          <div class="column-one-third">
+            <div class="intro-box">
+              <h2 class="app-info">Developed by: Kenneth W.</h2>
+              <h5 class="app-info">GitHub:https://github.com/Kenneth-Y-Wang</h5>
             </div>
-            <form id="search-entry" class="column-half hidden">
-              <button class="search-button" data-view="entries" type="submit"><i class="fas fa-paw"></i></button>
-              <input required name="keyWord" id="key-word" type="text" placeholder="Search...">
-            </form>
           </div>
-          <div id="picture-list" class="list-group"></div>
-        </div>
-        <div class="view-screen" data-view="note-entry">
-          <div class="section-title-holder">
-            <h1 class="section-title">My Puppy <i class="fas fa-paw"></i></h1>
-          </div>
-          <form class="note-entry">
-            <div class="column-half">
-              <div class="pic-holder"><img class="picView" id="entry" src="images/dog-place-holder.png"></div>
-            </div>
-            <div class="data-log column-half">
-              <label for="url" class="section-title">My Puppy Picture</label>
-              <input  id="url" name="url" type="url">
-              <label for="reminder" class="section-title">Reminder</label>
-              <input  id="reminder" name="reminder" type="text">
-              <div class="select-row">
-                <label for="priority" class=" select-label section-title">Reminder Priority:</label>
-                <select id="priority" class=" select-label" name="priority">
-                  <option value="Top Priority">Top priority</option>
-                  <option value="High Priority">High Priority</option>
-                  <option value="Priority">Priority</option>
-                  <option value="Routine">Routine</option>
-                  <option value="Deferral">Deferral</option>
-                </select>
-              </div>
-              <div class="select-row">
-                <label for="category" class="section-title select-label">Entry Category</label>
-                <select id="category" class=" select-label" name="category">
-                  <option value="Munchies">Munchies</option>
-                  <option value="Daily Walk">Daily Walk</option>
-                  <option value="Happy Moments">Happy Moments</option>
-                  <option value="Puppy Journal">Puppy Journal</option>
-                  <option value="Training \& Tricks">Training and Tricks</option>
-                </select>
-              </div>
-            </div>
-            <div class=" note-section column-full">
-              <label for="notes" class="section-title">Event Notes</label>
-              <textarea  rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
-              <div class="submit-action">
-                <button class="pic-button" type="submit">SAVE</button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
-      <div class="view-page hidden" data-page="pic-gallery">
+      <div class="view-screen" data-view="pic-search">
+        <div class="lds-dual-ring search-spinner hidden"></div>
+        <div class="section-title-holder">
+          <h1 class="section-title">Fun Puppy Search <i class="fas fa-dog"></i></h1>
+          <!-- <button class="exit-app exit-button" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button> -->
+        </div>
+        <div class="search-button-holder">
+          <h3 class="function-comment column-full">Choose how many images by search, then search by breed or random! </h3>
+          <div class="button-left column-one-third">
+            <button class="breed pic-button" type="button">BREED</button>
+            <button class="random pic-button" type="button">RANDOM</button>
+            <button class="opButton" type="button" data-number="1">1 PIC</button>
+            <button class="opButton" type="button" data-number="2">2 PIC</button>
+            <button class="opButton" type="button" data-number="3">3 PIC</button>
+          </div>
+          <form id="search-entry" class="column-half hidden">
+            <button class="search-button" data-view="entries" type="submit"><i class="fas fa-paw"></i></button>
+            <input required name="keyWord" id="key-word" type="text" placeholder="Search...">
+          </form>
+        </div>
+        <div id="picture-list" class="list-group"></div>
+      </div>
+      <div class="view-screen" data-view="note-entry">
+        <div class="section-title-holder">
+          <h1 class="section-title">New Log <i class="fas fa-paw"></i></h1>
+        </div>
+        <h1 class="section-title mg-l-1 mg-b-125">New Reminder</h1>
+        <form class="reminder-entry column-full">
+          <label for="reminder" class="section-title">Reminder</label>
+          <input id="reminder" name="reminder" type="text">
+          <div class="reminder-submit-row">
+            <div class="select-row column-half">
+              <label for="priority" class=" select-label section-title">Reminder Priority:</label>
+              <select id="priority" class=" select-label" name="priority">
+                <option value="Top Priority">Top priority</option>
+                <option value="High Priority">High Priority</option>
+                <option value="Priority">Priority</option>
+                <option value="Routine">Routine</option>
+                <option value="Deferral">Deferral</option>
+              </select>
+            </div>
+            <button class="pic-button mg-l-75" type="submit">SAVE</button>
+          </div>
+        </form>
+        <hr class="line-breaker">
+        <h1 class="section-title mg-l-1 mg-b-125">New Note</h1>
+        <form class="note-entry">
+          <div class="column-half">
+            <div class="pic-holder"><img class="picView" id="entry" src="images/dog-place-holder.png"></div>
+          </div>
+          <div class="data-log column-half">
+            <label for="url" class="section-title">My Puppy Picture</label>
+            <input  id="url" name="url" type="url">
+            <label for="title" class="section-title">New Note Title</label>
+            <input id="title" name="title" type="text">
+            <!-- <label for="reminder" class="section-title">Reminder</label>
+            <input  id="reminder" name="reminder" type="text">
+            <div class="select-row">
+              <label for="priority" class=" select-label section-title">Reminder Priority:</label>
+              <select id="priority" class=" select-label" name="priority">
+                <option value="Top Priority">Top priority</option>
+                <option value="High Priority">High Priority</option>
+                <option value="Priority">Priority</option>
+                <option value="Routine">Routine</option>
+                <option value="Deferral">Deferral</option>
+              </select>
+            </div> -->
+            <div class="select-row">
+              <label for="category" class="section-title select-label">Entry Category</label>
+              <select id="category" class=" select-label" name="category">
+                <option value="Munchies">Munchies</option>
+                <option value="Daily Walk">Daily Walk</option>
+                <option value="Happy Moments">Happy Moments</option>
+                <option value="Puppy Journal">Puppy Journal</option>
+                <option value="Training \& Tricks">Training and Tricks</option>
+              </select>
+            </div>
+          </div>
+          <div class=" note-section column-full">
+            <label for="notes" class="section-title">Event Notes</label>
+            <textarea  rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
+            <div class="submit-action">
+              <button class="pic-button" type="submit">SAVE</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- </div> -->
+      <div class="view-screen hidden" data-view="pic-gallery">
         <div class="section-title-holder">
           <h1 class="section-title">My Puppy Gallery <i class="fas fa-paw"></i></h1>
           <button class=" exit-button backToMain" data-page="mainPage"><i class="fas fa-paw"
@@ -165,7 +230,7 @@
         </div>
         <div id="gallery-list" class="list-group"></div>
       </div>
-      <div class="view-page hidden" data-page="puppyNote">
+      <div class="view-screen hidden" data-view="puppyNote">
         <div class="section-title-holder">
           <h1 class="section-title">My Puppy Notes <i class="fas fa-paw"></i></h1>
           <button class=" exit-button backToMainNotes" data-page="mainPage"><i class="fas fa-paw"
@@ -231,7 +296,7 @@
         <ul id="note-list" class="list-group">
         </ul>
       </div>
-      <div class="view-page hidden" data-page="games">
+      <div class="view-screen hidden" data-view="games">
         <div class="section-title-holder">
           <h1 class="section-title">Puppy Games <i class="fas fa-paw"></i></h1>
           <button class=" exit-button backToMainGame" data-page="mainPage"><i class="fas fa-paw"

@@ -339,6 +339,7 @@ $colorHolderNote.addEventListener('click', profileColorChange);
           <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
         </div>
       </div>
+      <h3 class="note-title"></h3>
       <div class="note-content column-full"></div>
     </div>
    </li> */
@@ -390,6 +391,10 @@ function renderNote(data) {
   var $penSign = document.createElement('i');
   $penSign.setAttribute('class', 'fas fa-edit');
 
+  var $noteTitle = document.createElement('h3');
+  $noteTitle.setAttribute('class', 'note-title');
+  $noteTitle.textContent = data.title;
+
   var $noteContent = document.createElement('div');
   $noteContent.setAttribute('class', 'note-content column-full');
   $noteContent.textContent = data.note;
@@ -401,6 +406,7 @@ function renderNote(data) {
   $notePicHolder.appendChild($notePic);
 
   $noteBlock.appendChild($categoryRow);
+  $noteBlock.appendChild($noteTitle);
   $noteBlock.appendChild($noteContent);
 
   $categoryRow.appendChild($categoryGroup);
@@ -418,6 +424,7 @@ function renderNote(data) {
 }
 
 var $noteSubmit = document.querySelector('.note-entry');
+var $reminderSubmit = document.querySelector('.reminder-entry');
 var $notePic = document.querySelector('#entry');
 var $noteUrl = document.querySelector('#url');
 var $noteList = document.querySelector('#note-list');
@@ -429,17 +436,11 @@ $noteUrl.addEventListener('input', function () {
   }
 });
 
-$noteSubmit.addEventListener('submit', function () {
+$reminderSubmit.addEventListener('submit', function () {
   event.preventDefault();
-  var newLog = {};
-  newLog.url = $noteSubmit.elements.url.value;
-  newLog.category = $noteSubmit.elements.category.value;
-  newLog.note = $noteSubmit.elements.notes.value;
-  newLog.logId = data.nextLogId;
-
   var newReminder = {};
-  newReminder.reminder = $noteSubmit.elements.reminder.value;
-  newReminder.urgency = $noteSubmit.elements.priority.value;
+  newReminder.reminder = $reminderSubmit.elements.reminder.value;
+  newReminder.urgency = $reminderSubmit.elements.priority.value;
 
   for (var a = 0; a < data.reminder.length; a++) {
     if (data.reminder[a].urgency === newReminder.urgency) {
@@ -447,9 +448,6 @@ $noteSubmit.addEventListener('submit', function () {
     }
   }
   data.reminder.unshift(newReminder);
-  data.logs.unshift(newLog);
-  data.nextLogId++;
-  $noteList.prepend(renderNote(newLog));
 
   for (var i = 0; i < $reminderList.length; i++) {
     if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
@@ -457,8 +455,44 @@ $noteSubmit.addEventListener('submit', function () {
     }
   }
 
+  $reminderSubmit.reset();
+  viewChange('puppyNote');
+  tagHide();
+
+});
+$noteSubmit.addEventListener('submit', function () {
+  event.preventDefault();
+  var newLog = {};
+  newLog.url = $noteSubmit.elements.url.value;
+  newLog.category = $noteSubmit.elements.category.value;
+  newLog.title = $noteSubmit.elements.title.value;
+  newLog.note = $noteSubmit.elements.notes.value;
+  newLog.logId = data.nextLogId;
+
+  // var newReminder = {};
+  // newReminder.reminder = $noteSubmit.elements.reminder.value;
+  // newReminder.urgency = $noteSubmit.elements.priority.value;
+
+  // for (var a = 0; a < data.reminder.length; a++) {
+  //   if (data.reminder[a].urgency === newReminder.urgency) {
+  //     data.reminder[a].reminder = newReminder.reminder;
+  //   }
+  // }
+  // data.reminder.unshift(newReminder);
+  data.logs.unshift(newLog);
+  data.nextLogId++;
+  $noteList.prepend(renderNote(newLog));
+
+  // for (var i = 0; i < $reminderList.length; i++) {
+  //   if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
+  //     $reminderList[i].textContent = newReminder.reminder;
+  //   }
+  // }
+
   $notePic.setAttribute('src', 'images/dog-place-holder.png');
   $noteSubmit.reset();
+  viewChange('puppyNote');
+  tagHide();
 
 });
 // here start the game part
@@ -707,7 +741,7 @@ function entryDisplay(event) {
 
   for (var a = 0; a < data.logs.length; a++) {
 
-    $noteList.prepend(renderNote(data.logs[i]));
+    $noteList.prepend(renderNote(data.logs[a]));
 
   }
 
@@ -721,7 +755,7 @@ function entryDisplay(event) {
   $heroImage.setAttribute('src', data.heroBackground);
   $heroBlock.style.backgroundColor = data.backgroundColor;
   viewChange(data.view);
-  pageChange(data.page);
+
   coverChange(data.cover);
   tagHide();
 
@@ -806,16 +840,16 @@ $exitApp.addEventListener('click', function () {
   coverChange(event.target.getAttribute('data-cover'));
 });
 
-var $galleryButton = document.querySelector('#galleryButton');
-var $backToMain = document.querySelector('.backToMain');
-var $backToMainGame = document.querySelector('.backToMainGame');
-var $games = document.querySelector('#gameButton');
-var $note = document.querySelector('#noteButton');
-var $backtoMainNote = document.querySelector('.backToMainNotes');
+// var $galleryButton = document.querySelector('#galleryButton');
+// var $backToMain = document.querySelector('.backToMain');
+// var $backToMainGame = document.querySelector('.backToMainGame');
+// var $games = document.querySelector('#gameButton');
+// var $note = document.querySelector('#noteButton');
+// var $backtoMainNote = document.querySelector('.backToMainNotes');
 
-$galleryButton.addEventListener('click', pageChangeClick);
-$backToMain.addEventListener('click', pageChangeClick);
-$games.addEventListener('click', pageChangeClick);
-$backToMainGame.addEventListener('click', pageChangeClick);
-$note.addEventListener('click', pageChangeClick);
-$backtoMainNote.addEventListener('click', pageChangeClick);
+// $galleryButton.addEventListener('click', pageChangeClick);
+// $backToMain.addEventListener('click', pageChangeClick);
+// $games.addEventListener('click', pageChangeClick);
+// $backToMainGame.addEventListener('click', pageChangeClick);
+// $note.addEventListener('click', pageChangeClick);
+// $backtoMainNote.addEventListener('click', pageChangeClick);
