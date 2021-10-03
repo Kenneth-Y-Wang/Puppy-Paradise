@@ -99,7 +99,7 @@ body {
 
 .app-main {
   background-color: white;
-  height: 3000px;
+  height: 1200px;
 
   /* min-height: -webkit-fill-available; */
 }
@@ -112,7 +112,7 @@ body {
 }
 
 .hero-control {
-  padding-top: 1.75rem;
+  padding-top: 3rem;
   padding-left: 1.75rem;
   padding-right: 1.75rem;
   padding-bottom: 1rem;
@@ -176,7 +176,7 @@ body {
 .button-row {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-block,
@@ -400,7 +400,7 @@ select {
 }
 
 .menu-button {
-  width: 120px;
+  width: 180px;
 }
 
 .menu-button:hover {
@@ -588,7 +588,10 @@ textarea {
 .game-row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem;
+  border: 2px solid #cae9ff;
+  border-radius: 10px;
 }
 
 .timer-row {
@@ -645,6 +648,7 @@ textarea {
   justify-content: center;
   align-items: center;
   margin-top: 0.75rem;
+  height: 50px;
 }
 
 .answer-box {
@@ -653,6 +657,13 @@ textarea {
   border-bottom: 2px solid #274c77;
   margin: 0.75rem 0.5rem;
   background-color: white;
+}
+
+.explain-text {
+  font-family: 'Architects Daughter', cursive;
+  color: #3f88c5;
+  margin: 0.25rem 0;
+  font-size: 1rem;
 }
 
 .game-submit {
@@ -917,6 +928,10 @@ textarea {
   margin-bottom: 1.25rem;
 }
 
+.mg-t-125 {
+  margin-top: 1.25rem;
+}
+
 .align-center {
   align-items: center;
 }
@@ -1005,7 +1020,7 @@ textarea {
   }
 
   .hero-control {
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-left: 2.25rem;
     padding-right: 2.25rem;
   }
@@ -1041,4 +1056,5 @@ textarea {
     object-fit: cover;
     border-radius: 10px;
   }
+}
 }

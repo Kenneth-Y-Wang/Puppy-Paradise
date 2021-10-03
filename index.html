@@ -55,7 +55,7 @@
             <h3 class=" view-tag sub-tag " data-view="dashboard">Main</h3>
           </a>
           <a>
-            <h3 class=" view-tag sub-tag hidden" data-view="pic-search">Fun Puppy Search</h3>
+            <h3 class=" view-tag sub-tag" data-view="pic-search">Fun Puppy Search</h3>
           </a>
           <a>
             <h3 class=" view-tag sub-tag" data-view="note-entry">New Log</h3>
@@ -89,16 +89,16 @@
             </div>
           </div>
           <div class="hero-control column-half">
-            <!-- <div class="button-row">
-              <button class="pic-button menu-button">FUN PUPPY</button>
-              <button class="pic-button menu-button" id="galleryButton" data-page="pic-gallery">MY GALLERY</button>
-            </div>
             <div class="button-row">
+              <button class="pic-button menu-button" id="pic-search-button" data-view="pic-search"><i class="fas fa-dog"></i> FUN PUPPY SEARCH</button>
+              <button class="pic-button menu-button" id="new-log-button" data-view="note-entry"><i class="fas fa-file-alt"></i> NEW LOG</button>
+            </div>
+            <!-- <div class="button-row">
               <button class="pic-button menu-button" id="noteButton" data-page="puppyNote">NOTES</button>
               <button class="pic-button menu-button" id="gameButton" data-page="games">GAMES</button>
-            </div> -->
+            </div>  -->
             <div>
-              <h2 class="section-title">Reminder:</h2>
+              <h2 class=" mg-t-125 section-title">Reminder:</h2>
             </div>
             <div class="reminder-brief-row">
               <div class="reminder-display column-two-third"></div>
@@ -112,14 +112,14 @@
               <div class="reminder-display column-two-third"></div>
               <button type="button" class="detail">Detail</button>
             </div>
-            <div class="reminder-brief-row">
+            <!-- <div class="reminder-brief-row">
               <div class="reminder-display column-two-third"></div>
               <button type="button" class="detail">Detail</button>
             </div>
             <div class="reminder-brief-row">
               <div class="reminder-display column-two-third"></div>
               <button type="button" class="detail">Detail</button>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="app-intro column-full">
@@ -141,7 +141,7 @@
           <!-- <button class="exit-app exit-button" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button> -->
         </div>
         <div class="search-button-holder">
-          <h3 class="function-comment column-full">Choose how many images by search, then search by breed or random! </h3>
+          <h3 class="function-comment column-full">Choose number of images by search, then search by breed or random! </h3>
           <div class="button-left column-one-third">
             <button class="breed pic-button" type="button">BREED</button>
             <button class="random pic-button" type="button">RANDOM</button>
@@ -225,16 +225,16 @@
       <div class="view-screen hidden" data-view="pic-gallery">
         <div class="section-title-holder">
           <h1 class="section-title">My Puppy Gallery <i class="fas fa-paw"></i></h1>
-          <button class=" exit-button backToMain" data-page="mainPage"><i class="fas fa-paw"
-              data-page="mainPage"></i>Back</button>
+          <button class=" exit-button new-search-button" data-view="pic-search"><i class="fas fa-paw"
+              data-view="pic-search"></i>New Search</button>
         </div>
         <div id="gallery-list" class="list-group"></div>
       </div>
       <div class="view-screen hidden" data-view="puppyNote">
         <div class="section-title-holder">
           <h1 class="section-title">My Puppy Notes <i class="fas fa-paw"></i></h1>
-          <button class=" exit-button backToMainNotes" data-page="mainPage"><i class="fas fa-paw"
-              data-page="mainPage"></i>Back</button>
+          <button class=" exit-button new-log-switch" data-view="note-entry"><i class="fas fa-paw"
+              data-view="note-entry"></i>New Log</button>
         </div>
         <div class="note-dashboard">
           <div class="profile-block column-one-third ">
@@ -299,8 +299,8 @@
       <div class="view-screen hidden" data-view="games">
         <div class="section-title-holder">
           <h1 class="section-title">Puppy Games <i class="fas fa-paw"></i></h1>
-          <button class=" exit-button backToMainGame" data-page="mainPage"><i class="fas fa-paw"
-              data-page="mainPage"></i>Back</button>
+          <!-- <button class=" exit-button backToMainGame" data-page="mainPage"><i class="fas fa-paw"
+              data-page="mainPage"></i>Back</button> -->
         </div>
         <div class="game-row">
           <div class="column-half">
@@ -310,7 +310,7 @@
           </div>
           <div class="column-half text-center">
             <h1 class="game-title">Who am I?</h1>
-            <button class="pic-button" id="ready-button" type="button">Ready to Play?</button>
+            <button class="pic-button" id="ready-button" type="button">Press to Play</button>
             <div class="timer-row">
               <button class="timer-button" data-time="1"><i class="fas fa-paw"></i></button>
               <button class="timer-button" data-time="2"><i class="fas fa-paw"></i></button>
@@ -328,6 +328,7 @@
               <input minlength="3" class="answer-box" name="answer" type="text">
               <button class="pic-button game-submit" type="submit">OK</button>
             </form>
+            <h6 class="explain-text">Type in the name of the breed</h6>
             <div class="answer-row answerCorrect">
               <h1 class="game-title game-message  hidden" data-message="correct">Correct!</h1>
               <h1 class="game-title game-message  hidden" data-message="time-out">Times Up!</h1>

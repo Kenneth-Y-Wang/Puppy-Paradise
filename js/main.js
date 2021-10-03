@@ -206,7 +206,7 @@ function renderSavePic(data) {
 
   var $backgroundButton = document.createElement('button');
   $backgroundButton.setAttribute('class', 'pic-button set-background');
-  $backgroundButton.setAttribute('data-page', 'mainPage');
+  $backgroundButton.setAttribute('data-view', 'dashboard');
   $backgroundButton.setAttribute('data-pic', data);
   $backgroundButton.setAttribute('type', 'button');
   $backgroundButton.textContent = 'Set Background';
@@ -245,6 +245,7 @@ $pictureList.addEventListener('click', function () {
   data.nextEntryId++;
   var $newSavedPic = renderSavePic(newSave.url);
   $galleryList.prepend($newSavedPic);
+  viewChange('pic-gallery');
 
 });
 // here start the delete process
@@ -294,8 +295,8 @@ function setBackground(event) {
   }
   $heroImage.setAttribute('src', event.target.getAttribute('data-pic'));
   data.heroBackground = event.target.getAttribute('data-pic');
-  pageChange(event.target.getAttribute('data-page'));
-  tagHide();
+  viewChange(event.target.getAttribute('data-view'));
+  // tagHide();
 }
 
 var $heroBlock = document.querySelector('.hero-block');
@@ -457,7 +458,7 @@ $reminderSubmit.addEventListener('submit', function () {
 
   $reminderSubmit.reset();
   viewChange('puppyNote');
-  tagHide();
+  // tagHide();
 
 });
 $noteSubmit.addEventListener('submit', function () {
@@ -492,7 +493,7 @@ $noteSubmit.addEventListener('submit', function () {
   $notePic.setAttribute('src', 'images/dog-place-holder.png');
   $noteSubmit.reset();
   viewChange('puppyNote');
-  tagHide();
+  // tagHide();
 
 });
 // here start the game part
@@ -757,7 +758,7 @@ function entryDisplay(event) {
   viewChange(data.view);
 
   coverChange(data.cover);
-  tagHide();
+  // tagHide();
 
 }
 
@@ -766,10 +767,10 @@ document.addEventListener('DOMContentLoaded', entryDisplay);
 // here start the view swapping process
 
 var $viewScreen = document.querySelectorAll('.view-screen');
-var $subTag = document.querySelectorAll('.sub-tag');
+// var $subTag = document.querySelectorAll('.sub-tag');
 var $exitApp = document.querySelector('.exit-app');
 var $startButton = document.querySelector('.start-button');
-var $viewPage = document.querySelectorAll('.view-page');
+// var $viewPage = document.querySelectorAll('.view-page');
 var $viewCover = document.querySelectorAll('.viewCover');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
@@ -782,16 +783,16 @@ function viewChange(string) {
   data.view = string;
 }
 
-function pageChange(string) {
-  for (var i = 0; i < $viewPage.length; i++) {
-    if ($viewPage[i].getAttribute('data-page') === string) {
-      $viewPage[i].className = 'view-page ';
-    } else {
-      $viewPage[i].className = 'view-page hidden';
-    }
-  }
-  data.page = string;
-}
+// function pageChange(string) {
+//   for (var i = 0; i < $viewPage.length; i++) {
+//     if ($viewPage[i].getAttribute('data-page') === string) {
+//       $viewPage[i].className = 'view-page ';
+//     } else {
+//       $viewPage[i].className = 'view-page hidden';
+//     }
+//   }
+//   data.page = string;
+// }
 
 function coverChange(string) {
   for (var i = 0; i < $viewCover.length; i++) {
@@ -803,19 +804,19 @@ function coverChange(string) {
   }
   data.cover = string;
 }
-function pageChangeClick(event) {
-  pageChange(event.target.getAttribute('data-page'));
-}
+// function pageChangeClick(event) {
+//   pageChange(event.target.getAttribute('data-page'));
+// }
 
-function tagHide() {
-  for (var i = 0; i < $subTag.length; i++) {
-    if ($subTag[i].getAttribute('data-view') === data.view) {
-      $subTag[i].className = ' view-tag sub-tag hidden';
-    } else {
-      $subTag[i].className = ' view-tag sub-tag';
-    }
-  }
-}
+// function tagHide() {
+//   for (var i = 0; i < $subTag.length; i++) {
+//     if ($subTag[i].getAttribute('data-view') === data.view) {
+//       $subTag[i].className = ' view-tag sub-tag hidden';
+//     } else {
+//       $subTag[i].className = ' view-tag sub-tag';
+//     }
+//   }
+// }
 
 function clickViewChange(event) {
   if (event.target.matches('.view-tag') === false) {
@@ -828,7 +829,7 @@ function clickViewChange(event) {
 
 $tabView.addEventListener('click', function () {
   clickViewChange(event);
-  tagHide();
+  // tagHide();
 
 });
 
@@ -840,15 +841,26 @@ $exitApp.addEventListener('click', function () {
   coverChange(event.target.getAttribute('data-cover'));
 });
 
-// var $galleryButton = document.querySelector('#galleryButton');
-// var $backToMain = document.querySelector('.backToMain');
-// var $backToMainGame = document.querySelector('.backToMainGame');
-// var $games = document.querySelector('#gameButton');
+var $picSearchButton = document.querySelector('#pic-search-button');
+var $newLogButton = document.querySelector('#new-log-button');
+var $newPicSearch = document.querySelector('.new-search-button');
+var $newLogSwitch = document.querySelector('.new-log-switch');
 // var $note = document.querySelector('#noteButton');
 // var $backtoMainNote = document.querySelector('.backToMainNotes');
 
-// $galleryButton.addEventListener('click', pageChangeClick);
-// $backToMain.addEventListener('click', pageChangeClick);
+$picSearchButton.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+$newLogButton.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+$newPicSearch.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+$newLogSwitch.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+
 // $games.addEventListener('click', pageChangeClick);
 // $backToMainGame.addEventListener('click', pageChangeClick);
 // $note.addEventListener('click', pageChangeClick);
