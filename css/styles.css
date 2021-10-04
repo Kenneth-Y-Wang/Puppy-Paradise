@@ -59,9 +59,56 @@ body {
   padding-top: 0.75rem;
 }
 
+.drop-button {
+  background-color: white;
+  color: #05789c;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px solid #05789c;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.75rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fcffff;
+  min-width: 180px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.drop-down-tag {
+  color: #05789c;
+  font-weight: 500;
+  padding: 0.5rem 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  display: block;
+}
+
+.drop-down-tag:hover { background-color: #ddd; }
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.dropdown:hover .drop-button { background-color: #f2fcfe; }
+
+.sub-tag-holder {
+  display: none;
+}
+
+.exit-app {
+  width: 80px;
+}
+
 .tab-list {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   border-bottom: 3px #93a9f6 solid;
@@ -69,6 +116,7 @@ body {
   border-right: 1px #93a9f6 solid;
   background-color: white;
   padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .view-tag {
@@ -1006,6 +1054,12 @@ textarea {
   }
 }
 
+@media screen and (max-width: 520px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   #two,
   #hero-image,
@@ -1017,6 +1071,14 @@ textarea {
     height: 400px;
     object-fit: cover;
     border-radius: 10px;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  .sub-tag-holder {
+    display: inline-flex;
   }
 
   .hero-control {

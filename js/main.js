@@ -4,7 +4,7 @@ var $form = document.querySelector('#search-entry');
 var $opButton = document.querySelectorAll('.opButton');
 var $buttonLeft = document.querySelector('.button-left');
 var picViewNumber = 1;
-var $tabView = document.querySelector('.tabLeft');
+var $tabView = document.querySelector('.tab-left');
 
 // var $picView = document.querySelector('.picView');
 
@@ -845,6 +845,15 @@ var $picSearchButton = document.querySelector('#pic-search-button');
 var $newLogButton = document.querySelector('#new-log-button');
 var $newPicSearch = document.querySelector('.new-search-button');
 var $newLogSwitch = document.querySelector('.new-log-switch');
+var $dropMenuButton = document.querySelector('.dropdown-content');
+
+$dropMenuButton.addEventListener('click', function () {
+  if (event.target.matches('.drop-down-tag') === false) {
+    return;
+  }
+  console.log(event.target);
+  viewChange(event.target.getAttribute('data-view'));
+});
 // var $note = document.querySelector('#noteButton');
 // var $backtoMainNote = document.querySelector('.backToMainNotes');
 
