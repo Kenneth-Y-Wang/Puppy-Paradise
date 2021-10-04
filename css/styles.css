@@ -217,8 +217,10 @@ body {
   border: solid 2px #05789c;
   border-radius: 5px;
   width: 100%;
-  height: 30px;
+  height: 35px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.75);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
 }
 
 .button-row {
@@ -421,7 +423,7 @@ select {
   width: 100%;
   height: 30px;
   margin-top: 0.75rem;
-  padding-left: 0.75rem;
+  padding: auto 0.75rem;
 }
 
 #priority,
@@ -574,25 +576,29 @@ select {
   justify-content: space-between;
 }
 
-.cancel {
+.cancel,
+.note-cancel {
   color: #caf0f8;
   border: solid 1px #caf0f8;
   background-color: transparent;
 }
 
-.confirm {
+.confirm,
+.note-confirm {
   background-color: transparent;
   color: #ef233c;
   border: solid 1px #ef233c;
 }
 
-.cancel:hover {
+.cancel:hover,
+.note-cancel:hover {
   background-color: #caf0f8;
   color: #006d77;
   transform: scale(1.2);
 }
 
-.confirm:hover {
+.confirm:hover,
+.note-confirm:hover {
   background-color: #fec5bb;
   transform: scale(1.2);
 }

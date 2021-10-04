@@ -36,11 +36,18 @@
   </div>
   <div id="whole-page" class=" viewCover hidden" data-cover="whole-page">
     <div class="modal-holder hidden">
-      <div class="delete-block">
+      <div class="delete-block pic-delete">
         <h4 class="delete-message">Delete Picture?</h4>
         <div class="button-holder column-full">
           <button class="cancel pic-button" type="button">CANCEL</button>
           <button class="confirm pic-button" data-view="pic-gallery" type="button">CONFIRM</button>
+        </div>
+      </div>
+      <div class="delete-block note-delete-block hidden">
+        <h4 class="delete-message">Delete Picture?</h4>
+        <div class="button-holder column-full">
+          <button class="note-cancel pic-button" type="button">CANCEL</button>
+          <button class="note-confirm pic-button" data-view="pic-gallery" type="button">CONFIRM</button>
         </div>
       </div>
     </div>
@@ -114,15 +121,15 @@
               <h2 class=" mg-t-125 section-title">Reminder:</h2>
             </div>
             <div class="reminder-brief-row">
-              <div class="reminder-display column-two-third"></div>
+              <div class="reminder-display reminder-dashboard column-two-third" data-urgency="Top Priority"></div>
               <button type="button" class="detail">Detail</button>
             </div>
             <div class="reminder-brief-row">
-              <div class="reminder-display column-two-third"></div>
+              <div class="reminder-display reminder-dashboard column-two-third" data-urgency="High Priority"></div>
               <button type="button" class="detail">Detail</button>
             </div>
             <div class="reminder-brief-row">
-              <div class="reminder-display column-two-third"></div>
+              <div class="reminder-display reminder-dashboard column-two-third" data-urgency="Priority"></div>
               <button type="button" class="detail">Detail</button>
             </div>
             <!-- <div class="reminder-brief-row">
@@ -176,11 +183,11 @@
         <h1 class="section-title mg-l-1 mg-b-125">New Reminder</h1>
         <form class="reminder-entry column-full">
           <label for="reminder" class="section-title">Reminder</label>
-          <input id="reminder" name="reminder" type="text">
+          <input required   id="reminder" name="reminder" type="text">
           <div class="reminder-submit-row">
             <div class="select-row column-half">
               <label for="priority" class=" select-label section-title">Reminder Priority:</label>
-              <select id="priority" class=" select-label" name="priority">
+              <select required id="priority" class=" select-label" name="priority">
                 <option value="Top Priority">Top priority</option>
                 <option value="High Priority">High Priority</option>
                 <option value="Priority">Priority</option>
@@ -199,24 +206,12 @@
           </div>
           <div class="data-log column-half">
             <label for="url" class="section-title">My Puppy Picture</label>
-            <input  id="url" name="url" type="url">
+            <input required id="url" name="url" type="url">
             <label for="title" class="section-title">New Note Title</label>
-            <input id="title" name="title" type="text">
-            <!-- <label for="reminder" class="section-title">Reminder</label>
-            <input  id="reminder" name="reminder" type="text">
-            <div class="select-row">
-              <label for="priority" class=" select-label section-title">Reminder Priority:</label>
-              <select id="priority" class=" select-label" name="priority">
-                <option value="Top Priority">Top priority</option>
-                <option value="High Priority">High Priority</option>
-                <option value="Priority">Priority</option>
-                <option value="Routine">Routine</option>
-                <option value="Deferral">Deferral</option>
-              </select>
-            </div> -->
+            <input required id="title" name="title" type="text">
             <div class="select-row">
               <label for="category" class="section-title select-label">Entry Category</label>
-              <select id="category" class=" select-label" name="category">
+              <select required id="category" class=" select-label" name="category">
                 <option value="Munchies">Munchies</option>
                 <option value="Daily Walk">Daily Walk</option>
                 <option value="Happy Moments">Happy Moments</option>
@@ -227,7 +222,7 @@
           </div>
           <div class=" note-section column-full">
             <label for="notes" class="section-title">Event Notes</label>
-            <textarea  rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
+            <textarea required rows="6" id="notes" name="notes" placeholder="Please enter your event note"></textarea>
             <div class="submit-action">
               <button class="pic-button" type="submit">SAVE</button>
             </div>
@@ -267,35 +262,35 @@
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content" data-urgency="Top Priority"></div>
+                <div class="reminder-display reminder-content" data-urgency="Top Priority" data-content=""></div>
                 <h4 class="reminder-category top-priority" >Top Priority</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content" data-urgency="High Priority"></div>
+                <div class="reminder-display reminder-content" data-urgency="High Priority" data-content=""></div>
                 <h4 class="reminder-category high-priority" >High Priority</h4>
               </div>
-              <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+              <button class="edit-button" type="button"><i class="fas fa-edit" data-content=""></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content" data-urgency="Priority"></div>
+                <div class="reminder-display reminder-content" data-urgency="Priority" data-content=""></div>
                 <h4 class="reminder-category priority" >Priority</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content" data-urgency="Routine"></div>
+                <div class="reminder-display reminder-content" data-urgency="Routine" data-content=""></div>
                 <h4 class="reminder-category routine" >Routine</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
-                <div class="reminder-display reminder-content" data-urgency="Deferral"></div>
+                <div class="reminder-display reminder-content" data-urgency="Deferral" data-content="" ></div>
                 <h4 class="reminder-category deferral" >Deferral</h4>
               </div>
               <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>

@@ -1,5 +1,4 @@
 /* exported data */
-
 var data = {
   view: 'pic-gallery',
   // page: 'mainPage',
@@ -15,7 +14,11 @@ var data = {
   backgroundColor: '#eaf7ff',
   backgroundColorProfile: 'images/dog-place-holder.png',
   gameBreed: null,
-  gameUrl: null
+  gameUrl: null,
+  noteDeleting: null,
+  noteEditing: null,
+  reminderDeleting: null
+
 };
 var previousDataJSON = localStorage.getItem('pic-local-storage');
 if (previousDataJSON !== null) {

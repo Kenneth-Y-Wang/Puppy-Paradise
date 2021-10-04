@@ -248,7 +248,7 @@ $pictureList.addEventListener('click', function () {
   viewChange('pic-gallery');
 
 });
-// here start the delete process
+// here start the pic delete process
 
 var $modalHolder = document.querySelector('.modal-holder');
 var $cancel = document.querySelector('.cancel');
@@ -326,7 +326,7 @@ function profileColorChange(event) {
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
-/* <li class="note-row column-full">
+/* <li class="note-row column-full" data-delete="" data-edit="">
     <div class="column-half">
       <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/placeholder-image-square.jpg">
       </div>
@@ -335,9 +335,9 @@ $colorHolderNote.addEventListener('click', profileColorChange);
       <div class="category-row">
         <div class="category-group column-one-fourth">Happy Moments</div>
         <div class="category-button column-half">
-          <button class="pic-button set-profile-pic" type="button">Set Profile</button>
-          <button class="edit-button" type="button"><i class="fas fa-trash-alt"></i></button>
-          <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+          <button class="pic-button set-profile-pic" type="button" data-pic="">Set Profile</button>
+          <button class="edit-button note-delete" type="button" data-delete=""><i class="fas fa-trash-alt"></i></button>
+          <button class="edit-button note-edit" type="button" data-edit="" data-pic="" data-title="" data-note="" data-category=""><i class="fas fa-edit"></i></button>
         </div>
       </div>
       <h3 class="note-title"></h3>
@@ -348,6 +348,8 @@ $colorHolderNote.addEventListener('click', profileColorChange);
 function renderNote(data) {
   var $noteRow = document.createElement('li');
   $noteRow.setAttribute('class', 'note-row column-full');
+  $noteRow.setAttribute('data-delete', data.logId);
+  $noteRow.setAttribute('data-edit', data.logId);
 
   var $picDiv = document.createElement('div');
   $picDiv.setAttribute('class', 'column-half');
@@ -376,21 +378,34 @@ function renderNote(data) {
   var $setProfile = document.createElement('button');
   $setProfile.setAttribute('class', 'pic-button set-profile-pic');
   $setProfile.setAttribute('type', 'button');
+  $setProfile.setAttribute('data-pic', data.url);
   $setProfile.textContent = 'Set Profile';
 
   var $deleteButton = document.createElement('button');
-  $deleteButton.setAttribute('class', 'edit-button');
+  $deleteButton.setAttribute('class', 'edit-button note-delete');
   $deleteButton.setAttribute('type', 'button');
+  $deleteButton.setAttribute('data-delete', data.logId);
 
   var $trashSign = document.createElement('i');
   $trashSign.setAttribute('class', 'fas fa-trash-alt');
+  $trashSign.setAttribute('data-delete', data.logId);
 
   var $editButton = document.createElement('button');
-  $editButton.setAttribute('class', 'edit-button');
+  $editButton.setAttribute('class', 'edit-button note-edit');
   $editButton.setAttribute('type', 'button');
+  $editButton.setAttribute('data-edit', data.logId);
+  $editButton.setAttribute('data-pic', data.url);
+  $editButton.setAttribute('data-title', data.title);
+  $editButton.setAttribute('data-category', data.category);
+  $editButton.setAttribute('data-note', data.note);
 
   var $penSign = document.createElement('i');
   $penSign.setAttribute('class', 'fas fa-edit');
+  $penSign.setAttribute('data-edit', data.logId);
+  $penSign.setAttribute('data-pic', data.url);
+  $penSign.setAttribute('data-title', data.title);
+  $penSign.setAttribute('data-category', data.category);
+  $penSign.setAttribute('data-note', data.note);
 
   var $noteTitle = document.createElement('h3');
   $noteTitle.setAttribute('class', 'note-title');
@@ -430,6 +445,7 @@ var $notePic = document.querySelector('#entry');
 var $noteUrl = document.querySelector('#url');
 var $noteList = document.querySelector('#note-list');
 var $reminderList = document.querySelectorAll('.reminder-content');
+var $reminderDashboard = document.querySelectorAll('.reminder-dashboard');
 
 $noteUrl.addEventListener('input', function () {
   if (event.target.value !== '') {
@@ -452,7 +468,26 @@ $reminderSubmit.addEventListener('submit', function () {
 
   for (var i = 0; i < $reminderList.length; i++) {
     if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
-      $reminderList[i].textContent = newReminder.reminder;
+      var contentShort = '';
+      var contentSHortFinal = '';
+      for (var x = 0; x < 21; x++) {
+        contentShort += newReminder.reminder[x];
+      }
+      contentSHortFinal = contentShort + '...';
+      $reminderList[i].textContent = contentSHortFinal;
+      $reminderList[i].setAttribute('data-content', newReminder.reminde);
+    }
+  }
+
+  for (var b = 0; b < $reminderDashboard.length; b++) {
+    if ($reminderDashboard[b].getAttribute('data-urgency') === newReminder.urgency) {
+      var dashShort = '';
+      var dashShortFinal = '';
+      for (var y = 0; y < 20; y++) {
+        dashShort += newReminder.reminder[y];
+      }
+      dashShortFinal = dashShort + '...';
+      $reminderDashboard[b].textContent = dashShortFinal;
     }
   }
 
@@ -470,31 +505,96 @@ $noteSubmit.addEventListener('submit', function () {
   newLog.note = $noteSubmit.elements.notes.value;
   newLog.logId = data.nextLogId;
 
-  // var newReminder = {};
-  // newReminder.reminder = $noteSubmit.elements.reminder.value;
-  // newReminder.urgency = $noteSubmit.elements.priority.value;
+  if (data.noteEditing !== null) {
+    for (var i = 0; i < data.logs.length; i++) {
+      if (String(data.logs[i].logId) === data.noteEditing) {
+        data.logs[i].url = newLog.url;
+        data.logs[i].category = newLog.category;
+        data.logs[i].title = newLog.title;
+        data.logs[i].note = newLog.note;
 
-  // for (var a = 0; a < data.reminder.length; a++) {
-  //   if (data.reminder[a].urgency === newReminder.urgency) {
-  //     data.reminder[a].reminder = newReminder.reminder;
-  //   }
-  // }
-  // data.reminder.unshift(newReminder);
-  data.logs.unshift(newLog);
-  data.nextLogId++;
-  $noteList.prepend(renderNote(newLog));
+        var $noteRow = document.querySelectorAll('.note-row');
+        for (var a = 0; a < $noteRow.length; a++) {
+          if ($noteRow[a].getAttribute('data-edit') === data.noteEditing) {
+            $noteRow[a].replaceWith(renderNote(data.logs[i]));
+          }
+        }
 
-  // for (var i = 0; i < $reminderList.length; i++) {
-  //   if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
-  //     $reminderList[i].textContent = newReminder.reminder;
-  //   }
-  // }
+      }
+    }
+  } else {
+    data.logs.unshift(newLog);
+    data.nextLogId++;
+    $noteList.prepend(renderNote(newLog));
+  }
 
   $notePic.setAttribute('src', 'images/dog-place-holder.png');
   $noteSubmit.reset();
   viewChange('puppyNote');
   // tagHide();
 
+});
+
+var $picDeleteBlock = document.querySelector('.pic-delete');
+var $noteDeleteBlock = document.querySelector('.note-delete-block');
+var $noteCancel = document.querySelector('.note-cancel');
+var $noteConfirm = document.querySelector('.note-confirm');
+var $titleEntry = document.querySelector('#title');
+var $categoryEntry = document.querySelector('#category');
+var $noteEntry = document.querySelector('#notes');
+
+function editNote(event) {
+  if (event.target.matches('.note-edit') === false && event.target.matches('.fa-edit') === false) {
+    return;
+  }
+  data.noteEditing = event.target.getAttribute('data-edit');
+  viewChange('note-entry');
+  console.log(event.target);
+  $noteUrl.value = event.target.getAttribute('data-pic');
+  $titleEntry.value = event.target.getAttribute('data-title');
+  $categoryEntry.value = event.target.getAttribute('data-category');
+  $noteEntry.value = event.target.getAttribute('data-note');
+  $notePic.setAttribute('src', event.target.getAttribute('data-pic'));
+
+}
+$noteList.addEventListener('click', function () {
+
+  editNote(event);
+  if (event.target.matches('.note-delete') === false && event.target.matches('.fa-trash-alt') === false) {
+    return;
+  }
+  data.noteDeleting = event.target.getAttribute('data-delete');
+  $modalHolder.className = 'modal-holder';
+  $picDeleteBlock.className = 'delete-block pic-delete hidden';
+  $noteDeleteBlock.className = 'delete-block note-delete-block';
+
+});
+
+$noteCancel.addEventListener('click', function () {
+  $modalHolder.className = 'modal-holder hidden';
+  $picDeleteBlock.className = 'delete-block pic-delete';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+});
+
+$noteConfirm.addEventListener('click', function () {
+
+  for (var i = 0; i < data.logs.length; i++) {
+    if (String(data.logs[i].logId) === data.noteDeleting) {
+      data.logs.splice(i, 1);
+    }
+  }
+  console.log(data.noteDeleting);
+  console.log(data.logs);
+  var $noteRow = document.querySelectorAll('.note-row');
+  for (var a = 0; a < $noteRow.length; a++) {
+    if ($noteRow[a].getAttribute('data-delete') === String(data.noteDeleting)) {
+      $noteRow[a].remove();
+    }
+  }
+  data.noteDeleting = null;
+  $modalHolder.className = 'modal-holder hidden';
+  $picDeleteBlock.className = 'delete-block pic-delete';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
 });
 // here start the game part
 
@@ -749,7 +849,28 @@ function entryDisplay(event) {
   for (var b = 0; b < data.reminder.length; b++) {
     for (var c = 0; c < $reminderList.length; c++) {
       if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
-        $reminderList[c].textContent = data.reminder[b].reminder;
+        var contentShort = '';
+        var contentSHortFinal = '';
+        for (var x = 0; x < 21; x++) {
+          contentShort += data.reminder[b].reminder[x];
+        }
+        contentSHortFinal = contentShort + '...';
+        $reminderList[c].textContent = contentSHortFinal;
+        $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+      }
+    }
+  }
+
+  for (var e = 0; e < data.reminder.length; e++) {
+    for (var f = 0; f < $reminderDashboard.length; f++) {
+      if (data.reminder[e].urgency === $reminderDashboard[f].getAttribute('data-urgency')) {
+        var dashShort = '';
+        var dashShortFinal = '';
+        for (var y = 0; y < 21; y++) {
+          dashShort += data.reminder[e].reminder[y];
+        }
+        dashShortFinal = dashShort + '...';
+        $reminderDashboard[f].textContent = dashShortFinal;
       }
     }
   }
