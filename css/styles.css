@@ -179,6 +179,7 @@ body {
   background-color: white;
   color: #05789c;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .app-intro {
@@ -353,6 +354,14 @@ body {
 .function-comment {
   font-family: 'Architects Daughter', cursive;
   color: #3f88c5;
+}
+
+.span-comment {
+  font-size: 1.2rem;
+}
+
+.reminder-content {
+  cursor: pointer;
 }
 
 .button-left {
@@ -555,6 +564,19 @@ select {
   padding: 5rem;
   border: none;
   text-align: center;
+}
+
+.reminder-block {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5rem;
+  border: none;
+  text-align: center;
+}
+
+.reminder-detail {
+  color: #184e77;
+  font-size: 1rem;
 }
 
 .delete-message {
@@ -849,6 +871,7 @@ textarea {
   color: #05789c;
   margin-right: 0.5rem;
   transition-duration: 0.5s;
+  cursor: pointer;
 }
 
 .edit-button:hover {
@@ -910,9 +933,10 @@ textarea {
 
 .note-content {
   border: solid 2px #007ea7;
-  height: 220px;
+  height: 200px;
   margin: 1.25rem 0;
   border-radius: 10px;
+  padding: 1rem;
 }
 
 .note-section {

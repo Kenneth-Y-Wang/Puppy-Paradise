@@ -1,6 +1,6 @@
 /* exported data */
 var data = {
-  view: 'pic-gallery',
+  view: 'dashboard',
   // page: 'mainPage',
   cover: 'app-cover',
   entries: [],
@@ -11,8 +11,9 @@ var data = {
   deleting: null,
   nextEntryId: 1,
   heroBackground: 'images/dog-place-holder.png',
+  profileBackground: 'images/dog-place-holder.png',
   backgroundColor: '#eaf7ff',
-  backgroundColorProfile: 'images/dog-place-holder.png',
+  backgroundColorProfile: '#eaf7ff',
   gameBreed: null,
   gameUrl: null,
   noteDeleting: null,

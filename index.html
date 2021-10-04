@@ -50,6 +50,11 @@
           <button class="note-confirm pic-button" data-view="pic-gallery" type="button">CONFIRM</button>
         </div>
       </div>
+      <div class="reminder-block hidden">
+        <h1 class="function-comment">Reminder Detail</h1>
+        <p class="reminder-detail"></p>
+        <button class="pic-button return-button mg-t-125" type="button">RETURN</button>
+      </div>
     </div>
 
     <header>
@@ -154,7 +159,7 @@
           </div>
         </div>
       </div>
-      <div class="view-screen" data-view="pic-search">
+      <div class="view-screen hidden" data-view="pic-search">
         <div class="lds-dual-ring search-spinner hidden"></div>
         <div class="section-title-holder">
           <h1 class="section-title">Fun Puppy Search <i class="fas fa-dog"></i></h1>
@@ -176,7 +181,7 @@
         </div>
         <div id="picture-list" class="list-group"></div>
       </div>
-      <div class="view-screen" data-view="note-entry">
+      <div class="view-screen hidden" data-view="note-entry">
         <div class="section-title-holder">
           <h1 class="section-title">New Log <i class="fas fa-paw"></i></h1>
         </div>
@@ -258,42 +263,42 @@
           </div>
           <div class="reminderBlock pd-t-75 column-three-fifth">
             <div>
-              <h2 class="section-title mg-l-75">Reminder:</h2>
+              <h2 class="section-title mg-l-75">Reminder:<span class="function-comment span-comment"> Press Each Reminder for Detail</span></h2>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
                 <div class="reminder-display reminder-content" data-urgency="Top Priority" data-content=""></div>
                 <h4 class="reminder-category top-priority" >Top Priority</h4>
               </div>
-              <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+              <button class="edit-button edit-reminder" type="button" data-urgency="Top Priority"><i class="fas edit-reminder fa-edit" data-urgency="Top Priority"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
                 <div class="reminder-display reminder-content" data-urgency="High Priority" data-content=""></div>
                 <h4 class="reminder-category high-priority" >High Priority</h4>
               </div>
-              <button class="edit-button" type="button"><i class="fas fa-edit" data-content=""></i></button>
+              <button class="edit-button edit-reminder" type="button" data-urgency="High Priority"><i class="fas edit-reminder fa-edit" data-urgency="High Priority"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
                 <div class="reminder-display reminder-content" data-urgency="Priority" data-content=""></div>
                 <h4 class="reminder-category priority" >Priority</h4>
               </div>
-              <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+              <button class="edit-button edit-reminder" type="button" data-urgency="Priority"><i class="fas edit-reminder fa-edit" data-urgency="Priority"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
                 <div class="reminder-display reminder-content" data-urgency="Routine" data-content=""></div>
                 <h4 class="reminder-category routine" >Routine</h4>
               </div>
-              <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+              <button class="edit-button edit-reminder" type="button" data-urgency="Routine"><i class="fas edit-reminder fa-edit" data-urgency="Routine"></i></button>
             </div>
             <div class="reminder-row">
               <div class="reminder-holder column-four-fifth">
                 <div class="reminder-display reminder-content" data-urgency="Deferral" data-content="" ></div>
                 <h4 class="reminder-category deferral" >Deferral</h4>
               </div>
-              <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+              <button class="edit-button edit-reminder" type="button" data-urgency="Deferral"><i class="fas edit-reminder fa-edit" data-urgency="Deferral"></i></button>
             </div>
           </div>
         </div>

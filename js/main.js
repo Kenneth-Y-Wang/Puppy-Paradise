@@ -313,16 +313,24 @@ $colorHolder.addEventListener('click', colorChange);
 
 // here start the profile and note section
 
-// var $profileImage = document.querySelector('#profile-image');
+var $profileImage = document.querySelector('#profile-image');
 var $profileBlock = document.querySelector('.profile-block');
 var $colorHolderNote = document.querySelector('.color-button-holder-note');
 
+function profilePicSetup(event) {
+  if (event.target.matches('.set-profile-pic') === false) {
+    return;
+  }
+  $profileImage.setAttribute('src', event.target.getAttribute('data-pic'));
+  data.profileBackground = event.target.getAttribute('data-pic');
+
+}
 function profileColorChange(event) {
   if (event.target.matches('.color-button') === false) {
     return;
   }
   $profileBlock.style.backgroundColor = event.target.getAttribute('data-color');
-  data.backgroundColorNote = event.target.getAttribute('data-color');
+  data.backgroundColorProfile = event.target.getAttribute('data-color');
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
@@ -454,6 +462,7 @@ $noteUrl.addEventListener('input', function () {
 });
 
 $reminderSubmit.addEventListener('submit', function () {
+
   event.preventDefault();
   var newReminder = {};
   newReminder.reminder = $reminderSubmit.elements.reminder.value;
@@ -461,7 +470,8 @@ $reminderSubmit.addEventListener('submit', function () {
 
   for (var a = 0; a < data.reminder.length; a++) {
     if (data.reminder[a].urgency === newReminder.urgency) {
-      data.reminder[a].reminder = newReminder.reminder;
+      data.reminder.splice(a, 1);
+
     }
   }
   data.reminder.unshift(newReminder);
@@ -470,27 +480,36 @@ $reminderSubmit.addEventListener('submit', function () {
     if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
       var contentShort = '';
       var contentSHortFinal = '';
-      for (var x = 0; x < 21; x++) {
-        contentShort += newReminder.reminder[x];
+      if (newReminder.reminder.length < 30) {
+        $reminderList[i].textContent = newReminder.reminder;
+        $reminderList[i].setAttribute('data-content', newReminder.reminder);
+      } else {
+        for (var x = 0; x < 30; x++) {
+          contentShort += newReminder.reminder[x];
+        }
+        contentSHortFinal = contentShort + '...';
+        // console.log(contentSHortFinal);
+        // console.log(contentShort);
+        $reminderList[i].textContent = contentSHortFinal;
+        $reminderList[i].setAttribute('data-content', newReminder.reminder);
       }
-      contentSHortFinal = contentShort + '...';
-      $reminderList[i].textContent = contentSHortFinal;
-      $reminderList[i].setAttribute('data-content', newReminder.reminde);
     }
   }
-
   for (var b = 0; b < $reminderDashboard.length; b++) {
     if ($reminderDashboard[b].getAttribute('data-urgency') === newReminder.urgency) {
       var dashShort = '';
       var dashShortFinal = '';
-      for (var y = 0; y < 20; y++) {
-        dashShort += newReminder.reminder[y];
+      if (newReminder.reminder.length < 30) {
+        $reminderDashboard[b].textContent = newReminder.reminder;
+      } else {
+        for (var y = 0; y < 30; y++) {
+          dashShort += newReminder.reminder[y];
+        }
+        dashShortFinal = dashShort + '...';
+        $reminderDashboard[b].textContent = dashShortFinal;
       }
-      dashShortFinal = dashShort + '...';
-      $reminderDashboard[b].textContent = dashShortFinal;
     }
   }
-
   $reminderSubmit.reset();
   viewChange('puppyNote');
   // tagHide();
@@ -542,6 +561,55 @@ var $noteConfirm = document.querySelector('.note-confirm');
 var $titleEntry = document.querySelector('#title');
 var $categoryEntry = document.querySelector('#category');
 var $noteEntry = document.querySelector('#notes');
+var $reminderBlock = document.querySelector('.reminderBlock');
+var $reminderModal = document.querySelector('.reminder-block');
+var $reminderDetailContent = document.querySelector('.reminder-detail');
+var $returnButton = document.querySelector('.return-button');
+var $mainReminder = document.querySelector('.hero-control');
+var $reminderEntry = document.querySelector('#reminder');
+var $priorityEntry = document.querySelector('#priority');
+
+$mainReminder.addEventListener('click', function () {
+  if (event.target.matches('.detail') === false) {
+    return;
+  }
+  viewChange('puppyNote');
+});
+
+function reminderEdit(event) {
+  if (event.target.matches('.edit-reminder') === false) {
+    return;
+  }
+  viewChange('note-entry');
+  data.reminderDeleting = event.target.getAttribute('data-urgency');
+
+  for (var i = 0; i < data.reminder.length; i++) {
+    if (data.reminder[i].urgency === data.reminderDeleting) {
+      $reminderEntry.value = data.reminder[i].reminder;
+      $priorityEntry.value = data.reminderDeleting;
+    }
+  }
+
+}
+$reminderBlock.addEventListener('click', function () {
+  reminderEdit(event);
+  if (event.target.matches('.reminder-content') === false) {
+    return;
+  }
+  $modalHolder.className = 'modal-holder';
+  $picDeleteBlock.className = 'delete-block pic-delete hidden';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+  $reminderModal.className = 'reminder-block';
+  $reminderDetailContent.textContent = event.target.getAttribute('data-content');
+
+});
+
+$returnButton.addEventListener('click', function () {
+  $modalHolder.className = 'modal-holder hidden';
+  $picDeleteBlock.className = 'delete-block pic-delete';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+  $reminderModal.className = 'reminder-block hidden';
+});
 
 function editNote(event) {
   if (event.target.matches('.note-edit') === false && event.target.matches('.fa-edit') === false) {
@@ -559,6 +627,7 @@ function editNote(event) {
 }
 $noteList.addEventListener('click', function () {
 
+  profilePicSetup(event);
   editNote(event);
   if (event.target.matches('.note-delete') === false && event.target.matches('.fa-trash-alt') === false) {
     return;
@@ -851,12 +920,17 @@ function entryDisplay(event) {
       if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
         var contentShort = '';
         var contentSHortFinal = '';
-        for (var x = 0; x < 21; x++) {
-          contentShort += data.reminder[b].reminder[x];
+        if (data.reminder[b].reminder.length < 30) {
+          $reminderList[c].textContent = data.reminder[b].reminder;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        } else {
+          for (var x = 0; x < 30; x++) {
+            contentShort += data.reminder[b].reminder[x];
+          }
+          contentSHortFinal = contentShort + '...';
+          $reminderList[c].textContent = contentSHortFinal;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
         }
-        contentSHortFinal = contentShort + '...';
-        $reminderList[c].textContent = contentSHortFinal;
-        $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
       }
     }
   }
@@ -866,16 +940,23 @@ function entryDisplay(event) {
       if (data.reminder[e].urgency === $reminderDashboard[f].getAttribute('data-urgency')) {
         var dashShort = '';
         var dashShortFinal = '';
-        for (var y = 0; y < 21; y++) {
-          dashShort += data.reminder[e].reminder[y];
+        if (data.reminder[e].reminder.length < 30) {
+          $reminderDashboard[f].textContent = data.reminder[e].reminder;
+        } else {
+          for (var y = 0; y < 30; y++) {
+            dashShort += data.reminder[e].reminder[y];
+          }
+          dashShortFinal = dashShort + '...';
+          $reminderDashboard[f].textContent = dashShortFinal;
         }
-        dashShortFinal = dashShort + '...';
-        $reminderDashboard[f].textContent = dashShortFinal;
       }
     }
   }
   $heroImage.setAttribute('src', data.heroBackground);
   $heroBlock.style.backgroundColor = data.backgroundColor;
+  $profileImage.setAttribute('src', data.profileBackground);
+  $profileBlock.style.backgroundColor = data.backgroundColorProfile;
+
   viewChange(data.view);
 
   coverChange(data.cover);
