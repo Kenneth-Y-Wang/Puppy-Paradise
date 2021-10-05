@@ -64,7 +64,7 @@ body {
   color: #05789c;
   padding: 0.5rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   border-radius: 5px;
   border: 2px solid #05789c;
 }
@@ -80,8 +80,9 @@ body {
   position: absolute;
   background-color: #fcffff;
   min-width: 180px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
   z-index: 1;
+  border-radius: 10px;
 }
 
 .drop-down-tag {
@@ -97,7 +98,11 @@ body {
 
 .dropdown:hover .dropdown-content { display: block; }
 
-.dropdown:hover .drop-button { background-color: #f2fcfe; }
+.dropdown:hover .drop-button {
+  background-color: #05789c;
+  border: none;
+  color: white;
+}
 
 .sub-tag-holder {
   display: none;
@@ -119,7 +124,9 @@ body {
   padding-right: 0.75rem;
 }
 
-.view-tag {
+.view-tag,
+.category-group,
+.note-show-all {
   cursor: pointer;
 }
 

@@ -334,14 +334,14 @@ function profileColorChange(event) {
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
-/* <li class="note-row column-full" data-delete="" data-edit="">
+/* <li class="note-row column-full" data-category="" data-delete="" data-edit="">
     <div class="column-half">
       <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/placeholder-image-square.jpg">
       </div>
     </div>
     <div class="note-block column-half">
       <div class="category-row">
-        <div class="category-group column-one-fourth">Happy Moments</div>
+        <div class="category-group column-one-fourth" data-category="" >Happy Moments</div>
         <div class="category-button column-half">
           <button class="pic-button set-profile-pic" type="button" data-pic="">Set Profile</button>
           <button class="edit-button note-delete" type="button" data-delete=""><i class="fas fa-trash-alt"></i></button>
@@ -358,6 +358,7 @@ function renderNote(data) {
   $noteRow.setAttribute('class', 'note-row column-full');
   $noteRow.setAttribute('data-delete', data.logId);
   $noteRow.setAttribute('data-edit', data.logId);
+  $noteRow.setAttribute('data-category', data.category);
 
   var $picDiv = document.createElement('div');
   $picDiv.setAttribute('class', 'column-half');
@@ -379,6 +380,7 @@ function renderNote(data) {
   var $categoryGroup = document.createElement('div');
   $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
   $categoryGroup.textContent = data.category;
+  $categoryGroup.setAttribute('data-category', data.category);
 
   var $categoryButton = document.createElement('div');
   $categoryButton.setAttribute('class', 'category-button column-half');
@@ -541,6 +543,7 @@ $noteSubmit.addEventListener('submit', function () {
 
       }
     }
+    data.noteEditing = null;
   } else {
     data.logs.unshift(newLog);
     data.nextLogId++;
@@ -568,6 +571,7 @@ var $returnButton = document.querySelector('.return-button');
 var $mainReminder = document.querySelector('.hero-control');
 var $reminderEntry = document.querySelector('#reminder');
 var $priorityEntry = document.querySelector('#priority');
+var $noteShowAll = document.querySelector('.note-show-all');
 
 $mainReminder.addEventListener('click', function () {
   if (event.target.matches('.detail') === false) {
@@ -591,6 +595,28 @@ function reminderEdit(event) {
   }
 
 }
+
+function noteSort(event) {
+  if (event.target.matches('.category-group') === false) {
+    return;
+  }
+  var $noteRow = document.querySelectorAll('.note-row');
+  for (var a = 0; a < $noteRow.length; a++) {
+    if ($noteRow[a].getAttribute('data-category') === event.target.getAttribute('data-category')) {
+      $noteRow[a].className = 'note-row column-full';
+    } else {
+      $noteRow[a].className = 'note-row column-full hidden';
+    }
+  }
+}
+
+$noteShowAll.addEventListener('click', function () {
+  var $noteRow = document.querySelectorAll('.note-row');
+  for (var a = 0; a < $noteRow.length; a++) {
+    $noteRow[a].className = 'note-row column-full';
+  }
+});
+
 $reminderBlock.addEventListener('click', function () {
   reminderEdit(event);
   if (event.target.matches('.reminder-content') === false) {
@@ -629,6 +655,7 @@ $noteList.addEventListener('click', function () {
 
   profilePicSetup(event);
   editNote(event);
+  noteSort(event);
   if (event.target.matches('.note-delete') === false && event.target.matches('.fa-trash-alt') === false) {
     return;
   }
