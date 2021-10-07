@@ -490,8 +490,7 @@ $reminderSubmit.addEventListener('submit', function () {
           contentShort += newReminder.reminder[x];
         }
         contentSHortFinal = contentShort + '...';
-        // console.log(contentSHortFinal);
-        // console.log(contentShort);
+
         $reminderList[i].textContent = contentSHortFinal;
         $reminderList[i].setAttribute('data-content', newReminder.reminder);
       }
@@ -514,7 +513,6 @@ $reminderSubmit.addEventListener('submit', function () {
   }
   $reminderSubmit.reset();
   viewChange('puppyNote');
-  // tagHide();
 
 });
 $noteSubmit.addEventListener('submit', function () {
@@ -643,7 +641,6 @@ function editNote(event) {
   }
   data.noteEditing = event.target.getAttribute('data-edit');
   viewChange('note-entry');
-  console.log(event.target);
   $noteUrl.value = event.target.getAttribute('data-pic');
   $titleEntry.value = event.target.getAttribute('data-title');
   $categoryEntry.value = event.target.getAttribute('data-category');
@@ -679,8 +676,6 @@ $noteConfirm.addEventListener('click', function () {
       data.logs.splice(i, 1);
     }
   }
-  console.log(data.noteDeleting);
-  console.log(data.logs);
   var $noteRow = document.querySelectorAll('.note-row');
   for (var a = 0; a < $noteRow.length; a++) {
     if ($noteRow[a].getAttribute('data-delete') === String(data.noteDeleting)) {
@@ -999,7 +994,6 @@ var $viewScreen = document.querySelectorAll('.view-screen');
 // var $subTag = document.querySelectorAll('.sub-tag');
 var $exitApp = document.querySelector('.exit-app');
 var $startButton = document.querySelector('.start-button');
-// var $viewPage = document.querySelectorAll('.view-page');
 var $viewCover = document.querySelectorAll('.viewCover');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
@@ -1012,17 +1006,6 @@ function viewChange(string) {
   data.view = string;
 }
 
-// function pageChange(string) {
-//   for (var i = 0; i < $viewPage.length; i++) {
-//     if ($viewPage[i].getAttribute('data-page') === string) {
-//       $viewPage[i].className = 'view-page ';
-//     } else {
-//       $viewPage[i].className = 'view-page hidden';
-//     }
-//   }
-//   data.page = string;
-// }
-
 function coverChange(string) {
   for (var i = 0; i < $viewCover.length; i++) {
     if ($viewCover[i].getAttribute('data-cover') === string) {
@@ -1033,9 +1016,6 @@ function coverChange(string) {
   }
   data.cover = string;
 }
-// function pageChangeClick(event) {
-//   pageChange(event.target.getAttribute('data-page'));
-// }
 
 // function tagHide() {
 //   for (var i = 0; i < $subTag.length; i++) {
@@ -1080,11 +1060,9 @@ $dropMenuButton.addEventListener('click', function () {
   if (event.target.matches('.drop-down-tag') === false) {
     return;
   }
-  console.log(event.target);
+
   viewChange(event.target.getAttribute('data-view'));
 });
-// var $note = document.querySelector('#noteButton');
-// var $backtoMainNote = document.querySelector('.backToMainNotes');
 
 $picSearchButton.addEventListener('click', function () {
   viewChange(event.target.getAttribute('data-view'));
@@ -1098,8 +1076,3 @@ $newPicSearch.addEventListener('click', function () {
 $newLogSwitch.addEventListener('click', function () {
   viewChange(event.target.getAttribute('data-view'));
 });
-
-// $games.addEventListener('click', pageChangeClick);
-// $backToMainGame.addEventListener('click', pageChangeClick);
-// $note.addEventListener('click', pageChangeClick);
-// $backtoMainNote.addEventListener('click', pageChangeClick);

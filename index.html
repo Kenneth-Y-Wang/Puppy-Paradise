@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="delete-block note-delete-block hidden">
-        <h4 class="delete-message">Delete Picture?</h4>
+        <h4 class="delete-message">Delete Note?</h4>
         <div class="button-holder column-full">
           <button class="note-cancel pic-button" type="button">CANCEL</button>
           <button class="note-confirm pic-button" data-view="pic-gallery" type="button">CONFIRM</button>
@@ -99,7 +99,6 @@
       </div>
     </header>
     <main class="container app-main">
-      <!-- <div class="view-page" data-page="mainPage"> -->
       <div class="view-screen dashBoard" id="dash-board" data-view="dashboard">
         <div class="main-dashboard">
           <div class="hero-block column-half ">
@@ -118,10 +117,6 @@
               <button class="pic-button menu-button" id="pic-search-button" data-view="pic-search"><i class="fas fa-dog"></i> FUN PUPPY SEARCH</button>
               <button class="pic-button menu-button" id="new-log-button" data-view="note-entry"><i class="fas fa-file-alt"></i> NEW LOG</button>
             </div>
-            <!-- <div class="button-row">
-              <button class="pic-button menu-button" id="noteButton" data-page="puppyNote">NOTES</button>
-              <button class="pic-button menu-button" id="gameButton" data-page="games">GAMES</button>
-            </div>  -->
             <div>
               <h2 class=" mg-t-125 section-title">Reminder:</h2>
             </div>
@@ -137,14 +132,6 @@
               <div class="reminder-display reminder-dashboard column-two-third" data-urgency="Priority"></div>
               <button type="button" class="detail">Detail</button>
             </div>
-            <!-- <div class="reminder-brief-row">
-              <div class="reminder-display column-two-third"></div>
-              <button type="button" class="detail">Detail</button>
-            </div>
-            <div class="reminder-brief-row">
-              <div class="reminder-display column-two-third"></div>
-              <button type="button" class="detail">Detail</button>
-            </div> -->
           </div>
         </div>
         <div class="app-intro column-full">
@@ -163,7 +150,6 @@
         <div class="lds-dual-ring search-spinner hidden"></div>
         <div class="section-title-holder">
           <h1 class="section-title">Fun Puppy Search <i class="fas fa-dog"></i></h1>
-          <!-- <button class="exit-app exit-button" data-cover="app-cover"><i class="fas fa-paw"></i>Exit</button> -->
         </div>
         <div class="search-button-holder">
           <h3 class="function-comment column-full">Choose number of images by search, then search by breed or random! </h3>
@@ -234,7 +220,6 @@
           </div>
         </form>
       </div>
-      <!-- </div> -->
       <div class="view-screen hidden" data-view="pic-gallery">
         <div class="section-title-holder">
           <h1 class="section-title">My Puppy Gallery <i class="fas fa-paw"></i></h1>
@@ -303,7 +288,7 @@
           </div>
         </div>
         <div class="show-all-row">
-          <h1 class="section-title record-section">Notes:</h1>
+          <h1 class="section-title record-section">Notes: <span class="function-comment span-comment"> Press Category to Sort</span></h1>
           <a><h4 class="note-show-all">Show All</h4></a>
         </div>
         <ul id="note-list" class="list-group">
@@ -312,8 +297,6 @@
       <div class="view-screen hidden" data-view="games">
         <div class="section-title-holder">
           <h1 class="section-title">Puppy Games <i class="fas fa-paw"></i></h1>
-          <!-- <button class=" exit-button backToMainGame" data-page="mainPage"><i class="fas fa-paw"
-              data-page="mainPage"></i>Back</button> -->
         </div>
         <div class="game-row">
           <div class="column-half">
@@ -351,7 +334,7 @@
           </div>
         </div>
         <div class="show-all-row">
-          <h1 class="section-title record-section">Game Records:</h1>
+          <h1 class="section-title record-section">Records: <span class="function-comment span-comment"> Press Breed to Sort</span></h1>
           <a><h4 class="record-show-all">Show All</h4></a>
         </div>
         <div id="record-list" class="list-group"></div>

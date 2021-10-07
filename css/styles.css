@@ -370,6 +370,8 @@ body {
 
 .reminder-content {
   cursor: pointer;
+  margin: auto 0;
+  width: 300px;
 }
 
 .button-left {
@@ -445,6 +447,7 @@ select {
 
 textarea {
   padding-top: 0.75rem;
+  height: 200px;
 }
 
 #priority,
@@ -669,10 +672,6 @@ textarea {
   justify-content: flex-end;
 }
 
-textarea {
-  height: 200px;
-}
-
 .game-row {
   display: flex;
   flex-wrap: wrap;
@@ -827,6 +826,7 @@ textarea {
   margin: 0 0.75rem;
   text-decoration: underline;
   transition-duration: 0.5s;
+  padding-top: 0.5rem;
 }
 
 .breed-button:hover,
@@ -857,11 +857,6 @@ textarea {
 .reminder-holder {
   display: flex;
   align-items: center;
-}
-
-.reminder-content {
-  margin: auto 0;
-  width: 300px;
 }
 
 .line-breaker {
