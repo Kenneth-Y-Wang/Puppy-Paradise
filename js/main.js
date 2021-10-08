@@ -1,10 +1,10 @@
 var $breed = document.querySelector('.breed');
 var $random = document.querySelector('.random');
-var $form = document.querySelector('form');
+var $form = document.querySelector('#search-entry');
 var $opButton = document.querySelectorAll('.opButton');
 var $buttonLeft = document.querySelector('.button-left');
 var picViewNumber = 1;
-var $tabView = document.querySelector('.tabLeft');
+var $tabView = document.querySelector('.tab-left');
 
 // var $picView = document.querySelector('.picView');
 
@@ -206,7 +206,7 @@ function renderSavePic(data) {
 
   var $backgroundButton = document.createElement('button');
   $backgroundButton.setAttribute('class', 'pic-button set-background');
-  $backgroundButton.setAttribute('data-page', 'mainPage');
+  $backgroundButton.setAttribute('data-view', 'dashboard');
   $backgroundButton.setAttribute('data-pic', data);
   $backgroundButton.setAttribute('type', 'button');
   $backgroundButton.textContent = 'Set Background';
@@ -245,9 +245,10 @@ $pictureList.addEventListener('click', function () {
   data.nextEntryId++;
   var $newSavedPic = renderSavePic(newSave.url);
   $galleryList.prepend($newSavedPic);
+  viewChange('pic-gallery');
 
 });
-// here start the delete process
+// here start the pic delete process
 
 var $modalHolder = document.querySelector('.modal-holder');
 var $cancel = document.querySelector('.cancel');
@@ -294,8 +295,8 @@ function setBackground(event) {
   }
   $heroImage.setAttribute('src', event.target.getAttribute('data-pic'));
   data.heroBackground = event.target.getAttribute('data-pic');
-  pageChange(event.target.getAttribute('data-page'));
-  tagHide();
+  viewChange(event.target.getAttribute('data-view'));
+  // tagHide();
 }
 
 var $heroBlock = document.querySelector('.hero-block');
@@ -312,110 +313,386 @@ $colorHolder.addEventListener('click', colorChange);
 
 // here start the profile and note section
 
-// var $profileImage = document.querySelector('#profile-image');
+var $profileImage = document.querySelector('#profile-image');
 var $profileBlock = document.querySelector('.profile-block');
 var $colorHolderNote = document.querySelector('.color-button-holder-note');
 
+function profilePicSetup(event) {
+  if (event.target.matches('.set-profile-pic') === false) {
+    return;
+  }
+  $profileImage.setAttribute('src', event.target.getAttribute('data-pic'));
+  data.profileBackground = event.target.getAttribute('data-pic');
+
+}
 function profileColorChange(event) {
   if (event.target.matches('.color-button') === false) {
     return;
   }
   $profileBlock.style.backgroundColor = event.target.getAttribute('data-color');
-  data.backgroundColorNote = event.target.getAttribute('data-color');
+  data.backgroundColorProfile = event.target.getAttribute('data-color');
 }
 $colorHolderNote.addEventListener('click', profileColorChange);
 
-/* <li class="note-row column-full">
+/* <li class="note-row column-full" data-category="" data-delete="" data-edit="">
     <div class="column-half">
       <div class="note-pic-holder"><img class="picView" id="note-pic" src="images/placeholder-image-square.jpg">
       </div>
     </div>
     <div class="note-block column-half">
       <div class="category-row">
-        <div class="category-group column-one-fourth">Happy Moments</div>
+        <div class="category-group column-one-fourth" data-category="" >Happy Moments</div>
         <div class="category-button column-half">
-          <button class="pic-button set-profile-pic" type="button">Set Profile</button>
-          <button class="edit-button" type="button"><i class="fas fa-trash-alt"></i></button>
-          <button class="edit-button" type="button"><i class="fas fa-edit"></i></button>
+          <button class="pic-button set-profile-pic" type="button" data-pic="">Set Profile</button>
+          <button class="edit-button note-delete" type="button" data-delete=""><i class="fas fa-trash-alt"></i></button>
+          <button class="edit-button note-edit" type="button" data-edit="" data-pic="" data-title="" data-note="" data-category=""><i class="fas fa-edit"></i></button>
         </div>
       </div>
+      <h3 class="note-title"></h3>
       <div class="note-content column-full"></div>
     </div>
    </li> */
 
-// function renderNote(data) {
-//   var $noteRow = document.createElement('li');
-//   $noteRow.setAttribute('class', 'note-row column-full');
+function renderNote(data) {
+  var $noteRow = document.createElement('li');
+  $noteRow.setAttribute('class', 'note-row column-full');
+  $noteRow.setAttribute('data-delete', data.logId);
+  $noteRow.setAttribute('data-edit', data.logId);
+  $noteRow.setAttribute('data-category', data.category);
 
-//   var $picDiv = document.createElement('div');
-//   $picDiv.setAttribute('class', 'column-half');
+  var $picDiv = document.createElement('div');
+  $picDiv.setAttribute('class', 'column-half');
 
-//   var $notePicHolder = document.createElement('div');
-//   $notePicHolder.setAttribute('class', 'note-pic-holder');
+  var $notePicHolder = document.createElement('div');
+  $notePicHolder.setAttribute('class', 'note-pic-holder');
 
-//   var $notePic = document.createElement('img');
-//   $notePic.setAttribute('class', 'picView');
-//   $notePic.setAttribute('id', 'note-pic');
-//   $notePic.setAttribute('src', data.url);
+  var $notePic = document.createElement('img');
+  $notePic.setAttribute('class', 'picView');
+  $notePic.setAttribute('id', 'note-pic');
+  $notePic.setAttribute('src', data.url);
 
-//   var $noteBlock = document.createElement('div');
-//   $noteBlock.setAttribute('class', 'note-block column-half');
+  var $noteBlock = document.createElement('div');
+  $noteBlock.setAttribute('class', 'note-block column-half');
 
-//   var $categoryRow = document.createElement('div');
-//   $categoryRow.setAttribute('class', 'category-row');
+  var $categoryRow = document.createElement('div');
+  $categoryRow.setAttribute('class', 'category-row');
 
-//   var $categoryGroup = document.createElement('div');
-//   $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
-//   $categoryGroup.textContent = data.category;
+  var $categoryGroup = document.createElement('div');
+  $categoryGroup.setAttribute('class', 'category-group column-one-fourth');
+  $categoryGroup.textContent = data.category;
+  $categoryGroup.setAttribute('data-category', data.category);
 
-//   var $categoryButton = document.createElement('div');
-//   $categoryButton.setAttribute('class', 'category-button column-half');
+  var $categoryButton = document.createElement('div');
+  $categoryButton.setAttribute('class', 'category-button column-half');
 
-//   var $setProfile = document.createElement('button');
-//   $setProfile.setAttribute('class', 'pic-button set-profile-pic');
-//   $setProfile.setAttribute('type', 'button');
-//   $setProfile.textContent = 'Set Profile';
+  var $setProfile = document.createElement('button');
+  $setProfile.setAttribute('class', 'pic-button set-profile-pic');
+  $setProfile.setAttribute('type', 'button');
+  $setProfile.setAttribute('data-pic', data.url);
+  $setProfile.textContent = 'Set Profile';
 
-//   var $deleteButton = document.createElement('button');
-//   $deleteButton.setAttribute('class', 'edit-button');
-//   $deleteButton.setAttribute('type', 'button');
+  var $deleteButton = document.createElement('button');
+  $deleteButton.setAttribute('class', 'edit-button note-delete');
+  $deleteButton.setAttribute('type', 'button');
+  $deleteButton.setAttribute('data-delete', data.logId);
 
-//   var $trashSign = document.createElement('i');
-//   $trashSign.setAttribute('class', 'fas fa-trash-alt');
+  var $trashSign = document.createElement('i');
+  $trashSign.setAttribute('class', 'fas fa-trash-alt');
+  $trashSign.setAttribute('data-delete', data.logId);
 
-//   var $editButton = document.createElement('button');
-//   $editButton.setAttribute('class', 'edit-button');
-//   $editButton.setAttribute('type', 'button');
+  var $editButton = document.createElement('button');
+  $editButton.setAttribute('class', 'edit-button note-edit');
+  $editButton.setAttribute('type', 'button');
+  $editButton.setAttribute('data-edit', data.logId);
+  $editButton.setAttribute('data-pic', data.url);
+  $editButton.setAttribute('data-title', data.title);
+  $editButton.setAttribute('data-category', data.category);
+  $editButton.setAttribute('data-note', data.note);
 
-//   var $penSign = document.createElement('i');
-//   $penSign.setAttribute('class', 'fas fa-edit');
+  var $penSign = document.createElement('i');
+  $penSign.setAttribute('class', 'fas fa-edit');
+  $penSign.setAttribute('data-edit', data.logId);
+  $penSign.setAttribute('data-pic', data.url);
+  $penSign.setAttribute('data-title', data.title);
+  $penSign.setAttribute('data-category', data.category);
+  $penSign.setAttribute('data-note', data.note);
 
-//   var $noteContent = document.createElement('div');
-//   $noteContent.setAttribute('class', 'note-content column-full');
-//   $noteContent.textContent = data.note;
+  var $noteTitle = document.createElement('h3');
+  $noteTitle.setAttribute('class', 'note-title');
+  $noteTitle.textContent = data.title;
 
-//   $noteRow.appendChild($picDiv);
-//   $noteRow.appendChild($noteBlock);
+  var $noteContent = document.createElement('div');
+  $noteContent.setAttribute('class', 'note-content column-full');
+  $noteContent.textContent = data.note;
 
-//   $picDiv.appendChild($notePicHolder);
-//   $notePicHolder.appendChild($notePic);
+  $noteRow.appendChild($picDiv);
+  $noteRow.appendChild($noteBlock);
 
-//   $noteBlock.appendChild($categoryRow);
-//   $noteBlock.appendChild($noteContent);
+  $picDiv.appendChild($notePicHolder);
+  $notePicHolder.appendChild($notePic);
 
-//   $categoryRow.appendChild($categoryGroup);
-//   $categoryRow.appendChild($categoryButton);
+  $noteBlock.appendChild($categoryRow);
+  $noteBlock.appendChild($noteTitle);
+  $noteBlock.appendChild($noteContent);
 
-//   $categoryButton.appendChild($setProfile);
-//   $categoryButton.appendChild($deleteButton);
-//   $categoryButton.appendChild($editButton);
+  $categoryRow.appendChild($categoryGroup);
+  $categoryRow.appendChild($categoryButton);
 
-//   $deleteButton.appendChild($trashSign);
-//   $editButton.appendChild($penSign);
+  $categoryButton.appendChild($setProfile);
+  $categoryButton.appendChild($deleteButton);
+  $categoryButton.appendChild($editButton);
 
-//   return $noteRow;
+  $deleteButton.appendChild($trashSign);
+  $editButton.appendChild($penSign);
 
-// }
+  return $noteRow;
+
+}
+
+var $noteSubmit = document.querySelector('.note-entry');
+var $reminderSubmit = document.querySelector('.reminder-entry');
+var $notePic = document.querySelector('#entry');
+var $noteUrl = document.querySelector('#url');
+var $noteList = document.querySelector('#note-list');
+var $reminderList = document.querySelectorAll('.reminder-content');
+var $reminderDashboard = document.querySelectorAll('.reminder-dashboard');
+
+$noteUrl.addEventListener('input', function () {
+  if (event.target.value !== '') {
+    $notePic.setAttribute('src', event.target.value);
+  }
+});
+
+$reminderSubmit.addEventListener('submit', function () {
+
+  event.preventDefault();
+  var newReminder = {};
+  newReminder.reminder = $reminderSubmit.elements.reminder.value;
+  newReminder.urgency = $reminderSubmit.elements.priority.value;
+
+  for (var a = 0; a < data.reminder.length; a++) {
+    if (data.reminder[a].urgency === newReminder.urgency) {
+      data.reminder.splice(a, 1);
+
+    }
+  }
+  data.reminder.unshift(newReminder);
+
+  let charNumber = 30;
+
+  if (window.innerWidth > 1290) {
+    charNumber = 40;
+  }
+
+  for (var i = 0; i < $reminderList.length; i++) {
+    if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
+      var contentShort = '';
+      var contentSHortFinal = '';
+      if (newReminder.reminder.length < charNumber) {
+        $reminderList[i].textContent = newReminder.reminder;
+        $reminderList[i].setAttribute('data-content', newReminder.reminder);
+      } else {
+        for (var x = 0; x < charNumber; x++) {
+          contentShort += newReminder.reminder[x];
+        }
+        contentSHortFinal = contentShort + '...';
+
+        $reminderList[i].textContent = contentSHortFinal;
+        $reminderList[i].setAttribute('data-content', newReminder.reminder);
+      }
+    }
+  }
+  for (var b = 0; b < $reminderDashboard.length; b++) {
+    if ($reminderDashboard[b].getAttribute('data-urgency') === newReminder.urgency) {
+      var dashShort = '';
+      var dashShortFinal = '';
+      if (newReminder.reminder.length < charNumber) {
+        $reminderDashboard[b].textContent = newReminder.reminder;
+      } else {
+        for (var y = 0; y < charNumber; y++) {
+          dashShort += newReminder.reminder[y];
+        }
+        dashShortFinal = dashShort + '...';
+        $reminderDashboard[b].textContent = dashShortFinal;
+      }
+    }
+  }
+  $reminderSubmit.reset();
+  viewChange('puppyNote');
+
+});
+$noteSubmit.addEventListener('submit', function () {
+  event.preventDefault();
+  var newLog = {};
+  newLog.url = $noteSubmit.elements.url.value;
+  newLog.category = $noteSubmit.elements.category.value;
+  newLog.title = $noteSubmit.elements.title.value;
+  newLog.note = $noteSubmit.elements.notes.value;
+  newLog.logId = data.nextLogId;
+
+  if (data.noteEditing !== null) {
+    for (var i = 0; i < data.logs.length; i++) {
+      if (String(data.logs[i].logId) === data.noteEditing) {
+        data.logs[i].url = newLog.url;
+        data.logs[i].category = newLog.category;
+        data.logs[i].title = newLog.title;
+        data.logs[i].note = newLog.note;
+
+        var $noteRow = document.querySelectorAll('.note-row');
+        for (var a = 0; a < $noteRow.length; a++) {
+          if ($noteRow[a].getAttribute('data-edit') === data.noteEditing) {
+            $noteRow[a].replaceWith(renderNote(data.logs[i]));
+          }
+        }
+
+      }
+    }
+    data.noteEditing = null;
+  } else {
+    data.logs.unshift(newLog);
+    data.nextLogId++;
+    $noteList.prepend(renderNote(newLog));
+  }
+
+  $notePic.setAttribute('src', 'images/dog-place-holder.png');
+  $noteSubmit.reset();
+  viewChange('puppyNote');
+  // tagHide();
+
+});
+
+var $picDeleteBlock = document.querySelector('.pic-delete');
+var $noteDeleteBlock = document.querySelector('.note-delete-block');
+var $noteCancel = document.querySelector('.note-cancel');
+var $noteConfirm = document.querySelector('.note-confirm');
+var $titleEntry = document.querySelector('#title');
+var $categoryEntry = document.querySelector('#category');
+var $noteEntry = document.querySelector('#notes');
+var $reminderBlock = document.querySelector('.reminderBlock');
+var $reminderModal = document.querySelector('.reminder-block');
+var $reminderDetailContent = document.querySelector('.reminder-detail');
+var $returnButton = document.querySelector('.return-button');
+var $mainReminder = document.querySelector('.hero-control');
+var $reminderEntry = document.querySelector('#reminder');
+var $priorityEntry = document.querySelector('#priority');
+var $noteShowAll = document.querySelector('.note-show-all');
+
+$mainReminder.addEventListener('click', function () {
+  if (event.target.matches('.detail') === false) {
+    return;
+  }
+  viewChange('puppyNote');
+});
+
+function reminderEdit(event) {
+  if (event.target.matches('.edit-reminder') === false) {
+    return;
+  }
+  viewChange('note-entry');
+  data.reminderDeleting = event.target.getAttribute('data-urgency');
+
+  for (var i = 0; i < data.reminder.length; i++) {
+    if (data.reminder[i].urgency === data.reminderDeleting) {
+      $reminderEntry.value = data.reminder[i].reminder;
+      $priorityEntry.value = data.reminderDeleting;
+    }
+  }
+
+}
+
+function noteSort(event) {
+  if (event.target.matches('.category-group') === false) {
+    return;
+  }
+  var $noteRow = document.querySelectorAll('.note-row');
+  for (var a = 0; a < $noteRow.length; a++) {
+    if ($noteRow[a].getAttribute('data-category') === event.target.getAttribute('data-category')) {
+      $noteRow[a].className = 'note-row column-full';
+    } else {
+      $noteRow[a].className = 'note-row column-full hidden';
+    }
+  }
+}
+
+$noteShowAll.addEventListener('click', function () {
+  var $noteRow = document.querySelectorAll('.note-row');
+  for (var a = 0; a < $noteRow.length; a++) {
+    $noteRow[a].className = 'note-row column-full';
+  }
+});
+
+$reminderBlock.addEventListener('click', function () {
+  reminderEdit(event);
+  if (event.target.matches('.reminder-content') === false) {
+    return;
+  }
+  $modalHolder.className = 'modal-holder';
+  $picDeleteBlock.className = 'delete-block pic-delete hidden';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+  $reminderModal.className = 'reminder-block';
+  $reminderDetailContent.textContent = event.target.getAttribute('data-content');
+
+});
+
+$returnButton.addEventListener('click', function () {
+  $modalHolder.className = 'modal-holder hidden';
+  $picDeleteBlock.className = 'delete-block pic-delete';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+  $reminderModal.className = 'reminder-block hidden';
+});
+
+function editNote(event) {
+  if (event.target.matches('.note-edit') === false && event.target.matches('.fa-edit') === false) {
+    return;
+  }
+  data.noteEditing = event.target.getAttribute('data-edit');
+  viewChange('note-entry');
+  $noteUrl.value = event.target.getAttribute('data-pic');
+  $titleEntry.value = event.target.getAttribute('data-title');
+  $categoryEntry.value = event.target.getAttribute('data-category');
+  $noteEntry.value = event.target.getAttribute('data-note');
+  $notePic.setAttribute('src', event.target.getAttribute('data-pic'));
+
+}
+$noteList.addEventListener('click', function () {
+
+  profilePicSetup(event);
+  editNote(event);
+  noteSort(event);
+  if (event.target.matches('.note-delete') === false && event.target.matches('.fa-trash-alt') === false) {
+    return;
+  }
+  data.noteDeleting = event.target.getAttribute('data-delete');
+  $modalHolder.className = 'modal-holder';
+  $picDeleteBlock.className = 'delete-block pic-delete hidden';
+  $noteDeleteBlock.className = 'delete-block note-delete-block';
+
+});
+
+$noteCancel.addEventListener('click', function () {
+  $modalHolder.className = 'modal-holder hidden';
+  $picDeleteBlock.className = 'delete-block pic-delete';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+});
+
+$noteConfirm.addEventListener('click', function () {
+
+  for (var i = 0; i < data.logs.length; i++) {
+    if (String(data.logs[i].logId) === data.noteDeleting) {
+      data.logs.splice(i, 1);
+    }
+  }
+  var $noteRow = document.querySelectorAll('.note-row');
+  for (var a = 0; a < $noteRow.length; a++) {
+    if ($noteRow[a].getAttribute('data-delete') === String(data.noteDeleting)) {
+      $noteRow[a].remove();
+    }
+  }
+  data.noteDeleting = null;
+  $modalHolder.className = 'modal-holder hidden';
+  $picDeleteBlock.className = 'delete-block pic-delete';
+  $noteDeleteBlock.className = 'delete-block note-delete-block hidden';
+});
 // here start the game part
 
 var $gameImage = document.querySelector('#game-image');
@@ -659,24 +936,121 @@ function entryDisplay(event) {
   for (var j = 0; j < data.gameRecords.length; j++) {
     $recordList.appendChild(renderGameRecord(data.gameRecords[j]));
   }
+
+  for (var a = 0; a < data.logs.length; a++) {
+
+    $noteList.appendChild(renderNote(data.logs[a]));
+
+  }
+
+  let charNumber = 30;
+  if (window.innerWidth > 1290) {
+    charNumber = 40;
+  }
+  for (var b = 0; b < data.reminder.length; b++) {
+    for (var c = 0; c < $reminderList.length; c++) {
+      if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
+        var contentShort = '';
+        var contentSHortFinal = '';
+        if (data.reminder[b].reminder.length < charNumber) {
+          $reminderList[c].textContent = data.reminder[b].reminder;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        } else {
+          for (var x = 0; x < charNumber; x++) {
+            contentShort += data.reminder[b].reminder[x];
+          }
+          contentSHortFinal = contentShort + '...';
+          $reminderList[c].textContent = contentSHortFinal;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        }
+      }
+    }
+  }
+
+  for (var e = 0; e < data.reminder.length; e++) {
+    for (var f = 0; f < $reminderDashboard.length; f++) {
+      if (data.reminder[e].urgency === $reminderDashboard[f].getAttribute('data-urgency')) {
+        var dashShort = '';
+        var dashShortFinal = '';
+        if (data.reminder[e].reminder.length < charNumber) {
+          $reminderDashboard[f].textContent = data.reminder[e].reminder;
+        } else {
+          for (var y = 0; y < charNumber; y++) {
+            dashShort += data.reminder[e].reminder[y];
+          }
+          dashShortFinal = dashShort + '...';
+          $reminderDashboard[f].textContent = dashShortFinal;
+        }
+      }
+    }
+  }
   $heroImage.setAttribute('src', data.heroBackground);
   $heroBlock.style.backgroundColor = data.backgroundColor;
+  $profileImage.setAttribute('src', data.profileBackground);
+  $profileBlock.style.backgroundColor = data.backgroundColorProfile;
+
   viewChange(data.view);
-  pageChange(data.page);
+
   coverChange(data.cover);
-  tagHide();
+  // tagHide();
+
+}
+function resize() {
+
+  let charNumber = 30;
+  if (window.innerWidth > 1290) {
+    charNumber = 40;
+  }
+
+  for (var b = 0; b < data.reminder.length; b++) {
+    for (var c = 0; c < $reminderList.length; c++) {
+      if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
+        var contentShort = '';
+        var contentSHortFinal = '';
+        if (data.reminder[b].reminder.length < charNumber) {
+          $reminderList[c].textContent = data.reminder[b].reminder;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        } else {
+          for (var x = 0; x < charNumber; x++) {
+            contentShort += data.reminder[b].reminder[x];
+          }
+          contentSHortFinal = contentShort + '...';
+          $reminderList[c].textContent = contentSHortFinal;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        }
+      }
+    }
+  }
+
+  for (var e = 0; e < data.reminder.length; e++) {
+    for (var f = 0; f < $reminderDashboard.length; f++) {
+      if (data.reminder[e].urgency === $reminderDashboard[f].getAttribute('data-urgency')) {
+        var dashShort = '';
+        var dashShortFinal = '';
+        if (data.reminder[e].reminder.length < charNumber) {
+          $reminderDashboard[f].textContent = data.reminder[e].reminder;
+        } else {
+          for (var y = 0; y < charNumber; y++) {
+            dashShort += data.reminder[e].reminder[y];
+          }
+          dashShortFinal = dashShort + '...';
+          $reminderDashboard[f].textContent = dashShortFinal;
+        }
+      }
+    }
+  }
 
 }
 
+window.addEventListener('resize', resize);
 document.addEventListener('DOMContentLoaded', entryDisplay);
 
 // here start the view swapping process
 
 var $viewScreen = document.querySelectorAll('.view-screen');
-var $subTag = document.querySelectorAll('.sub-tag');
+// var $subTag = document.querySelectorAll('.sub-tag');
 var $exitApp = document.querySelector('.exit-app');
 var $startButton = document.querySelector('.start-button');
-var $viewPage = document.querySelectorAll('.view-page');
 var $viewCover = document.querySelectorAll('.viewCover');
 function viewChange(string) {
   for (var i = 0; i < $viewScreen.length; i++) {
@@ -689,17 +1063,6 @@ function viewChange(string) {
   data.view = string;
 }
 
-function pageChange(string) {
-  for (var i = 0; i < $viewPage.length; i++) {
-    if ($viewPage[i].getAttribute('data-page') === string) {
-      $viewPage[i].className = 'view-page ';
-    } else {
-      $viewPage[i].className = 'view-page hidden';
-    }
-  }
-  data.page = string;
-}
-
 function coverChange(string) {
   for (var i = 0; i < $viewCover.length; i++) {
     if ($viewCover[i].getAttribute('data-cover') === string) {
@@ -710,19 +1073,16 @@ function coverChange(string) {
   }
   data.cover = string;
 }
-function pageChangeClick(event) {
-  pageChange(event.target.getAttribute('data-page'));
-}
 
-function tagHide() {
-  for (var i = 0; i < $subTag.length; i++) {
-    if ($subTag[i].getAttribute('data-view') === data.view) {
-      $subTag[i].className = ' view-tag sub-tag hidden';
-    } else {
-      $subTag[i].className = ' view-tag sub-tag';
-    }
-  }
-}
+// function tagHide() {
+//   for (var i = 0; i < $subTag.length; i++) {
+//     if ($subTag[i].getAttribute('data-view') === data.view) {
+//       $subTag[i].className = ' view-tag sub-tag hidden';
+//     } else {
+//       $subTag[i].className = ' view-tag sub-tag';
+//     }
+//   }
+// }
 
 function clickViewChange(event) {
   if (event.target.matches('.view-tag') === false) {
@@ -735,7 +1095,7 @@ function clickViewChange(event) {
 
 $tabView.addEventListener('click', function () {
   clickViewChange(event);
-  tagHide();
+  // tagHide();
 
 });
 
@@ -747,16 +1107,29 @@ $exitApp.addEventListener('click', function () {
   coverChange(event.target.getAttribute('data-cover'));
 });
 
-var $galleryButton = document.querySelector('#galleryButton');
-var $backToMain = document.querySelector('.backToMain');
-var $backToMainGame = document.querySelector('.backToMainGame');
-var $games = document.querySelector('#gameButton');
-var $note = document.querySelector('#noteButton');
-var $backtoMainNote = document.querySelector('.backToMainNotes');
+var $picSearchButton = document.querySelector('#pic-search-button');
+var $newLogButton = document.querySelector('#new-log-button');
+var $newPicSearch = document.querySelector('.new-search-button');
+var $newLogSwitch = document.querySelector('.new-log-switch');
+var $dropMenuButton = document.querySelector('.dropdown-content');
 
-$galleryButton.addEventListener('click', pageChangeClick);
-$backToMain.addEventListener('click', pageChangeClick);
-$games.addEventListener('click', pageChangeClick);
-$backToMainGame.addEventListener('click', pageChangeClick);
-$note.addEventListener('click', pageChangeClick);
-$backtoMainNote.addEventListener('click', pageChangeClick);
+$dropMenuButton.addEventListener('click', function () {
+  if (event.target.matches('.drop-down-tag') === false) {
+    return;
+  }
+
+  viewChange(event.target.getAttribute('data-view'));
+});
+
+$picSearchButton.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+$newLogButton.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+$newPicSearch.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});
+$newLogSwitch.addEventListener('click', function () {
+  viewChange(event.target.getAttribute('data-view'));
+});

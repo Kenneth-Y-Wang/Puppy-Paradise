@@ -59,17 +59,74 @@ body {
   padding-top: 0.75rem;
 }
 
+.drop-button {
+  background-color: white;
+  color: #05789c;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 5px;
+  border: 2px solid #05789c;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.75rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fcffff;
+  min-width: 180px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.drop-down-tag {
+  color: #05789c;
+  font-weight: 500;
+  padding: 0.5rem 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  display: block;
+}
+
+.drop-down-tag:hover { background-color: #ddd; }
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.dropdown:hover .drop-button {
+  background-color: #05789c;
+  border: none;
+  color: white;
+}
+
+.sub-tag-holder {
+  display: none;
+}
+
+.exit-app {
+  width: 80px;
+}
+
 .tab-list {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 3px #93a9f6 solid;
   border-left: 1px #93a9f6 solid;
   border-right: 1px #93a9f6 solid;
   background-color: white;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
-.view-tag {
+.view-tag,
+.category-group,
+.note-show-all {
   cursor: pointer;
 }
 
@@ -81,15 +138,14 @@ body {
   font-weight: bolder;
   font-size: 2rem;
   display: inline-block;
-  margin-left: 0.25rem;
   color: #0d7ed0;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
 
 .sub-tag {
-  margin-left: 1.5rem;
-  font-size: 1rem;
+  margin-left: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-decoration: underline;
   color: #05789c;
@@ -98,7 +154,8 @@ body {
 
 .app-main {
   background-color: white;
-  height: 3000px;
+  height: 1200px;
+  overflow-y: auto;
 
   /* min-height: -webkit-fill-available; */
 }
@@ -117,19 +174,69 @@ body {
   padding-bottom: 1rem;
 }
 
+.reminder-brief-row {
+  display: flex;
+  margin-top: 1.75rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  background-color: white;
+  color: #05789c;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.app-intro {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+  background-image: url('../images/Northern-Golden-Retriever-Red-Golden-Puppies.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.app-slogan {
+  font-family: 'Architects Daughter', cursive;
+  color: #274c77;
+  font-size: 3rem;
+}
+
+.intro-box {
+  border: 1px #ade8f4 solid;
+  border-radius: 5px;
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  color: #caf0f8;
+  transition-duration: 0.5s;
+}
+
+.intro-box:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #0096c7;
+  border: none;
+}
+
 .reminder-display {
   border: solid 2px #05789c;
   border-radius: 5px;
   width: 100%;
-  height: 30px;
-  margin-top: 1.75rem;
+  height: 35px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.75);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
 }
 
 .button-row {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-block,
@@ -222,7 +329,6 @@ body {
 }
 
 .view-screen {
-  margin-top: 0.5rem;
   padding-top: 0.75rem;
 }
 
@@ -250,6 +356,23 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-image: url('../images/light-background-1.jpeg');
+  background-size: cover;
+}
+
+.function-comment {
+  font-family: 'Architects Daughter', cursive;
+  color: #3f88c5;
+}
+
+.span-comment {
+  font-size: 1.2rem;
+}
+
+.reminder-content {
+  cursor: pointer;
+  margin: auto 0;
+  width: 300px;
 }
 
 .button-left {
@@ -323,6 +446,11 @@ select {
   padding-left: 0.75rem;
 }
 
+textarea {
+  padding-top: 0.75rem;
+  height: 200px;
+}
+
 #priority,
 #category {
   margin-top: auto;
@@ -347,7 +475,7 @@ select {
 }
 
 .menu-button {
-  width: 120px;
+  width: 180px;
 }
 
 .menu-button:hover {
@@ -454,6 +582,19 @@ select {
   text-align: center;
 }
 
+.reminder-block {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5rem;
+  border: none;
+  text-align: center;
+}
+
+.reminder-detail {
+  color: #184e77;
+  font-size: 1rem;
+}
+
 .delete-message {
   margin-top: 0.25rem;
   font-weight: 500;
@@ -473,27 +614,37 @@ select {
   justify-content: space-between;
 }
 
-.cancel {
+.cancel,
+.note-cancel {
   color: #caf0f8;
   border: solid 1px #caf0f8;
   background-color: transparent;
 }
 
-.confirm {
+.confirm,
+.note-confirm {
   background-color: transparent;
   color: #ef233c;
   border: solid 1px #ef233c;
 }
 
-.cancel:hover {
+.cancel:hover,
+.note-cancel:hover {
   background-color: #caf0f8;
   color: #006d77;
   transform: scale(1.2);
 }
 
-.confirm:hover {
+.confirm:hover,
+.note-confirm:hover {
   background-color: #fec5bb;
   transform: scale(1.2);
+}
+
+.reminder-submit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .data-log {
@@ -510,6 +661,7 @@ select {
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
+  padding: 0;
 }
 
 .select-label {
@@ -521,14 +673,13 @@ select {
   justify-content: flex-end;
 }
 
-textarea {
-  height: 200px;
-}
-
 .game-row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem;
+  border: 2px solid #cae9ff;
+  border-radius: 10px;
 }
 
 .timer-row {
@@ -585,6 +736,7 @@ textarea {
   justify-content: center;
   align-items: center;
   margin-top: 0.75rem;
+  height: 50px;
 }
 
 .answer-box {
@@ -593,6 +745,13 @@ textarea {
   border-bottom: 2px solid #274c77;
   margin: 0.75rem 0.5rem;
   background-color: white;
+}
+
+.explain-text {
+  font-family: 'Architects Daughter', cursive;
+  color: #3f88c5;
+  margin: 0.25rem 0;
+  font-size: 1rem;
 }
 
 .game-submit {
@@ -668,6 +827,7 @@ textarea {
   margin: 0 0.75rem;
   text-decoration: underline;
   transition-duration: 0.5s;
+  padding-top: 0.5rem;
 }
 
 .breed-button:hover,
@@ -700,9 +860,17 @@ textarea {
   align-items: center;
 }
 
-.reminder-content {
-  margin: auto 0;
-  width: 300px;
+.line-breaker {
+  height: 4px;
+  background-color: #cae9ff;
+  border-width: 0;
+  margin: 1.75rem 0;
+}
+
+.note-title {
+  font-family: 'Architects Daughter', cursive;
+  color: #274c77;
+  margin: 0.75rem 0;
 }
 
 .edit-button {
@@ -711,6 +879,7 @@ textarea {
   color: #05789c;
   margin-right: 0.5rem;
   transition-duration: 0.5s;
+  cursor: pointer;
 }
 
 .edit-button:hover {
@@ -772,9 +941,10 @@ textarea {
 
 .note-content {
   border: solid 2px #007ea7;
-  height: 220px;
+  height: 200px;
   margin: 1.25rem 0;
   border-radius: 10px;
+  padding: 1rem;
 }
 
 .note-section {
@@ -834,6 +1004,18 @@ textarea {
 
 .mg-l-75 {
   margin-left: 0.75rem;
+}
+
+.mg-l-1 {
+  margin-left: 1rem;
+}
+
+.mg-b-125 {
+  margin-bottom: 1.25rem;
+}
+
+.mg-t-125 {
+  margin-top: 1.25rem;
 }
 
 .align-center {
@@ -910,6 +1092,12 @@ textarea {
   }
 }
 
+@media screen and (max-width: 520px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   #two,
   #hero-image,
@@ -923,10 +1111,22 @@ textarea {
     border-radius: 10px;
   }
 
+  .dropdown {
+    display: none;
+  }
+
+  .sub-tag-holder {
+    display: inline-flex;
+  }
+
   .hero-control {
-    padding-top: 6rem;
+    padding-top: 5rem;
     padding-left: 2.25rem;
     padding-right: 2.25rem;
+  }
+
+  .reminder-brief-row {
+    margin-top: 2.25rem;
   }
 
   .note-dashboard,
@@ -936,6 +1136,10 @@ textarea {
 
   .note-section {
     padding: 0.75rem 1.25rem;
+  }
+
+  .reminder-display {
+    text-align: center;
   }
 
   .reminder-content {

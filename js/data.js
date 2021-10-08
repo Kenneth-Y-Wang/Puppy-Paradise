@@ -1,19 +1,26 @@
 /* exported data */
 var data = {
-  view: 'pic-gallery',
-  page: 'mainPage',
+  view: 'dashboard',
+  // page: 'mainPage',
   cover: 'app-cover',
   entries: [],
+  logs: [],
+  reminder: [],
+  nextLogId: 1,
   gameRecords: [],
   deleting: null,
   nextEntryId: 1,
-  heroBackground: 'images/placeholder-image-square.jpg',
+  heroBackground: 'images/dog-place-holder.png',
+  profileBackground: 'images/dog-place-holder.png',
   backgroundColor: '#eaf7ff',
-  backgroundColorProfile: 'images/placeholder-image-square.jpg',
+  backgroundColorProfile: '#eaf7ff',
   gameBreed: null,
-  gameUrl: null
-};
+  gameUrl: null,
+  noteDeleting: null,
+  noteEditing: null,
+  reminderDeleting: null
 
+};
 var previousDataJSON = localStorage.getItem('pic-local-storage');
 if (previousDataJSON !== null) {
   data = JSON.parse(previousDataJSON);
