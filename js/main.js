@@ -478,15 +478,21 @@ $reminderSubmit.addEventListener('submit', function () {
   }
   data.reminder.unshift(newReminder);
 
+  let charNumber = 30;
+
+  if (window.innerWidth > 1290) {
+    charNumber = 40;
+  }
+
   for (var i = 0; i < $reminderList.length; i++) {
     if ($reminderList[i].getAttribute('data-urgency') === newReminder.urgency) {
       var contentShort = '';
       var contentSHortFinal = '';
-      if (newReminder.reminder.length < 30) {
+      if (newReminder.reminder.length < charNumber) {
         $reminderList[i].textContent = newReminder.reminder;
         $reminderList[i].setAttribute('data-content', newReminder.reminder);
       } else {
-        for (var x = 0; x < 30; x++) {
+        for (var x = 0; x < charNumber; x++) {
           contentShort += newReminder.reminder[x];
         }
         contentSHortFinal = contentShort + '...';
@@ -500,10 +506,10 @@ $reminderSubmit.addEventListener('submit', function () {
     if ($reminderDashboard[b].getAttribute('data-urgency') === newReminder.urgency) {
       var dashShort = '';
       var dashShortFinal = '';
-      if (newReminder.reminder.length < 30) {
+      if (newReminder.reminder.length < charNumber) {
         $reminderDashboard[b].textContent = newReminder.reminder;
       } else {
-        for (var y = 0; y < 30; y++) {
+        for (var y = 0; y < charNumber; y++) {
           dashShort += newReminder.reminder[y];
         }
         dashShortFinal = dashShort + '...';
@@ -937,16 +943,20 @@ function entryDisplay(event) {
 
   }
 
+  let charNumber = 30;
+  if (window.innerWidth > 1290) {
+    charNumber = 40;
+  }
   for (var b = 0; b < data.reminder.length; b++) {
     for (var c = 0; c < $reminderList.length; c++) {
       if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
         var contentShort = '';
         var contentSHortFinal = '';
-        if (data.reminder[b].reminder.length < 30) {
+        if (data.reminder[b].reminder.length < charNumber) {
           $reminderList[c].textContent = data.reminder[b].reminder;
           $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
         } else {
-          for (var x = 0; x < 30; x++) {
+          for (var x = 0; x < charNumber; x++) {
             contentShort += data.reminder[b].reminder[x];
           }
           contentSHortFinal = contentShort + '...';
@@ -962,10 +972,10 @@ function entryDisplay(event) {
       if (data.reminder[e].urgency === $reminderDashboard[f].getAttribute('data-urgency')) {
         var dashShort = '';
         var dashShortFinal = '';
-        if (data.reminder[e].reminder.length < 30) {
+        if (data.reminder[e].reminder.length < charNumber) {
           $reminderDashboard[f].textContent = data.reminder[e].reminder;
         } else {
-          for (var y = 0; y < 30; y++) {
+          for (var y = 0; y < charNumber; y++) {
             dashShort += data.reminder[e].reminder[y];
           }
           dashShortFinal = dashShort + '...';
@@ -985,7 +995,54 @@ function entryDisplay(event) {
   // tagHide();
 
 }
+function resize() {
 
+  let charNumber = 30;
+  if (window.innerWidth > 1290) {
+    charNumber = 40;
+  }
+
+  for (var b = 0; b < data.reminder.length; b++) {
+    for (var c = 0; c < $reminderList.length; c++) {
+      if (data.reminder[b].urgency === $reminderList[c].getAttribute('data-urgency')) {
+        var contentShort = '';
+        var contentSHortFinal = '';
+        if (data.reminder[b].reminder.length < charNumber) {
+          $reminderList[c].textContent = data.reminder[b].reminder;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        } else {
+          for (var x = 0; x < charNumber; x++) {
+            contentShort += data.reminder[b].reminder[x];
+          }
+          contentSHortFinal = contentShort + '...';
+          $reminderList[c].textContent = contentSHortFinal;
+          $reminderList[c].setAttribute('data-content', data.reminder[b].reminder);
+        }
+      }
+    }
+  }
+
+  for (var e = 0; e < data.reminder.length; e++) {
+    for (var f = 0; f < $reminderDashboard.length; f++) {
+      if (data.reminder[e].urgency === $reminderDashboard[f].getAttribute('data-urgency')) {
+        var dashShort = '';
+        var dashShortFinal = '';
+        if (data.reminder[e].reminder.length < charNumber) {
+          $reminderDashboard[f].textContent = data.reminder[e].reminder;
+        } else {
+          for (var y = 0; y < charNumber; y++) {
+            dashShort += data.reminder[e].reminder[y];
+          }
+          dashShortFinal = dashShort + '...';
+          $reminderDashboard[f].textContent = dashShortFinal;
+        }
+      }
+    }
+  }
+
+}
+
+window.addEventListener('resize', resize);
 document.addEventListener('DOMContentLoaded', entryDisplay);
 
 // here start the view swapping process
