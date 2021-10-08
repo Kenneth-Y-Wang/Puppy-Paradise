@@ -155,6 +155,7 @@ body {
 .app-main {
   background-color: white;
   height: 1200px;
+  overflow-y: auto;
 
   /* min-height: -webkit-fill-available; */
 }

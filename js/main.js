@@ -933,7 +933,7 @@ function entryDisplay(event) {
 
   for (var a = 0; a < data.logs.length; a++) {
 
-    $noteList.prepend(renderNote(data.logs[a]));
+    $noteList.appendChild(renderNote(data.logs[a]));
 
   }
 
