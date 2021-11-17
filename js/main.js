@@ -296,7 +296,7 @@ function setBackground(event) {
   $heroImage.setAttribute('src', event.target.getAttribute('data-pic'));
   data.heroBackground = event.target.getAttribute('data-pic');
   viewChange(event.target.getAttribute('data-view'));
-  // tagHide();
+
 }
 
 var $heroBlock = document.querySelector('.hero-block');
@@ -557,7 +557,6 @@ $noteSubmit.addEventListener('submit', function () {
   $notePic.setAttribute('src', 'images/dog-place-holder.png');
   $noteSubmit.reset();
   viewChange('puppyNote');
-  // tagHide();
 
 });
 
@@ -992,7 +991,6 @@ function entryDisplay(event) {
   viewChange(data.view);
 
   coverChange(data.cover);
-  // tagHide();
 
 }
 function resize() {
@@ -1048,7 +1046,6 @@ document.addEventListener('DOMContentLoaded', entryDisplay);
 // here start the view swapping process
 
 var $viewScreen = document.querySelectorAll('.view-screen');
-// var $subTag = document.querySelectorAll('.sub-tag');
 var $exitApp = document.querySelector('.exit-app');
 var $startButton = document.querySelector('.start-button');
 var $viewCover = document.querySelectorAll('.viewCover');
@@ -1074,16 +1071,6 @@ function coverChange(string) {
   data.cover = string;
 }
 
-// function tagHide() {
-//   for (var i = 0; i < $subTag.length; i++) {
-//     if ($subTag[i].getAttribute('data-view') === data.view) {
-//       $subTag[i].className = ' view-tag sub-tag hidden';
-//     } else {
-//       $subTag[i].className = ' view-tag sub-tag';
-//     }
-//   }
-// }
-
 function clickViewChange(event) {
   if (event.target.matches('.view-tag') === false) {
     return;
@@ -1095,7 +1082,6 @@ function clickViewChange(event) {
 
 $tabView.addEventListener('click', function () {
   clickViewChange(event);
-  // tagHide();
 
 });
 

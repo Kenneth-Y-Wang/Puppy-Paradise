@@ -4,7 +4,7 @@
 }
 
 #app-entrance {
-  background-image: url('../images/cute-wallpaper-200921142328121024x768.jpeg');
+  background-image: url('../images/app-entrance-pic.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -192,7 +192,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin-top: 1.75rem;
-  background-image: url('../images/Northern-Golden-Retriever-Red-Golden-Puppies.jpeg');
+  background-image: url('../images/home-page-banner.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 400px;
@@ -570,7 +570,7 @@ textarea {
 }
 
 .delete-block {
-  background-image: url('../images/z1pqW-1560822158-139274-blog-puppy.jpeg');
+  background-image: url('../images/modal-background.jpeg');
   filter: grayscale(30%);
   background-size: cover;
   border-radius: 0.5rem;
