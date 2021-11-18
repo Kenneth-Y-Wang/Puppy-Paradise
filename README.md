@@ -46,10 +46,12 @@ Try the application live at [https://kenneth-y-wang.github.io/puppy-paradise/]
 ## Preview
 
 User search puppy pics by random and save to personal gallery:
-https://media.giphy.com/media/kRivOaBI7WQBNzwT9b/giphy.gif
+
+![pic search](images/puppy-search.gif)
 
 Use saved pic as hero image:
-https://media.giphy.com/media/epfh9h8aJ8QjDULcwZ/giphy.gif
+
+![set heroimage](images/set-heroimage.gif)
 
 
 ## Development
